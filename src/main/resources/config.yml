@@ -1,0 +1,10 @@
+# Proxy (Upstream) Server
+bindAddress: "0.0.0.0"
+port: 25565
+motd: "Barrel Proxy\nConnect to Bedrock Server"
+
+# Downstream server (bedrock)
+bedrockAddress: "127.0.0.1"
+bedrockPort: 19132
+# Use xbox login? (offline|online)
+auth: offline
