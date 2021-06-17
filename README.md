@@ -1,6 +1,7 @@
 <h1><b>Barrel</b><img src="https://github.com/BarrelMC/Assets/blob/master/logo/barrel.png" height="64" width="64" align="left" alt=""></h1><br>
 
-<b>(WIP) A proxy to connect to Minecraft: Bedrock Edition servers with Minecraft: Java edition written in Java</b><br>
+<b>(Prototype) A proxy to connect to Minecraft: Bedrock Edition servers with Minecraft: Java edition written in
+Java</b><br>
 
 ## Requirements
 
