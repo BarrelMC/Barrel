@@ -20,10 +20,7 @@ import com.github.steveice10.mc.protocol.packet.ingame.client.ClientSettingsPack
 import com.github.steveice10.mc.protocol.packet.ingame.client.player.*;
 import com.github.steveice10.mc.protocol.packet.ingame.server.ServerJoinGamePacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.ServerPlayerListEntryPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.server.entity.ServerEntityAnimationPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.server.entity.ServerEntityHeadLookPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.server.entity.ServerEntityStatusPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.server.entity.ServerEntityTeleportPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.server.entity.*;
 import com.github.steveice10.mc.protocol.packet.ingame.server.entity.player.ServerPlayerPositionRotationPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.entity.spawn.ServerSpawnPlayerPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerChunkDataPacket;
@@ -139,6 +136,14 @@ public class PacketTranslator {
 
         if (pk instanceof SetTimePacket) {
             player.getJavaSession().send(new ServerUpdateTimePacket(0, ((SetTimePacket) pk).getTime()));
+        }
+
+        if (pk instanceof RemoveEntityPacket) {
+            RemoveEntityPacket packet = (RemoveEntityPacket) pk;
+
+            int[] entityIds = new int[1];
+            entityIds[0] = (int) packet.getUniqueEntityId();
+            player.getJavaSession().send(new ServerEntityDestroyPacket(entityIds));
         }
 
         if (pk instanceof MovePlayerPacket) {
