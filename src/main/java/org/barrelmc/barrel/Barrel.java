@@ -5,8 +5,8 @@
  * | |_) | | (_| | | |    | |    |  __/ | |
  * |____/   \__,_| |_|    |_|     \___| |_|
  *
- * Copyright (c) 2021 BarrelMC
- * BarrelMC/Barrel is licensed under the MIT License
+ * Copyright (c) 2021 BarrelMC Team
+ * This project is licensed under the MIT License
  */
 
 package org.barrelmc.barrel;

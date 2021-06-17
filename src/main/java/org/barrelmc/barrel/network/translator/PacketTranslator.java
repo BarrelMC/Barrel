@@ -1,12 +1,13 @@
 /*
- * Copyright (c) 2021 BarrelMC
- * BarrelMC/Barrel is licensed under the MIT License
+ * Copyright (c) 2021 BarrelMC Team
+ * This project is licensed under the MIT License
  */
 
 package org.barrelmc.barrel.network.translator;
 
 import com.github.steveice10.mc.protocol.data.game.chunk.Chunk;
 import com.github.steveice10.mc.protocol.data.game.chunk.Column;
+import com.github.steveice10.mc.protocol.data.game.chunk.NibbleArray3d;
 import com.github.steveice10.mc.protocol.data.game.entity.EntityStatus;
 import com.github.steveice10.mc.protocol.data.game.entity.player.Animation;
 import com.github.steveice10.mc.protocol.data.game.world.notify.ClientNotification;
@@ -21,6 +22,7 @@ import com.github.steveice10.mc.protocol.packet.ingame.server.entity.player.Serv
 import com.github.steveice10.mc.protocol.packet.ingame.server.entity.spawn.ServerSpawnPlayerPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerChunkDataPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerNotifyClientPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerUpdateLightPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerUpdateTimePacket;
 import com.github.steveice10.opennbt.tag.builtin.CompoundTag;
 import com.github.steveice10.packetlib.packet.Packet;
@@ -28,12 +30,18 @@ import com.nimbusds.jwt.SignedJWT;
 import com.nukkitx.math.vector.Vector2f;
 import com.nukkitx.math.vector.Vector3f;
 import com.nukkitx.math.vector.Vector3i;
+import com.nukkitx.network.VarInts;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
 import com.nukkitx.protocol.bedrock.data.PlayerActionType;
 import com.nukkitx.protocol.bedrock.packet.*;
 import com.nukkitx.protocol.bedrock.util.EncryptionUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
+import org.barrelmc.barrel.network.converter.BlockConverter;
 import org.barrelmc.barrel.player.Player;
 import org.barrelmc.barrel.server.ProxyServer;
+import org.barrelmc.barrel.utils.nukkit.BitArray;
+import org.barrelmc.barrel.utils.nukkit.BitArrayVersion;
 
 import javax.crypto.SecretKey;
 import java.net.URI;
@@ -174,21 +182,74 @@ public class PacketTranslator {
 
         if (pk instanceof LevelChunkPacket) {
             LevelChunkPacket packet = (LevelChunkPacket) pk;
-            Chunk chunk = new Chunk();
-            for (int x = 0; x < 16; x++) {
-                for (int y = 0; y < 16; y++) {
-                    for (int z = 0; z < 16; z++) {
-                        chunk.set(x, y, z, y == 0 ? 100 : y);
+
+            Chunk[] chunks = new Chunk[16];
+
+            ByteBuf byteBuf = Unpooled.buffer();
+            byteBuf.writeBytes(packet.getData());
+
+            for (int sectionIndex = 0; sectionIndex < packet.getSubChunksLength(); sectionIndex++) {
+                chunks[sectionIndex] = new Chunk();
+                int chunkVersion = byteBuf.readByte();
+                if (chunkVersion != 1 && chunkVersion != 8) {
+                    TranslatorUtils.manage0VersionChunk(byteBuf, chunks[sectionIndex]);
+                    continue;
+                }
+
+                byte storageSize = chunkVersion == 1 ? 1 : byteBuf.readByte();
+
+                for (int storageReadIndex = 0; storageReadIndex < storageSize; storageReadIndex++) {
+                    // PalettedBlockStorage
+                    byte paletteHeader = byteBuf.readByte();
+                    int paletteVersion = (paletteHeader | 1) >> 1;
+                    BitArrayVersion bitArrayVersion = BitArrayVersion.get(paletteVersion, true);
+
+                    int maxBlocksInSection = 4096; // 16*16*16
+                    BitArray bitArray = bitArrayVersion.createPalette(maxBlocksInSection);
+                    int wordsSize = bitArrayVersion.getWordsForSize(maxBlocksInSection);
+
+                    for (int wordIterationIndex = 0; wordIterationIndex < wordsSize; wordIterationIndex++) {
+                        int word = byteBuf.readIntLE();
+                        bitArray.getWords()[wordIterationIndex] = word;
+                    }
+
+                    int paletteSize = VarInts.readInt(byteBuf);
+                    int[] sectionPalette = new int[paletteSize]; // so this holds all the different block types in the chunk section, first index is always air, then we have the block ids
+                    for (int i = 0; i < paletteSize; i++) {
+                        int id = VarInts.readInt(byteBuf);
+
+                        sectionPalette[i] = id;
+                    }
+
+                    if (storageReadIndex == 0) {
+                        int index = 0;
+                        for (int x = 0; x < 16; x++) {
+                            for (int z = 0; z < 16; z++) {
+                                for (int y = 0; y < 16; y++) {
+                                    int paletteIndex = bitArray.get(index);
+                                    int mcbeBlockId = sectionPalette[paletteIndex];
+
+                                    if (mcbeBlockId != 0) {
+                                        chunks[sectionIndex].set(x, y, z, BlockConverter.toJavaStateId(mcbeBlockId));
+                                    }
+                                    index++;
+                                }
+                            }
+                        }
                     }
                 }
             }
 
-            Chunk[] chunks = new Chunk[16];
-            chunks[5] = chunk;
             CompoundTag heightMap = new CompoundTag("MOTION_BLOCKING");
 
             ServerChunkDataPacket chunkPacket = new ServerChunkDataPacket(new Column(packet.getChunkX(), packet.getChunkZ(), chunks, new CompoundTag[0], heightMap, new int[1024]));
             player.getJavaSession().send(chunkPacket);
+
+            NibbleArray3d[] skyLight = new NibbleArray3d[18];
+            for (int i = 0; i < skyLight.length; i++) {
+                skyLight[i] = new NibbleArray3d(1);
+            }
+            player.getJavaSession().send(new ServerUpdateLightPacket(0, 0, false, skyLight, skyLight));
         }
 
         if (pk instanceof TextPacket) {

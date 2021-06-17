@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 BarrelMC
- * BarrelMC/Barrel is licensed under the MIT License
+ * Copyright (c) 2021 BarrelMC Team
+ * This project is licensed under the MIT License
  */
 
 package org.barrelmc.barrel.server;
@@ -9,6 +9,7 @@ import com.github.steveice10.mc.auth.data.GameProfile;
 import com.github.steveice10.mc.auth.service.SessionService;
 import com.github.steveice10.mc.protocol.MinecraftConstants;
 import com.github.steveice10.mc.protocol.MinecraftProtocol;
+import com.github.steveice10.mc.protocol.ServerLoginHandler;
 import com.github.steveice10.mc.protocol.data.status.PlayerInfo;
 import com.github.steveice10.mc.protocol.data.status.ServerStatusInfo;
 import com.github.steveice10.mc.protocol.data.status.VersionInfo;
@@ -24,6 +25,8 @@ import com.nukkitx.protocol.bedrock.BedrockPacketCodec;
 import com.nukkitx.protocol.bedrock.v440.Bedrock_v440;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
+import org.barrelmc.barrel.auth.AuthManager;
+import org.barrelmc.barrel.auth.server.AuthServer;
 import org.barrelmc.barrel.config.Config;
 import org.barrelmc.barrel.network.JavaPacketHandler;
 import org.barrelmc.barrel.player.Player;
@@ -68,7 +71,13 @@ public class ProxyServer {
             InputStream inputStream = new FileInputStream(this.dataPath.toString() + "/config.yml");
             this.config = (new Yaml()).loadAs(inputStream, Config.class);
             return true;
-        } catch (FileNotFoundException ignored) {
+        } catch (FileNotFoundException e) {
+            try {
+                InputStream inputStream = new FileInputStream("./src/main/resources/config.yml");
+                this.config = (new Yaml()).loadAs(inputStream, Config.class);
+                return true;
+            } catch (FileNotFoundException ignored) {
+            }
         }
 
         return false;
@@ -81,6 +90,12 @@ public class ProxyServer {
         server.setGlobalFlag(MinecraftConstants.SESSION_SERVICE_KEY, sessionService);
         server.setGlobalFlag(MinecraftConstants.VERIFY_USERS_KEY, false);
         server.setGlobalFlag(MinecraftConstants.SERVER_INFO_BUILDER_KEY, (ServerInfoBuilder) session -> new ServerStatusInfo(new VersionInfo(MinecraftConstants.GAME_VERSION, MinecraftConstants.PROTOCOL_VERSION), new PlayerInfo(10, 0, new GameProfile[0]), Component.text(this.config.getMotd()), null));
+        server.setGlobalFlag(MinecraftConstants.SERVER_LOGIN_HANDLER_KEY, (ServerLoginHandler) session -> {
+            GameProfile profile = session.getFlag(MinecraftConstants.PROFILE_KEY);
+            if (AuthManager.getInstance().getLoginPlayers().get(profile.getName()) == null) {
+                session.addListener(new AuthServer(session, profile.getName()));
+            }
+        });
         server.setGlobalFlag(MinecraftConstants.SERVER_COMPRESSION_THRESHOLD, 100);
         server.addListener(new ServerAdapter() {
             @Override
@@ -97,8 +112,10 @@ public class ProxyServer {
             @Override
             public void sessionRemoved(SessionRemovedEvent event) {
                 GameProfile profile = event.getSession().getFlag(MinecraftConstants.PROFILE_KEY);
-
                 Player player = getPlayerByName(profile.getName());
+                if (AuthManager.getInstance().getLoginPlayers().get(player.getUsername())) {
+                    AuthManager.getInstance().getLoginPlayers().remove(player.getUsername());
+                }
                 player.disconnect("logged out");
             }
         });

@@ -1,6 +1,6 @@
 /*
- * Copyright (c) 2021 BarrelMC
- * BarrelMC/Barrel is licensed under the MIT License
+ * Copyright (c) 2021 BarrelMC Team
+ * This project is licensed under the MIT License
  */
 
 package org.barrelmc.barrel.player;
@@ -17,7 +17,9 @@ import io.netty.util.AsciiString;
 import lombok.Getter;
 import lombok.Setter;
 import net.kyori.adventure.text.Component;
+import org.barrelmc.barrel.auth.AuthManager;
 import org.barrelmc.barrel.auth.JoseStuff;
+import org.barrelmc.barrel.auth.Xbox;
 import org.barrelmc.barrel.config.Config;
 import org.barrelmc.barrel.math.Vector3;
 import org.barrelmc.barrel.network.BedrockBatchHandler;
@@ -28,6 +30,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.interfaces.ECPrivateKey;
 import java.security.interfaces.ECPublicKey;
+import java.security.spec.ECGenParameterSpec;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.Random;
@@ -38,6 +41,7 @@ public class Player extends Vector3 {
 
     @Getter
     private final Session javaSession;
+    private String accessToken = null;
     @Getter
     private BedrockClient bedrockClient;
 
@@ -59,9 +63,128 @@ public class Player extends Vector3 {
     public Player(LoginStartPacket loginPacket, Session javaSession) {
         this.javaSession = javaSession;
 
-        //if (ProxyServer.getInstance().getConfig().getAuth().equals("offline")) {
-        this.offlineLogin(loginPacket);
-        //}
+        if (ProxyServer.getInstance().getConfig().getAuth().equals("offline")) {
+            this.offlineLogin(loginPacket);
+        } else {
+            this.accessToken = AuthManager.getInstance().getAccessTokens().remove(loginPacket.getUsername());
+            this.onlineLogin(loginPacket);
+        }
+    }
+
+    private void onlineLogin(LoginStartPacket javaLoginPacket) {
+        InetSocketAddress bindAddress = new InetSocketAddress("0.0.0.0", ThreadLocalRandom.current().nextInt(30000, 60000));
+        BedrockClient client = new BedrockClient(bindAddress);
+
+        this.bedrockClient = client;
+        ProxyServer.getInstance().getOnlinePlayers().put(javaLoginPacket.getUsername(), this);
+
+        client.bind().join();
+
+        Config config = ProxyServer.getInstance().getConfig();
+        InetSocketAddress bedrockAddress = new InetSocketAddress(config.getBedrockAddress(), config.getBedrockPort());
+        client.connect(bedrockAddress).whenComplete((session, throwable) -> {
+            if (throwable != null) {
+                javaSession.disconnect("Server offline " + throwable);
+                return;
+            }
+
+            session.setPacketCodec(ProxyServer.getInstance().getBedrockPacketCodec());
+            session.addDisconnectHandler((reason) -> javaSession.disconnect("Client disconnected! " + reason.toString()));
+            session.setBatchHandler(new BedrockBatchHandler(this));
+            try {
+                session.sendPacketImmediately(this.getOnlineLoginPacket());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).join();
+    }
+
+    public LoginPacket getOnlineLoginPacket() throws Exception {
+        LoginPacket loginPacket = new LoginPacket();
+
+        KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance("EC");
+        keyPairGen.initialize(new ECGenParameterSpec("secp256r1")); //use P-256
+
+        KeyPair ecdsa256KeyPair = keyPairGen.generateKeyPair(); //for xbox live, xbox live requests use, ES256, ECDSA256
+        this.publicKey = (ECPublicKey) ecdsa256KeyPair.getPublic();
+        this.privateKey = (ECPrivateKey) ecdsa256KeyPair.getPrivate();
+
+        Xbox xbox = new Xbox(this.accessToken);
+        String userToken = xbox.getUserToken(this.publicKey, this.privateKey);
+        String deviceToken = xbox.getDeviceToken(this.publicKey, this.privateKey);
+        String titleToken = xbox.getTitleToken(this.publicKey, this.privateKey, deviceToken);
+        String xsts = xbox.getXstsToken(userToken, deviceToken, titleToken, this.publicKey, this.privateKey);
+
+        KeyPair ecdsa384KeyPair = EncryptionUtils.createKeyPair(); //use ES384, ECDSA384
+        this.publicKey = (ECPublicKey) ecdsa384KeyPair.getPublic();
+        this.privateKey = (ECPrivateKey) ecdsa384KeyPair.getPrivate();
+
+        /*
+         * So we get a "chain"(json array with info(that has 2 objects)) from minecraft.net using our xsts token
+         * from there we have to add our own chain at the beginning of the chain(json array that minecraft.net sent us),
+         * When is all said and done, we have 3 chains(they are jwt objects, header.payload.signature)
+         * which we send to the server to check
+         */
+        String chainData = xbox.requestMinecraftChain(xsts, this.publicKey);
+        JSONObject chainDataObject = JSONObject.parseObject(chainData);
+        JSONArray minecraftNetChain = chainDataObject.getJSONArray("chain");
+        String firstChainHeader = minecraftNetChain.getString(0);
+        firstChainHeader = firstChainHeader.split("\\.")[0]; //get the jwt header(base64)
+        firstChainHeader = new String(Base64.getDecoder().decode(firstChainHeader.getBytes())); //decode the jwt base64 header
+        String firstKeyx5u = JSONObject.parseObject(firstChainHeader).getString("x5u");
+
+        JSONObject newFirstChain = new JSONObject();
+        newFirstChain.put("certificateAuthority", true);
+        newFirstChain.put("exp", Instant.now().getEpochSecond() + TimeUnit.HOURS.toSeconds(6));
+        newFirstChain.put("identityPublicKey", firstKeyx5u);
+        newFirstChain.put("nbf", Instant.now().getEpochSecond() - TimeUnit.HOURS.toSeconds(6));
+
+        {
+            String publicKeyBase64 = Base64.getEncoder().encodeToString(this.publicKey.getEncoded());
+            JSONObject jwtHeader = new JSONObject();
+            jwtHeader.put("alg", "ES384");
+            jwtHeader.put("x5u", publicKeyBase64);
+
+            String header = Base64.getUrlEncoder().withoutPadding().encodeToString(jwtHeader.toJSONString().getBytes());
+            String payload = Base64.getUrlEncoder().withoutPadding().encodeToString(newFirstChain.toJSONString().getBytes());
+
+            byte[] dataToSign = (header + "." + payload).getBytes();
+            byte[] signatureBytes = null;
+            try {
+                Signature signature = Signature.getInstance("SHA384withECDSA");
+                signature.initSign(this.privateKey);
+                signature.update(dataToSign);
+                signatureBytes = JoseStuff.DERToJOSE(signature.sign(), JoseStuff.AlgorithmType.ECDSA384);
+            } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException ignored) {
+            }
+
+            String signatureString = Base64.getUrlEncoder().withoutPadding().encodeToString(signatureBytes);
+
+            String jwt = header + "." + payload + "." + signatureString;
+
+            JSONArray jsonArray = new JSONArray();
+            jsonArray.add(jwt);
+            jsonArray.addAll(minecraftNetChain);
+            chainDataObject.put("chain", jsonArray); //replace the chain with our new chain
+        }
+        {
+            //we are now going to get some data from a chain minecraft sent us(the last chain)
+            String lastChain = minecraftNetChain.getString(minecraftNetChain.size() - 1);
+            String lastChainPayload = lastChain.split("\\.")[1]; //get the middle(payload) jwt thing
+            lastChainPayload = new String(Base64.getDecoder().decode(lastChainPayload.getBytes())); //decode the base64
+
+            JSONObject payloadObject = JSONObject.parseObject(lastChainPayload);
+            JSONObject extraData = payloadObject.getJSONObject("extraData");
+
+            this.username = extraData.getString("displayName");
+            this.xuid = extraData.getString("XUID");
+            this.UUID = extraData.getString("identity");
+        }
+
+        loginPacket.setChainData(new AsciiString(chainDataObject.toJSONString().getBytes(StandardCharsets.UTF_8)));
+        loginPacket.setSkinData(new AsciiString(this.getSkinData()));
+        loginPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
+        return loginPacket;
     }
 
     private void offlineLogin(LoginStartPacket javaLoginPacket) {

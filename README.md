@@ -10,11 +10,11 @@
 
 ## Need implemented
 
-- Chunks
+- Chunks (Only pm3 is working now)
 - Inventory
-- Xbox Auth
 - And More...
 
 ## Credits
 
+- [TunnelMC](https://github.com/THEREALWWEFAN231/TunnelMC) (For Chunk Stuff)
 - [EZ4H](https://github.com/Project-EZ4H/EZ4H) (Archived)
