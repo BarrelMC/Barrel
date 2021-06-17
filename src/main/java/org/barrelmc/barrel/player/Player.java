@@ -60,6 +60,10 @@ public class Player extends Vector3 {
     @Getter
     private String UUID;
 
+    @Setter
+    @Getter
+    private int scoreSortorder;
+
     public Player(LoginStartPacket loginPacket, Session javaSession) {
         this.javaSession = javaSession;
 

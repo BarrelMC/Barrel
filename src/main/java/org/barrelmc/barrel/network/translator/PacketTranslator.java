@@ -6,16 +6,25 @@
 package org.barrelmc.barrel.network.translator;
 
 import com.github.steveice10.mc.auth.data.GameProfile;
+import com.github.steveice10.mc.protocol.data.game.ClientRequest;
 import com.github.steveice10.mc.protocol.data.game.PlayerListEntry;
 import com.github.steveice10.mc.protocol.data.game.PlayerListEntryAction;
 import com.github.steveice10.mc.protocol.data.game.chunk.Chunk;
 import com.github.steveice10.mc.protocol.data.game.chunk.Column;
 import com.github.steveice10.mc.protocol.data.game.chunk.NibbleArray3d;
 import com.github.steveice10.mc.protocol.data.game.entity.EntityStatus;
+import com.github.steveice10.mc.protocol.data.game.entity.metadata.Position;
 import com.github.steveice10.mc.protocol.data.game.entity.player.Animation;
+import com.github.steveice10.mc.protocol.data.game.entity.player.BlockBreakStage;
 import com.github.steveice10.mc.protocol.data.game.entity.player.GameMode;
+import com.github.steveice10.mc.protocol.data.game.scoreboard.ObjectiveAction;
+import com.github.steveice10.mc.protocol.data.game.scoreboard.ScoreType;
+import com.github.steveice10.mc.protocol.data.game.scoreboard.ScoreboardPosition;
+import com.github.steveice10.mc.protocol.data.game.world.block.value.ChestValue;
+import com.github.steveice10.mc.protocol.data.game.world.block.value.ChestValueType;
 import com.github.steveice10.mc.protocol.data.game.world.notify.ClientNotification;
 import com.github.steveice10.mc.protocol.packet.ingame.client.ClientChatPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.client.ClientRequestPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.client.ClientSettingsPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.client.player.*;
 import com.github.steveice10.mc.protocol.packet.ingame.server.ServerJoinGamePacket;
@@ -23,10 +32,10 @@ import com.github.steveice10.mc.protocol.packet.ingame.server.ServerPlayerListEn
 import com.github.steveice10.mc.protocol.packet.ingame.server.entity.*;
 import com.github.steveice10.mc.protocol.packet.ingame.server.entity.player.ServerPlayerPositionRotationPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.entity.spawn.ServerSpawnPlayerPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerChunkDataPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerNotifyClientPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerUpdateLightPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerUpdateTimePacket;
+import com.github.steveice10.mc.protocol.packet.ingame.server.scoreboard.ServerDisplayScoreboardPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.server.scoreboard.ServerScoreboardObjectivePacket;
+import com.github.steveice10.mc.protocol.packet.ingame.server.scoreboard.ServerUpdateScorePacket;
+import com.github.steveice10.mc.protocol.packet.ingame.server.world.*;
 import com.github.steveice10.opennbt.tag.builtin.CompoundTag;
 import com.github.steveice10.packetlib.packet.Packet;
 import com.nimbusds.jwt.SignedJWT;
@@ -35,7 +44,9 @@ import com.nukkitx.math.vector.Vector3f;
 import com.nukkitx.math.vector.Vector3i;
 import com.nukkitx.network.VarInts;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
+import com.nukkitx.protocol.bedrock.data.LevelEventType;
 import com.nukkitx.protocol.bedrock.data.PlayerActionType;
+import com.nukkitx.protocol.bedrock.data.ScoreInfo;
 import com.nukkitx.protocol.bedrock.data.entity.EntityData;
 import com.nukkitx.protocol.bedrock.packet.*;
 import com.nukkitx.protocol.bedrock.util.EncryptionUtils;
@@ -52,7 +63,9 @@ import org.barrelmc.barrel.utils.nukkit.BitArrayVersion;
 import javax.crypto.SecretKey;
 import java.net.URI;
 import java.security.interfaces.ECPublicKey;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 public class PacketTranslator {
 
@@ -126,7 +139,7 @@ public class PacketTranslator {
             AddPlayerPacket packet = (AddPlayerPacket) pk;
 
             GameProfile gameProfile = new GameProfile(packet.getUuid(), Utils.lengthCutter(packet.getUsername(), 16));
-            player.getJavaSession().send(new ServerPlayerListEntryPacket(PlayerListEntryAction.ADD_PLAYER, new PlayerListEntry[]{new PlayerListEntry(gameProfile, GameMode.SURVIVAL, 0, Component.text(Utils.lengthCutter(packet.getMetadata().getString(EntityData.NAMETAG), 16)))}));
+            player.getJavaSession().send(new ServerPlayerListEntryPacket(PlayerListEntryAction.ADD_PLAYER, new PlayerListEntry[]{new PlayerListEntry(gameProfile, GameMode.SURVIVAL, 10, Component.text(Utils.lengthCutter(packet.getMetadata().getString(EntityData.NAMETAG), 16)))}));
 
             Vector3f position = packet.getPosition();
             Vector3f rotation = packet.getRotation();
@@ -144,6 +157,35 @@ public class PacketTranslator {
             int[] entityIds = new int[1];
             entityIds[0] = (int) packet.getUniqueEntityId();
             player.getJavaSession().send(new ServerEntityDestroyPacket(entityIds));
+        }
+
+        if (pk instanceof SetScorePacket) {
+            SetScorePacket packet = (SetScorePacket) pk;
+            List<ScoreInfo> infos = packet.getInfos();
+            for (ScoreInfo scoreInfo : infos) {
+                int score = scoreInfo.getScore();
+                if (player.getScoreSortorder() == 0) {
+                    score = -score;
+                }
+                player.getJavaSession().send(new ServerUpdateScorePacket(Utils.lengthCutter(scoreInfo.getName(), 40), scoreInfo.getObjectiveId(), score));
+            }
+        }
+
+        if (pk instanceof SetDisplayObjectivePacket) {
+            SetDisplayObjectivePacket packet = (SetDisplayObjectivePacket) pk;
+
+            String name = Utils.lengthCutter(packet.getDisplayName(), 32);
+
+            if ("sidebar".equals(packet.getDisplaySlot())) {
+                player.setScoreSortorder(packet.getSortOrder());
+                player.getJavaSession().send(new ServerScoreboardObjectivePacket(packet.getObjectiveId(), ObjectiveAction.ADD, Component.text(name), ScoreType.INTEGER));
+                player.getJavaSession().send(new ServerDisplayScoreboardPacket(ScoreboardPosition.SIDEBAR, packet.getObjectiveId()));
+            }
+        }
+
+        if (pk instanceof RemoveObjectivePacket) {
+            RemoveObjectivePacket packet = (RemoveObjectivePacket) pk;
+            player.getJavaSession().send(new ServerScoreboardObjectivePacket(packet.getObjectiveId()));
         }
 
         if (pk instanceof MovePlayerPacket) {
@@ -270,6 +312,64 @@ public class PacketTranslator {
             player.getJavaSession().send(new ServerUpdateLightPacket(0, 0, false, skyLight, skyLight));
         }
 
+        if (pk instanceof LevelEventPacket) {
+            LevelEventPacket packet = (LevelEventPacket) pk;
+
+            if (packet.getType() == LevelEventType.BLOCK_START_BREAK) {
+                Vector3f pos = packet.getPosition();
+                player.getJavaSession().send(new ServerBlockBreakAnimPacket(0, new Position((int) pos.getX(), (int) pos.getY(), (int) pos.getZ()), BlockBreakStage.STAGE_1));
+            } else if (packet.getType() == LevelEventType.BLOCK_STOP_BREAK) {
+                Vector3f pos = packet.getPosition();
+                player.getJavaSession().send(new ServerBlockBreakAnimPacket(0, new Position((int) pos.getX(), (int) pos.getY(), (int) pos.getZ()), BlockBreakStage.RESET));
+            }
+        }
+
+        if (pk instanceof BlockEventPacket) {
+            BlockEventPacket packet = (BlockEventPacket) pk;
+
+            if (packet.getEventType() == 1) {
+                Vector3i pos = packet.getBlockPosition();
+                Position blockPos = new Position(pos.getX(), pos.getY(), pos.getZ());
+                if (packet.getEventData() == 2) {
+                    player.getJavaSession().send(new ServerBlockValuePacket(blockPos, ChestValueType.VIEWING_PLAYER_COUNT, new ChestValue(1), 54));
+                } else {
+                    player.getJavaSession().send(new ServerBlockValuePacket(blockPos, ChestValueType.VIEWING_PLAYER_COUNT, new ChestValue(0), 54));
+                }
+            }
+        }
+
+        if (pk instanceof TakeItemEntityPacket) {
+            TakeItemEntityPacket packet = (TakeItemEntityPacket) pk;
+
+            int[] entityIds = new int[1];
+            entityIds[0] = (int) packet.getItemRuntimeEntityId();
+
+            player.getJavaSession().send(new ServerEntityDestroyPacket(entityIds));
+            player.getJavaSession().send(new ServerEntityCollectItemPacket((int) packet.getItemRuntimeEntityId(), (int) packet.getRuntimeEntityId(), 1));
+        }
+
+        if (pk instanceof PlayerListPacket) {
+            PlayerListPacket packet = (PlayerListPacket) pk;
+            ArrayList<PlayerListEntry> playerListEntries = new ArrayList<>();
+
+            for (PlayerListPacket.Entry entry : packet.getEntries()) {
+                GameProfile gameProfile = new GameProfile(entry.getUuid(), Utils.lengthCutter(entry.getName(), 16));
+                playerListEntries.add(new PlayerListEntry(gameProfile, GameMode.SURVIVAL, 0, Component.text(Utils.lengthCutter(entry.getName(), 16))));
+            }
+
+            PlayerListEntry[] playerListEntriesL = playerListEntries.toArray(new PlayerListEntry[0]);
+            switch (packet.getAction()) {
+                case ADD: {
+                    player.getJavaSession().send(new ServerPlayerListEntryPacket(PlayerListEntryAction.ADD_PLAYER, playerListEntriesL));
+                    break;
+                }
+                case REMOVE: {
+                    player.getJavaSession().send(new ServerPlayerListEntryPacket(PlayerListEntryAction.REMOVE_PLAYER, playerListEntriesL));
+                    break;
+                }
+            }
+        }
+
         if (pk instanceof TextPacket) {
             TextPacket packet = (TextPacket) pk;
 
@@ -341,12 +441,35 @@ public class PacketTranslator {
             player.getBedrockClient().getSession().sendPacket(textPacket);
         }
 
+        if (pk instanceof ClientPlayerChangeHeldItemPacket) {
+            ClientPlayerChangeHeldItemPacket packet = (ClientPlayerChangeHeldItemPacket) pk;
+            PlayerHotbarPacket playerHotbarPacket = new PlayerHotbarPacket();
+
+            playerHotbarPacket.setContainerId(0);
+            playerHotbarPacket.setSelectedHotbarSlot(packet.getSlot());
+            playerHotbarPacket.setSelectHotbarSlot(true);
+            player.getBedrockClient().getSession().sendPacket(playerHotbarPacket);
+        }
+
         if (pk instanceof ClientSettingsPacket) {
             ClientSettingsPacket settingsPacket = (ClientSettingsPacket) pk;
             RequestChunkRadiusPacket chunkRadiusPacket = new RequestChunkRadiusPacket();
 
             chunkRadiusPacket.setRadius(settingsPacket.getRenderDistance());
             player.getBedrockClient().getSession().sendPacket(chunkRadiusPacket);
+        }
+
+        if (pk instanceof ClientRequestPacket) {
+            ClientRequestPacket packet = (ClientRequestPacket) pk;
+
+            if (packet.getRequest() == ClientRequest.RESPAWN) {
+                RespawnPacket respawnPacket = new RespawnPacket();
+
+                respawnPacket.setPosition(Vector3f.from(0, 0, 0));
+                respawnPacket.setRuntimeEntityId(player.getRuntimeEntityId());
+                respawnPacket.setState(RespawnPacket.State.CLIENT_READY);
+                player.getBedrockClient().getSession().sendPacket(respawnPacket);
+            }
         }
 
         if (pk instanceof ClientPlayerRotationPacket) {
