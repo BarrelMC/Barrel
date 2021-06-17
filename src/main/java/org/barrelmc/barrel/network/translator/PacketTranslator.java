@@ -11,7 +11,6 @@ import com.github.steveice10.mc.protocol.data.game.PlayerListEntry;
 import com.github.steveice10.mc.protocol.data.game.PlayerListEntryAction;
 import com.github.steveice10.mc.protocol.data.game.chunk.Chunk;
 import com.github.steveice10.mc.protocol.data.game.chunk.Column;
-import com.github.steveice10.mc.protocol.data.game.chunk.NibbleArray3d;
 import com.github.steveice10.mc.protocol.data.game.entity.EntityStatus;
 import com.github.steveice10.mc.protocol.data.game.entity.metadata.Position;
 import com.github.steveice10.mc.protocol.data.game.entity.player.Animation;
@@ -243,25 +242,25 @@ public class PacketTranslator {
         if (pk instanceof LevelChunkPacket) {
             LevelChunkPacket packet = (LevelChunkPacket) pk;
 
-            Chunk[] chunks = new Chunk[16];
+            Chunk[] chunkSections = new Chunk[16];
 
             ByteBuf byteBuf = Unpooled.buffer();
             byteBuf.writeBytes(packet.getData());
 
             for (int sectionIndex = 0; sectionIndex < packet.getSubChunksLength(); sectionIndex++) {
-                chunks[sectionIndex] = new Chunk();
+                chunkSections[sectionIndex] = new Chunk();
                 int chunkVersion = byteBuf.readByte();
                 if (chunkVersion != 1 && chunkVersion != 8) {
-                    TranslatorUtils.manage0VersionChunk(byteBuf, chunks[sectionIndex]);
+                    TranslatorUtils.manage0VersionChunk(byteBuf, chunkSections[sectionIndex]);
                     continue;
                 }
 
                 byte storageSize = chunkVersion == 1 ? 1 : byteBuf.readByte();
 
                 for (int storageReadIndex = 0; storageReadIndex < storageSize; storageReadIndex++) {
-                    // PalettedBlockStorage
                     byte paletteHeader = byteBuf.readByte();
                     int paletteVersion = (paletteHeader | 1) >> 1;
+
                     BitArrayVersion bitArrayVersion = BitArrayVersion.get(paletteVersion, true);
 
                     int maxBlocksInSection = 4096; // 16*16*16
@@ -274,11 +273,9 @@ public class PacketTranslator {
                     }
 
                     int paletteSize = VarInts.readInt(byteBuf);
-                    int[] sectionPalette = new int[paletteSize]; // so this holds all the different block types in the chunk section, first index is always air, then we have the block ids
+                    int[] sectionPalette = new int[paletteSize];
                     for (int i = 0; i < paletteSize; i++) {
-                        int id = VarInts.readInt(byteBuf);
-
-                        sectionPalette[i] = id;
+                        sectionPalette[i] = VarInts.readInt(byteBuf);
                     }
 
                     if (storageReadIndex == 0) {
@@ -288,9 +285,8 @@ public class PacketTranslator {
                                 for (int y = 0; y < 16; y++) {
                                     int paletteIndex = bitArray.get(index);
                                     int mcbeBlockId = sectionPalette[paletteIndex];
-
                                     if (mcbeBlockId != 0) {
-                                        chunks[sectionIndex].set(x, y, z, BlockConverter.toJavaStateId(mcbeBlockId));
+                                        chunkSections[sectionIndex].set(x, y, z, BlockConverter.toJavaStateId(mcbeBlockId));
                                     }
                                     index++;
                                 }
@@ -302,14 +298,8 @@ public class PacketTranslator {
 
             CompoundTag heightMap = new CompoundTag("MOTION_BLOCKING");
 
-            ServerChunkDataPacket chunkPacket = new ServerChunkDataPacket(new Column(packet.getChunkX(), packet.getChunkZ(), chunks, new CompoundTag[0], heightMap, new int[1024]));
+            ServerChunkDataPacket chunkPacket = new ServerChunkDataPacket(new Column(packet.getChunkX(), packet.getChunkZ(), chunkSections, new CompoundTag[0], heightMap, new int[1024]));
             player.getJavaSession().send(chunkPacket);
-
-            NibbleArray3d[] skyLight = new NibbleArray3d[18];
-            for (int i = 0; i < skyLight.length; i++) {
-                skyLight[i] = new NibbleArray3d(1);
-            }
-            player.getJavaSession().send(new ServerUpdateLightPacket(0, 0, false, skyLight, skyLight));
         }
 
         if (pk instanceof LevelEventPacket) {

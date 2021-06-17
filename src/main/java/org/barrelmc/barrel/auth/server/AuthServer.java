@@ -53,6 +53,7 @@ public class AuthServer extends SessionAdapter {
         CompoundTag heightMap = new CompoundTag("MOTION_BLOCKING");
 
         session.send(new ServerChunkDataPacket(new Column(0, 0, chunks, new CompoundTag[0], heightMap, new int[1024])));
+        session.send(new ServerChatPacket(Component.text("§ePlease input your email and password.\n§aEx: account@mail.com:password123")));
     }
 
     @Override
