@@ -23,6 +23,7 @@ import org.barrelmc.barrel.auth.Xbox;
 import org.barrelmc.barrel.config.Config;
 import org.barrelmc.barrel.math.Vector3;
 import org.barrelmc.barrel.network.BedrockBatchHandler;
+import org.barrelmc.barrel.network.translator.PacketTranslatorManager;
 import org.barrelmc.barrel.server.ProxyServer;
 
 import java.net.InetSocketAddress;
@@ -41,10 +42,12 @@ public class Player extends Vector3 {
 
     @Getter
     private final Session javaSession;
-    private String accessToken = null;
     @Getter
     private BedrockClient bedrockClient;
+    @Getter
+    private final PacketTranslatorManager packetTranslatorManager;
 
+    private String accessToken = null;
     @Getter
     private ECPublicKey publicKey;
     @Getter
@@ -65,6 +68,7 @@ public class Player extends Vector3 {
     private int scoreSortorder;
 
     public Player(LoginStartPacket loginPacket, Session javaSession) {
+        this.packetTranslatorManager = new PacketTranslatorManager(this);
         this.javaSession = javaSession;
 
         if (ProxyServer.getInstance().getConfig().getAuth().equals("offline")) {

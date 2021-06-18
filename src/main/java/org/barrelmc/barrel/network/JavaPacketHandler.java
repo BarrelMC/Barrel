@@ -10,8 +10,8 @@ import com.github.steveice10.mc.protocol.MinecraftConstants;
 import com.github.steveice10.mc.protocol.packet.login.client.LoginStartPacket;
 import com.github.steveice10.packetlib.event.session.PacketReceivedEvent;
 import com.github.steveice10.packetlib.event.session.SessionAdapter;
+import com.github.steveice10.packetlib.packet.Packet;
 import org.barrelmc.barrel.auth.AuthManager;
-import org.barrelmc.barrel.network.translator.PacketTranslator;
 import org.barrelmc.barrel.player.Player;
 import org.barrelmc.barrel.server.ProxyServer;
 
@@ -26,6 +26,7 @@ public class JavaPacketHandler extends SessionAdapter {
         if (this.player == null) {
             if (event.getPacket() instanceof LoginStartPacket) {
                 LoginStartPacket loginPacket = event.getPacket();
+
                 if (!ProxyServer.getInstance().getConfig().getAuth().equals("offline") && AuthManager.getInstance().getAccessTokens().containsKey(loginPacket.getUsername())) {
                     new Player(loginPacket, event.getSession());
 
@@ -37,7 +38,7 @@ public class JavaPacketHandler extends SessionAdapter {
                 }
             }
         } else {
-            PacketTranslator.translateToBedrock(event.getPacket(), this.player);
+            player.getPacketTranslatorManager().translate((Packet) event.getPacket());
         }
     }
 }
