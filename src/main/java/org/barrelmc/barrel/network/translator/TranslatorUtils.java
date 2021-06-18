@@ -12,8 +12,9 @@ public class TranslatorUtils {
 
     public static GameMode translateGamemodeToJE(GameType gameType) {
         String gameTypeString = gameType.toString();
+
         if (gameTypeString.contains("VIEWER")) {
-            gameTypeString = GameMode.SPECTATOR.name();
+            return GameMode.SPECTATOR;
         }
 
         return GameMode.valueOf(gameTypeString);
