@@ -12,13 +12,13 @@ public class Utils {
         return result;
     }
 
-    public static String lengthCutter(String bedrockName, int leng) {
+    public static String lengthCutter(String bedrockName, int length) {
         if (bedrockName == null) {
             return "null";
         }
 
-        if (bedrockName.length() > leng) {
-            return bedrockName.substring(0, leng);
+        if (bedrockName.length() > length) {
+            return bedrockName.substring(0, length);
         } else {
             return bedrockName;
         }
