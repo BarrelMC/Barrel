@@ -7,6 +7,7 @@ package org.barrelmc.barrel.player;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.github.steveice10.mc.protocol.data.game.MessageType;
 import com.github.steveice10.mc.protocol.packet.ingame.server.ServerChatPacket;
 import com.github.steveice10.mc.protocol.packet.login.client.LoginStartPacket;
 import com.github.steveice10.packetlib.Session;
@@ -339,6 +340,10 @@ public class Player extends Vector3 {
 
     public void sendMessage(String message) {
         this.javaSession.send(new ServerChatPacket(Component.text(message)));
+    }
+
+    public void sendTip(String message) {
+        this.javaSession.send(new ServerChatPacket(Component.text(message), MessageType.NOTIFICATION));
     }
 
     public void disconnect(String reason) {
