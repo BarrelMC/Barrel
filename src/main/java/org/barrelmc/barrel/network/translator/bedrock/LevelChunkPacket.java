@@ -28,50 +28,18 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
         for (int sectionIndex = 0; sectionIndex < packet.getSubChunksLength(); sectionIndex++) {
             chunkSections[sectionIndex] = new Chunk();
             int chunkVersion = byteBuf.readByte();
+
             if (chunkVersion != 1 && chunkVersion != 8) {
-                this.manage0VersionChunk(byteBuf, chunkSections[sectionIndex]);
+                this.networkDecodeVersionZero(byteBuf, chunkSections[sectionIndex]);
                 continue;
             }
 
-            byte storageSize = chunkVersion == 1 ? 1 : byteBuf.readByte();
-
-            for (int storageReadIndex = 0; storageReadIndex < storageSize; storageReadIndex++) {
-                byte paletteHeader = byteBuf.readByte();
-                int paletteVersion = (paletteHeader | 1) >> 1;
-
-                BitArrayVersion bitArrayVersion = BitArrayVersion.get(paletteVersion, true);
-
-                int maxBlocksInSection = 4096; // 16*16*16
-                BitArray bitArray = bitArrayVersion.createPalette(maxBlocksInSection);
-                int wordsSize = bitArrayVersion.getWordsForSize(maxBlocksInSection);
-
-                for (int wordIterationIndex = 0; wordIterationIndex < wordsSize; wordIterationIndex++) {
-                    int word = byteBuf.readIntLE();
-                    bitArray.getWords()[wordIterationIndex] = word;
-                }
-
-                int paletteSize = VarInts.readInt(byteBuf);
-                int[] sectionPalette = new int[paletteSize];
-                for (int i = 0; i < paletteSize; i++) {
-                    sectionPalette[i] = VarInts.readInt(byteBuf);
-                }
-
-                if (storageReadIndex == 0) {
-                    int index = 0;
-                    for (int x = 0; x < 16; x++) {
-                        for (int z = 0; z < 16; z++) {
-                            for (int y = 0; y < 16; y++) {
-                                int paletteIndex = bitArray.get(index);
-                                int mcbeBlockId = sectionPalette[paletteIndex];
-                                if (mcbeBlockId != 0) {
-                                    chunkSections[sectionIndex].set(x, y, z, BlockConverter.toJavaStateId(mcbeBlockId));
-                                }
-                                index++;
-                            }
-                        }
-                    }
-                }
+            if (chunkVersion == 1) {
+                networkDecodeVersionOne(byteBuf, chunkSections[sectionIndex]);
+                continue;
             }
+
+            networkDecodeVersionEight(byteBuf, chunkSections, sectionIndex, byteBuf.readByte());
         }
 
         CompoundTag heightMap = new CompoundTag("MOTION_BLOCKING");
@@ -80,31 +48,69 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
         player.getJavaSession().send(chunkPacket);
     }
 
-    public void manage0VersionChunk(ByteBuf byteBuf, Chunk chunkSection) {
+    public void networkDecodeVersionZero(ByteBuf byteBuf, Chunk chunkSection) {
         byte[] blockIds = new byte[4096];
         byteBuf.readBytes(blockIds);
 
-        byte[] metaIdsTemp = new byte[2048];
-        byteBuf.readBytes(metaIdsTemp);
         byte[] metaIds = new byte[2048];
-
-        for (int i = 0; i < metaIdsTemp.length; i++) {
-            int value = metaIdsTemp[i] & 15;
-            int i1 = i >> 1;
-            metaIds[i1] &= 15 << (i + 1 & 1) * 4;
-            metaIds[i1] |= value << (i & 1) * 4;
-        }
+        byteBuf.readBytes(metaIds);
 
         for (int x = 0; x < 16; x++) {
             for (int y = 0; y < 16; y++) {
                 for (int z = 0; z < 16; z++) {
-                    int idx = (x << 8) + (z << 4) + y;
-                    int id = blockIds[idx];
-                    int meta = metaIds[idx >> 1] >> (idx & 1) * 4 & 15;
+                    int index = (x << 8) + (z << 4) + y;
+
+                    int id = blockIds[index];
+                    int meta = metaIds[index >> 1] >> (index & 1) * 4 & 15;
 
                     chunkSection.set(x, y, z, BlockConverter.toJavaStateId(id));
                 }
             }
         }
+    }
+
+    public void networkDecodeVersionEight(ByteBuf byteBuf, Chunk[] chunkSections, int sectionIndex, byte storageSize) {
+        for (int storageReadIndex = 0; storageReadIndex < storageSize; storageReadIndex++) {
+            byte paletteHeader = byteBuf.readByte();
+            int paletteVersion = (paletteHeader | 1) >> 1;
+
+            BitArrayVersion bitArrayVersion = BitArrayVersion.get(paletteVersion, true);
+
+            int maxBlocksInSection = 4096;
+            BitArray bitArray = bitArrayVersion.createPalette(maxBlocksInSection);
+            int wordsSize = bitArrayVersion.getWordsForSize(maxBlocksInSection);
+
+            for (int wordIterationIndex = 0; wordIterationIndex < wordsSize; wordIterationIndex++) {
+                int word = byteBuf.readIntLE();
+                bitArray.getWords()[wordIterationIndex] = word;
+            }
+
+            int paletteSize = VarInts.readInt(byteBuf);
+            int[] sectionPalette = new int[paletteSize];
+            for (int i = 0; i < paletteSize; i++) {
+                sectionPalette[i] = VarInts.readInt(byteBuf);
+            }
+
+            if (storageReadIndex == 0) {
+                int index = 0;
+                for (int x = 0; x < 16; x++) {
+                    for (int z = 0; z < 16; z++) {
+                        for (int y = 0; y < 16; y++) {
+                            int paletteIndex = bitArray.get(index);
+                            int mcbeBlockId = sectionPalette[paletteIndex];
+
+                            if (mcbeBlockId != 0) {
+                                chunkSections[sectionIndex].set(x, y, z, BlockConverter.toJavaStateId(mcbeBlockId));
+                            }
+                            index++;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public void networkDecodeVersionOne(ByteBuf byteBuf, Chunk chunkSection) {
+        networkDecodeVersionEight(byteBuf, new Chunk[]{chunkSection}, 0, (byte) 1);
     }
 }
