@@ -178,9 +178,9 @@ public class ProxyServer {
         overworldTag.put(new ByteTag("bed_works", (byte) 1));
         overworldTag.put(new StringTag("effects", "minecraft:overworld"));
         overworldTag.put(new ByteTag("has_raids", (byte) 1));
-        overworldTag.put(new IntTag("logical_height", 256));
-        overworldTag.put(new IntTag("height", 256));
-        overworldTag.put(new IntTag("min_y", 0));
+        overworldTag.put(new IntTag("logical_height", 192));
+        overworldTag.put(new IntTag("height", 192));
+        overworldTag.put(new IntTag("min_y", -64));
         overworldTag.put(new FloatTag("coordinate_scale", 1f));
         overworldTag.put(new ByteTag("ultrawarm", (byte) 0));
         overworldTag.put(new ByteTag("has_ceiling", (byte) 0));

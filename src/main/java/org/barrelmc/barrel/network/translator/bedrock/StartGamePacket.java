@@ -34,7 +34,7 @@ public class StartGamePacket implements BedrockPacketTranslator {
 
         Vector3f position = packet.getPlayerPosition();
         Vector2f rotation = packet.getRotation();
-        ServerPlayerPositionRotationPacket serverPlayerPositionRotationPacket = new ServerPlayerPositionRotationPacket(position.getX(), position.getY(), position.getZ(), rotation.getY(), rotation.getX(), 1, false);
+        ServerPlayerPositionRotationPacket serverPlayerPositionRotationPacket = new ServerPlayerPositionRotationPacket(position.getX(), position.getY(), position.getZ(), rotation.getY(), rotation.getX(), 0, false);
         player.getJavaSession().send(serverPlayerPositionRotationPacket);
         player.getJavaSession().send(new ServerEntityStatusPacket((int) packet.getRuntimeEntityId(), EntityStatus.PLAYER_OP_PERMISSION_LEVEL_0));
     }
