@@ -13,6 +13,9 @@ public class ClientPlayerPositionRotationPacket implements JavaPacketTranslator 
     public void translate(Packet pk, Player player) {
         com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerPositionRotationPacket packet = (com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerPositionRotationPacket) pk;
 
+        player.setOldPosition(player.getVector3f());
+        player.setLocation(packet.getX(), packet.getY(), packet.getZ(), packet.getYaw(), packet.getPitch());
+
         if (player.getStartGamePacketCache().getPlayerMovementSettings().getMovementMode() == AuthoritativeMovementMode.CLIENT) {
             MovePlayerPacket movePlayerPacket = new MovePlayerPacket();
 
@@ -25,7 +28,6 @@ public class ClientPlayerPositionRotationPacket implements JavaPacketTranslator 
             movePlayerPacket.setTeleportationCause(MovePlayerPacket.TeleportationCause.UNKNOWN);
             movePlayerPacket.setEntityType(0);
 
-            player.setLocation(packet.getX(), packet.getY(), packet.getZ(), packet.getYaw(), packet.getPitch());
             player.getBedrockClient().getSession().sendPacket(movePlayerPacket);
         }
     }

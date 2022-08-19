@@ -13,6 +13,9 @@ public class ClientPlayerPositionPacket implements JavaPacketTranslator {
     public void translate(Packet pk, Player player) {
         com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerPositionPacket packet = (com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerPositionPacket) pk;
 
+        player.setOldPosition(player.getVector3f());
+        player.setPosition(packet.getX(), packet.getY(), packet.getZ());
+
         if (player.getStartGamePacketCache().getPlayerMovementSettings().getMovementMode() == AuthoritativeMovementMode.CLIENT) {
             MovePlayerPacket movePlayerPacket = new MovePlayerPacket();
 
@@ -25,7 +28,6 @@ public class ClientPlayerPositionPacket implements JavaPacketTranslator {
             movePlayerPacket.setTeleportationCause(MovePlayerPacket.TeleportationCause.UNKNOWN);
             movePlayerPacket.setEntityType(0);
 
-            player.setPosition(packet.getX(), packet.getY(), packet.getZ());
             player.getBedrockClient().getSession().sendPacket(movePlayerPacket);
         }
     }

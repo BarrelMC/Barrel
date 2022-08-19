@@ -19,6 +19,9 @@ public class StartGamePacket implements BedrockPacketTranslator {
         com.nukkitx.protocol.bedrock.packet.StartGamePacket packet = (com.nukkitx.protocol.bedrock.packet.StartGamePacket) pk;
 
         player.setRuntimeEntityId(packet.getRuntimeEntityId());
+        player.setOldPosition(packet.getPlayerPosition());
+        player.setPosition(packet.getPlayerPosition());
+
         player.setStartGamePacketCache(packet);
 
         ServerJoinGamePacket serverJoinGamePacket = new ServerJoinGamePacket(

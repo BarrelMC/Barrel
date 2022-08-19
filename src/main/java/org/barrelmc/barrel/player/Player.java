@@ -11,8 +11,14 @@ import com.github.steveice10.mc.protocol.data.game.MessageType;
 import com.github.steveice10.mc.protocol.packet.ingame.server.ServerChatPacket;
 import com.github.steveice10.mc.protocol.packet.login.client.LoginStartPacket;
 import com.github.steveice10.packetlib.Session;
+import com.nukkitx.math.vector.Vector2f;
+import com.nukkitx.math.vector.Vector3f;
 import com.nukkitx.protocol.bedrock.BedrockClient;
+import com.nukkitx.protocol.bedrock.data.ClientPlayMode;
+import com.nukkitx.protocol.bedrock.data.InputInteractionModel;
+import com.nukkitx.protocol.bedrock.data.InputMode;
 import com.nukkitx.protocol.bedrock.packet.LoginPacket;
+import com.nukkitx.protocol.bedrock.packet.PlayerAuthInputPacket;
 import com.nukkitx.protocol.bedrock.packet.StartGamePacket;
 import com.nukkitx.protocol.bedrock.util.EncryptionUtils;
 import io.netty.util.AsciiString;
@@ -37,6 +43,8 @@ import java.security.spec.ECGenParameterSpec;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
@@ -73,6 +81,13 @@ public class Player extends Vector3 {
     @Getter
     private StartGamePacket startGamePacketCache;
 
+    private boolean tickPlayerInputStarted = false;
+    public PlayerAuthInputThread runnable;
+
+    @Setter
+    @Getter
+    private Vector3f oldPosition;
+
     public Player(LoginStartPacket loginPacket, Session javaSession) {
         this.packetTranslatorManager = new PacketTranslatorManager(this);
         this.javaSession = javaSession;
@@ -82,6 +97,19 @@ public class Player extends Vector3 {
         } else {
             this.accessToken = AuthManager.getInstance().getAccessTokens().remove(loginPacket.getUsername());
             this.onlineLogin(loginPacket);
+        }
+    }
+
+    public void startSendingPlayerInput() {
+        if (!tickPlayerInputStarted) {
+            tickPlayerInputStarted = true;
+
+            runnable = new PlayerAuthInputThread();
+            runnable.player = this;
+            runnable.tick = getStartGamePacketCache().getCurrentTick();
+
+            ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+            executor.scheduleAtFixedRate(runnable, 0, 50, TimeUnit.MILLISECONDS);
         }
     }
 
@@ -325,5 +353,39 @@ public class Player extends Vector3 {
         this.getBedrockClient().getSession().disconnect();
         this.javaSession.disconnect(reason);
         ProxyServer.getInstance().getOnlinePlayers().remove(username);
+    }
+}
+
+class PlayerAuthInputThread implements Runnable {
+    public Player player;
+    public long tick;
+
+    public void run() {
+        try {
+            if (!player.getBedrockClient().getSession().isClosed()) {
+                ++tick;
+
+                PlayerAuthInputPacket pk = new PlayerAuthInputPacket();
+
+                pk.setPosition(player.getVector3f());
+                pk.setRotation(Vector3f.from(player.getPitch(), player.getYaw(), player.getYaw()));
+                pk.setMotion(Vector2f.ZERO);
+                pk.setInputInteractionModel(InputInteractionModel.CROSSHAIR);
+                pk.setInputMode(InputMode.MOUSE);
+                pk.setPlayMode(ClientPlayMode.SCREEN);
+                pk.setVrGazeDirection(null);
+                pk.setTick(tick);
+
+                pk.setDelta(Vector3f.from(player.getVector3f().getX() - player.getOldPosition().getX(), player.getVector3f().getY() - player.getOldPosition().getY(), player.getVector3f().getZ() - player.getOldPosition().getZ()));
+                pk.setItemStackRequest(null);
+                pk.setItemUseTransaction(null);
+
+                player.getBedrockClient().getSession().sendPacketImmediately(pk);
+
+                System.out.println(pk.getDelta());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
