@@ -13,7 +13,7 @@ public class ClientPlayerPositionPacket implements JavaPacketTranslator {
     public void translate(Packet pk, Player player) {
         com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerPositionPacket packet = (com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerPositionPacket) pk;
 
-        if (player.getStartGamePacketCache().getAuthoritativeMovementMode() == AuthoritativeMovementMode.CLIENT) {
+        if (player.getStartGamePacketCache().getPlayerMovementSettings().getMovementMode() == AuthoritativeMovementMode.CLIENT) {
             MovePlayerPacket movePlayerPacket = new MovePlayerPacket();
 
             movePlayerPacket.setRuntimeEntityId(player.getRuntimeEntityId());

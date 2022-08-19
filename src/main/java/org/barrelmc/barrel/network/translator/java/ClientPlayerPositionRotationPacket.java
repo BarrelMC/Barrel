@@ -13,7 +13,7 @@ public class ClientPlayerPositionRotationPacket implements JavaPacketTranslator 
     public void translate(Packet pk, Player player) {
         com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerPositionRotationPacket packet = (com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerPositionRotationPacket) pk;
 
-        if (player.getStartGamePacketCache().getAuthoritativeMovementMode() == AuthoritativeMovementMode.CLIENT) {
+        if (player.getStartGamePacketCache().getPlayerMovementSettings().getMovementMode() == AuthoritativeMovementMode.CLIENT) {
             MovePlayerPacket movePlayerPacket = new MovePlayerPacket();
 
             movePlayerPacket.setRuntimeEntityId(player.getRuntimeEntityId());
