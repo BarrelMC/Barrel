@@ -5,13 +5,17 @@
 
 package org.barrelmc.barrel.auth.server;
 
+import com.github.steveice10.mc.protocol.data.game.chunk.Chunk;
+import com.github.steveice10.mc.protocol.data.game.chunk.Column;
 import com.github.steveice10.mc.protocol.data.game.entity.metadata.Position;
 import com.github.steveice10.mc.protocol.data.game.entity.player.GameMode;
 import com.github.steveice10.mc.protocol.packet.ingame.client.ClientChatPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.ServerChatPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.ServerJoinGamePacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.entity.player.ServerPlayerPositionRotationPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerChunkDataPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerSpawnPositionPacket;
+import com.github.steveice10.opennbt.tag.builtin.CompoundTag;
 import com.github.steveice10.packetlib.Session;
 import com.github.steveice10.packetlib.event.session.PacketReceivedEvent;
 import com.github.steveice10.packetlib.event.session.SessionAdapter;
@@ -32,8 +36,22 @@ public class AuthServer extends SessionAdapter {
                 0, 4, false, true, false, false
         ));
 
-        session.send(new ServerSpawnPositionPacket(new Position(0, 82, 0), 0));
-        session.send(new ServerPlayerPositionRotationPacket(0, 82, 0, 0, 0, 0, false));
+        Chunk chunk = new Chunk();
+        for (int x = 0; x < 16; x++) {
+            for (int y = 0; y < 16; y++) {
+                for (int z = 0; z < 16; z++) {
+                    chunk.set(x, y, z, y == 0 ? 14 : 0);
+                }
+            }
+        }
+
+        Chunk[] chunks = new Chunk[16];
+        chunks[5] = chunk;
+
+        session.send(new ServerChunkDataPacket(new Column(0, 0, chunks, new CompoundTag[0], new CompoundTag("MOTION_BLOCKING"), new int[1024])));
+
+        session.send(new ServerSpawnPositionPacket(new Position(8, 82, 8), 0));
+        session.send(new ServerPlayerPositionRotationPacket(8, 82, 8, 0, 0, 0, false));
         session.send(new ServerChatPacket(Component.text("§ePlease input your email and password.\n§aEx: account@mail.com:password123")));
     }
 
