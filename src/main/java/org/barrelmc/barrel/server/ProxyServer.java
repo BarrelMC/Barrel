@@ -25,11 +25,13 @@ import com.nukkitx.protocol.bedrock.BedrockPacketCodec;
 import com.nukkitx.protocol.bedrock.v544.Bedrock_v544;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
+import org.barrelmc.barrel.Barrel;
 import org.barrelmc.barrel.auth.AuthManager;
 import org.barrelmc.barrel.auth.server.AuthServer;
 import org.barrelmc.barrel.config.Config;
 import org.barrelmc.barrel.network.JavaPacketHandler;
 import org.barrelmc.barrel.player.Player;
+import org.barrelmc.barrel.utils.FileManager;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
@@ -38,6 +40,7 @@ import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ProxyServer {
@@ -55,12 +58,24 @@ public class ProxyServer {
     @Getter
     private Config config;
 
+    @Getter
+    private String defaultSkinData;
+    @Getter
+    private String defaultSkinGeometry;
+
     public ProxyServer(String dataPath) {
         instance = this;
         this.dataPath = Paths.get(dataPath);
         if (!this.initConfig()) {
             System.out.println("Config file not found! Terminating...");
             System.exit(0);
+        }
+
+        try {
+            defaultSkinData = FileManager.getFileContents(Objects.requireNonNull(Barrel.class.getClassLoader().getResourceAsStream("skin/skin_data.txt")));
+            defaultSkinGeometry = FileManager.getFileContents(Objects.requireNonNull(Barrel.class.getClassLoader().getResourceAsStream("skin/skin_geometry.json")));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         this.startServer();
