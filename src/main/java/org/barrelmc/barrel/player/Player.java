@@ -13,6 +13,7 @@ import com.github.steveice10.mc.protocol.packet.login.client.LoginStartPacket;
 import com.github.steveice10.packetlib.Session;
 import com.nukkitx.protocol.bedrock.BedrockClient;
 import com.nukkitx.protocol.bedrock.packet.LoginPacket;
+import com.nukkitx.protocol.bedrock.packet.StartGamePacket;
 import com.nukkitx.protocol.bedrock.util.EncryptionUtils;
 import io.netty.util.AsciiString;
 import lombok.Getter;
@@ -67,6 +68,10 @@ public class Player extends Vector3 {
     @Setter
     @Getter
     private int scoreSortorder;
+
+    @Setter
+    @Getter
+    private StartGamePacket startGamePacketCache;
 
     public Player(LoginStartPacket loginPacket, Session javaSession) {
         this.packetTranslatorManager = new PacketTranslatorManager(this);
