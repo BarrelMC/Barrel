@@ -6,16 +6,15 @@ Java</b><br>
 ## Requirements
 
 - Java 11
-- Minecraft: Java Edition v1.16.5
-- Bedrock Edition server v1.17.0
+- Minecraft: Java Edition v1.17.1
+- Bedrock Edition server v1.19.20
 
 ## Need implemented
 
-- Chunks (Only pm3 is working now)
 - Inventory
 - And More...
 
 ## Credits
 
-- [TunnelMC](https://github.com/THEREALWWEFAN231/TunnelMC) (For Chunk Stuff)
-- [EZ4H](https://github.com/Project-EZ4H/EZ4H) (Archived)
+- [TunnelMC](https://github.com/THEREALWWEFAN231/TunnelMC)
+- [EZ4H](https://github.com/Project-EZ4H/EZ4H)

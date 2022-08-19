@@ -22,7 +22,7 @@ import com.github.steveice10.packetlib.event.server.SessionAddedEvent;
 import com.github.steveice10.packetlib.event.server.SessionRemovedEvent;
 import com.github.steveice10.packetlib.tcp.TcpServer;
 import com.nukkitx.protocol.bedrock.BedrockPacketCodec;
-import com.nukkitx.protocol.bedrock.v440.Bedrock_v440;
+import com.nukkitx.protocol.bedrock.v544.Bedrock_v544;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
 import org.barrelmc.barrel.auth.AuthManager;
@@ -47,7 +47,7 @@ public class ProxyServer {
     @Getter
     private final Map<String, Player> onlinePlayers = new ConcurrentHashMap<>();
     @Getter
-    private final BedrockPacketCodec bedrockPacketCodec = Bedrock_v440.V440_CODEC;
+    private final BedrockPacketCodec bedrockPacketCodec = Bedrock_v544.V544_CODEC;
 
     @Getter
     private final Path dataPath;
@@ -164,6 +164,8 @@ public class ProxyServer {
         overworldTag.put(new StringTag("effects", "minecraft:overworld"));
         overworldTag.put(new ByteTag("has_raids", (byte) 1));
         overworldTag.put(new IntTag("logical_height", 256));
+        overworldTag.put(new IntTag("height", 256));
+        overworldTag.put(new IntTag("min_y", 0));
         overworldTag.put(new FloatTag("coordinate_scale", 1f));
         overworldTag.put(new ByteTag("ultrawarm", (byte) 0));
         overworldTag.put(new ByteTag("has_ceiling", (byte) 0));

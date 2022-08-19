@@ -32,8 +32,8 @@ public class AuthServer extends SessionAdapter {
                 0, 4, false, true, false, false
         ));
 
-        session.send(new ServerSpawnPositionPacket(new Position(0, 82, 0)));
-        session.send(new ServerPlayerPositionRotationPacket(0, 82, 0, 0, 0, 0));
+        session.send(new ServerSpawnPositionPacket(new Position(0, 82, 0), 0));
+        session.send(new ServerPlayerPositionRotationPacket(0, 82, 0, 0, 0, 0, false));
         session.send(new ServerChatPacket(Component.text("§ePlease input your email and password.\n§aEx: account@mail.com:password123")));
     }
 

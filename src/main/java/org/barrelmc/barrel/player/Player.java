@@ -56,7 +56,7 @@ public class Player extends Vector3 {
 
     @Setter
     @Getter
-    private int runtimeEntityId;
+    private long runtimeEntityId;
     @Getter
     private String username;
     @Getter
@@ -320,6 +320,9 @@ public class Player extends Vector3 {
         skinData.put("ThirdPartyName", this.username);
         skinData.put("ThirdPartyNameOnly", false);
         skinData.put("UIProfile", 0);
+        skinData.put("IsEditorMode", 0);
+        skinData.put("TrustedSkin", 1);
+        skinData.put("SkinGeometryDataEngineVersion", Base64.getEncoder().encodeToString("1.19.20".getBytes()));
 
         String header = Base64.getUrlEncoder().withoutPadding().encodeToString(jwtHeader.toJSONString().getBytes());
         String payload = Base64.getUrlEncoder().withoutPadding().encodeToString(skinData.toJSONString().getBytes());
