@@ -82,7 +82,7 @@ public class Player extends Vector3 {
     private StartGamePacket startGamePacketCache;
 
     private boolean tickPlayerInputStarted = false;
-    public PlayerAuthInputThread runnable;
+    private final ScheduledExecutorService playerInputExecutor = Executors.newScheduledThreadPool(1);
 
     @Setter
     @Getter
@@ -104,12 +104,11 @@ public class Player extends Vector3 {
         if (!tickPlayerInputStarted) {
             tickPlayerInputStarted = true;
 
-            runnable = new PlayerAuthInputThread();
-            runnable.player = this;
-            runnable.tick = getStartGamePacketCache().getCurrentTick();
+            PlayerAuthInputThread playerAuthInputThread = new PlayerAuthInputThread();
+            playerAuthInputThread.player = this;
+            playerAuthInputThread.tick = getStartGamePacketCache().getCurrentTick();
 
-            ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
-            executor.scheduleAtFixedRate(runnable, 0, 50, TimeUnit.MILLISECONDS);
+            playerInputExecutor.scheduleAtFixedRate(playerAuthInputThread, 0, 50, TimeUnit.MILLISECONDS);
         }
     }
 
@@ -350,6 +349,7 @@ public class Player extends Vector3 {
     }
 
     public void disconnect(String reason) {
+        playerInputExecutor.shutdown();
         this.getBedrockClient().getSession().disconnect();
         this.javaSession.disconnect(reason);
         ProxyServer.getInstance().getOnlinePlayers().remove(username);
