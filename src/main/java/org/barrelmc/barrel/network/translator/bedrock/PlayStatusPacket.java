@@ -10,6 +10,11 @@ import org.barrelmc.barrel.player.Player;
 public class PlayStatusPacket implements BedrockPacketTranslator {
 
     @Override
+    public boolean immediate() {
+        return true;
+    }
+
+    @Override
     public void translate(BedrockPacket pk, Player player) {
         com.nukkitx.protocol.bedrock.packet.PlayStatusPacket packet = (com.nukkitx.protocol.bedrock.packet.PlayStatusPacket) pk;
 
