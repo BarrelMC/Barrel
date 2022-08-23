@@ -32,7 +32,13 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
         ByteBuf byteBuf = Unpooled.buffer();
         byteBuf.writeBytes(packet.getData());
 
-        for (int sectionIndex = 0; sectionIndex < packet.getSubChunksLength(); sectionIndex++) {
+        int subChunksLength = packet.getSubChunksLength();
+
+        if (subChunksLength > 15) {
+            subChunksLength = 15;
+        }
+
+        for (int sectionIndex = 0; sectionIndex < subChunksLength; sectionIndex++) {
             chunkSections[sectionIndex] = new Chunk();
             int chunkVersion = byteBuf.readByte();
 
