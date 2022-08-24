@@ -8,20 +8,22 @@ package org.barrelmc.barrel.player;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.github.steveice10.mc.protocol.data.game.MessageType;
+import com.github.steveice10.mc.protocol.data.game.world.block.BlockFace;
 import com.github.steveice10.mc.protocol.packet.ingame.server.ServerChatPacket;
 import com.github.steveice10.mc.protocol.packet.login.client.LoginStartPacket;
 import com.github.steveice10.packetlib.Session;
 import com.nukkitx.math.vector.Vector2f;
 import com.nukkitx.math.vector.Vector3f;
+import com.nukkitx.math.vector.Vector3i;
 import com.nukkitx.protocol.bedrock.BedrockClient;
-import com.nukkitx.protocol.bedrock.data.ClientPlayMode;
-import com.nukkitx.protocol.bedrock.data.InputInteractionModel;
-import com.nukkitx.protocol.bedrock.data.InputMode;
+import com.nukkitx.protocol.bedrock.data.*;
+import com.nukkitx.protocol.bedrock.data.inventory.ItemUseTransaction;
 import com.nukkitx.protocol.bedrock.packet.LoginPacket;
 import com.nukkitx.protocol.bedrock.packet.PlayerAuthInputPacket;
 import com.nukkitx.protocol.bedrock.packet.StartGamePacket;
 import com.nukkitx.protocol.bedrock.util.EncryptionUtils;
 import io.netty.util.AsciiString;
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Getter;
 import lombok.Setter;
 import net.kyori.adventure.text.Component;
@@ -41,8 +43,7 @@ import java.security.interfaces.ECPrivateKey;
 import java.security.interfaces.ECPublicKey;
 import java.security.spec.ECGenParameterSpec;
 import java.time.Instant;
-import java.util.Base64;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadLocalRandom;
@@ -87,6 +88,34 @@ public class Player extends Vector3 {
     @Setter
     @Getter
     private Vector3f oldPosition;
+
+    @Setter
+    @Getter
+    private boolean isSneaking = false;
+    @Setter
+    @Getter
+    private boolean isSprinting = false;
+    @Setter
+    @Getter
+    private PlayerActionType diggingStatus;
+    @Setter
+    @Getter
+    private Vector3i diggingPosition;
+    @Setter
+    @Getter
+    private BlockFace diggingFace;
+
+    @Getter
+    private final Set<PlayerAuthInputData> playerAuthInputData = EnumSet.noneOf(PlayerAuthInputData.class);
+    @Getter
+    private final List<PlayerBlockActionData> playerAuthInputActions = new ObjectArrayList<>();
+    @Setter
+    @Getter
+    private ItemUseTransaction playerAuthInputItemUseTransaction = null;
+
+    @Getter
+    @Setter
+    private int hotbarSlot = 0;
 
     public Player(LoginStartPacket loginPacket, Session javaSession) {
         this.packetTranslatorManager = new PacketTranslatorManager(this);
@@ -375,14 +404,34 @@ class PlayerAuthInputThread implements Runnable {
                 pk.setPlayMode(ClientPlayMode.SCREEN);
                 pk.setVrGazeDirection(null);
                 pk.setTick(tick);
-
                 pk.setDelta(Vector3f.from(player.getVector3f().getX() - player.getOldPosition().getX(), player.getVector3f().getY() - player.getOldPosition().getY(), player.getVector3f().getZ() - player.getOldPosition().getZ()));
                 pk.setItemStackRequest(null);
-                pk.setItemUseTransaction(null);
+                pk.setItemUseTransaction(player.getPlayerAuthInputItemUseTransaction());
+
+                pk.getInputData().addAll(player.getPlayerAuthInputData());
+                pk.getPlayerActions().addAll(player.getPlayerAuthInputActions());
+
+                if (player.isSneaking()) {
+                    pk.getInputData().add(PlayerAuthInputData.SNEAKING);
+                }
+                if (player.isSprinting()) {
+                    pk.getInputData().add(PlayerAuthInputData.SPRINTING);
+                }
+                if (player.getDiggingStatus() == PlayerActionType.START_BREAK) {
+                    pk.getInputData().add(PlayerAuthInputData.PERFORM_BLOCK_ACTIONS);
+
+                    PlayerBlockActionData blockActionData = new PlayerBlockActionData();
+                    blockActionData.setAction(PlayerActionType.CONTINUE_BREAK);
+                    blockActionData.setBlockPosition(player.getDiggingPosition());
+                    blockActionData.setFace(player.getDiggingFace().ordinal());
+                    pk.getPlayerActions().add(blockActionData);
+                }
 
                 player.getBedrockClient().getSession().sendPacketImmediately(pk);
 
-                System.out.println(pk.getDelta());
+                player.getPlayerAuthInputData().removeAll(player.getPlayerAuthInputData());
+                player.getPlayerAuthInputActions().removeAll(player.getPlayerAuthInputActions());
+                player.setPlayerAuthInputItemUseTransaction(null);
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -1,5 +1,7 @@
 package org.barrelmc.barrel.utils.nukkit;
 
+import org.barrelmc.barrel.utils.geyser.SingletonBitArray;
+
 public enum BitArrayVersion {
     V16(16, 2, null),
     V8(8, 4, V16),
@@ -8,7 +10,8 @@ public enum BitArrayVersion {
     V4(4, 8, V5),
     V3(3, 10, V4), // 2 bit padding
     V2(2, 16, V3),
-    V1(1, 32, V2);
+    V1(1, 32, V2),
+    V0(0, 0, V1);
 
     public final byte bits; //TODO: probably make this private again just because
     public final byte entriesPerWord; //TODO: probably make this private again just because
@@ -55,6 +58,8 @@ public enum BitArrayVersion {
         if (this == V3 || this == V5 || this == V6) {
             // Padded palettes aren't able to use bitwise operations due to their padding.
             return new PaddedBitArray(this, size, words);
+        } else if (this == V0) {
+            return new SingletonBitArray();
         } else {
             return new Pow2BitArray(this, size, words);
         }

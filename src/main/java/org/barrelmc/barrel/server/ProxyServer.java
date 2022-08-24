@@ -115,7 +115,11 @@ public class ProxyServer {
         server.addListener(new ServerAdapter() {
             @Override
             public void serverClosed(ServerClosedEvent event) {
-                // TODO: disconnect all bedrock client
+                for (var entry : ProxyServer.getInstance().getOnlinePlayers().entrySet()) {
+                    Player player = entry.getValue();
+
+                    player.disconnect("Proxy closed");
+                }
                 System.out.println("Server closed.");
             }
 
