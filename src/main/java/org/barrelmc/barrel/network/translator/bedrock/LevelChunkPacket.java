@@ -51,6 +51,11 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
                 networkDecodeVersionOne(byteBuf, chunkSections[sectionIndex]);
                 continue;
             }
+            
+            if (chunkVersion >= 9) {
+                networkDecodeVersionNine(byteBuf, chunkSections, sectionIndex);
+                continue;
+            }
 
             networkDecodeVersionEight(byteBuf, chunkSections, sectionIndex, byteBuf.readByte());
         }
@@ -59,6 +64,12 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
 
         ServerChunkDataPacket chunkPacket = new ServerChunkDataPacket(new Column(packet.getChunkX(), packet.getChunkZ(), chunkSections, new CompoundTag[0], heightMap, new int[1024]));
         player.getJavaSession().send(chunkPacket);
+    }
+    
+    public void networkDecodeVersionNine(ByteBuf byteBuf, Chunk[] chunkSections, int sectionIndex) {
+        byte storageSize = byteBuf.readByte();
+        byteBuf.readByte();
+        networkDecodeVersionEight(byteBuf, chunkSections, sectionIndex, storageSize);
     }
 
     public void networkDecodeVersionEight(ByteBuf byteBuf, Chunk[] chunkSections, int sectionIndex, byte storageSize) {
