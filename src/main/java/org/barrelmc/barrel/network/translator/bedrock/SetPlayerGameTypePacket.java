@@ -14,6 +14,7 @@ public class SetPlayerGameTypePacket implements BedrockPacketTranslator {
     public void translate(BedrockPacket pk, Player player) {
         com.nukkitx.protocol.bedrock.packet.SetPlayerGameTypePacket packet = (com.nukkitx.protocol.bedrock.packet.SetPlayerGameTypePacket) pk;
 
+        player.setGameMode(GameType.from(packet.getGamemode()));
         player.getJavaSession().send(new ServerNotifyClientPacket(ClientNotification.CHANGE_GAMEMODE, TranslatorUtils.translateGamemodeToJE(GameType.from(packet.getGamemode()))));
     }
 }

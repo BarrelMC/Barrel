@@ -4,6 +4,7 @@ import com.github.steveice10.mc.protocol.packet.ingame.client.ClientChatPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.client.ClientRequestPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.client.ClientSettingsPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.client.player.*;
+import com.github.steveice10.mc.protocol.packet.ingame.client.window.ClientAdvancementTabPacket;
 import com.github.steveice10.packetlib.packet.Packet;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
 import com.nukkitx.protocol.bedrock.packet.*;
@@ -86,6 +87,10 @@ public class PacketTranslatorManager {
         bedrockTranslators.put(UpdateBlockPacket.class, new org.barrelmc.barrel.network.translator.bedrock.UpdateBlockPacket());
         bedrockTranslators.put(DisconnectPacket.class, new org.barrelmc.barrel.network.translator.bedrock.DisconnectPacket());
         bedrockTranslators.put(SetPlayerGameTypePacket.class, new org.barrelmc.barrel.network.translator.bedrock.SetPlayerGameTypePacket());
+        bedrockTranslators.put(ChangeDimensionPacket.class, new org.barrelmc.barrel.network.translator.bedrock.ChangeDimensionPacket());
+        bedrockTranslators.put(SetEntityDataPacket.class, new org.barrelmc.barrel.network.translator.bedrock.SetEntityDataPacket());
+        bedrockTranslators.put(SetSpawnPositionPacket.class, new org.barrelmc.barrel.network.translator.bedrock.SetSpawnPositionPacket());
+        bedrockTranslators.put(UpdateAbilitiesPacket.class, new org.barrelmc.barrel.network.translator.bedrock.UpdateAbilitiesPacket());
 
         // Java packets
         javaTranslators.put(ClientChatPacket.class, new org.barrelmc.barrel.network.translator.java.ClientChatPacket());
@@ -98,5 +103,7 @@ public class PacketTranslatorManager {
         javaTranslators.put(ClientRequestPacket.class, new org.barrelmc.barrel.network.translator.java.ClientRequestPacket());
         javaTranslators.put(ClientSettingsPacket.class, new org.barrelmc.barrel.network.translator.java.ClientSettingsPacket());
         javaTranslators.put(ClientPlayerActionPacket.class, new org.barrelmc.barrel.network.translator.java.ClientPlayerActionPacket());
+        javaTranslators.put(ClientAdvancementTabPacket.class, new org.barrelmc.barrel.network.translator.java.ClientAdvancementTabPacket());
+        javaTranslators.put(ClientPlayerAbilitiesPacket.class, new org.barrelmc.barrel.network.translator.java.ClientPlayerAbilitiesPacket());
     }
 }

@@ -23,6 +23,7 @@ public class JavaPacketHandler extends SessionAdapter {
 
     @Override
     public void packetReceived(PacketReceivedEvent event) {
+        //System.out.println("Received Java " + event.getPacket().toString());
         if (this.player == null) {
             if (event.getPacket() instanceof LoginStartPacket) {
                 LoginStartPacket loginPacket = event.getPacket();

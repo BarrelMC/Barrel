@@ -91,6 +91,18 @@ public class Player extends Vector3 {
 
     @Setter
     @Getter
+    private Vector3f lastServerPosition;
+
+    @Setter
+    @Getter
+    private Vector2f lastServerRotation;
+
+    @Setter
+    @Getter
+    private boolean isImmobile = false;
+
+    @Setter
+    @Getter
     private boolean isSneaking = false;
     @Setter
     @Getter
@@ -104,6 +116,10 @@ public class Player extends Vector3 {
     @Setter
     @Getter
     private BlockFace diggingFace;
+
+    @Setter
+    @Getter
+    private GameType gameMode = GameType.ADVENTURE;
 
     @Getter
     private final Set<PlayerAuthInputData> playerAuthInputData = EnumSet.noneOf(PlayerAuthInputData.class);

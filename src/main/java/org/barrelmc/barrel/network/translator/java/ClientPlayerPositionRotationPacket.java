@@ -1,5 +1,6 @@
 package org.barrelmc.barrel.network.translator.java;
 
+import com.github.steveice10.mc.protocol.packet.ingame.server.entity.player.ServerPlayerPositionRotationPacket;
 import com.github.steveice10.packetlib.packet.Packet;
 import com.nukkitx.math.vector.Vector3f;
 import com.nukkitx.protocol.bedrock.data.AuthoritativeMovementMode;
@@ -13,6 +14,10 @@ public class ClientPlayerPositionRotationPacket implements JavaPacketTranslator 
     public void translate(Packet pk, Player player) {
         com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerPositionRotationPacket packet = (com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerPositionRotationPacket) pk;
 
+        if (player.isImmobile()) {
+            player.getJavaSession().send(new ServerPlayerPositionRotationPacket(player.x, player.y, player.z, player.yaw, player.pitch, 1, false));
+            return;
+        }
         player.setOldPosition(player.getVector3f());
         player.setLocation(packet.getX(), packet.getY(), packet.getZ(), packet.getYaw(), packet.getPitch());
 

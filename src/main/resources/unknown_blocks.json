@@ -1,0 +1,5180 @@
+{
+    "179": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "180": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "181": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "182": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "183": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "184": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "185": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "186": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "187": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "188": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "189": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "190": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "191": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 16,
+        "java_default_state": "??"
+    },
+    "192": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 17,
+        "java_default_state": "??"
+    },
+    "193": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 18,
+        "java_default_state": "??"
+    },
+    "194": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 19,
+        "java_default_state": "??"
+    },
+    "195": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 20,
+        "java_default_state": "??"
+    },
+    "196": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 21,
+        "java_default_state": "??"
+    },
+    "197": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 24,
+        "java_default_state": "??"
+    },
+    "198": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 25,
+        "java_default_state": "??"
+    },
+    "199": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 26,
+        "java_default_state": "??"
+    },
+    "200": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 27,
+        "java_default_state": "??"
+    },
+    "201": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 28,
+        "java_default_state": "??"
+    },
+    "202": {
+        "bedrock_name": "minecraft:glow_frame",
+        "bedrock_id": 594,
+        "bedrock_meta": 29,
+        "java_default_state": "??"
+    },
+    "203": {
+        "bedrock_name": "minecraft:mud_brick_double_slab",
+        "bedrock_id": 734,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "204": {
+        "bedrock_name": "minecraft:mud_brick_double_slab",
+        "bedrock_id": 734,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "219": {
+        "bedrock_name": "minecraft:sculk_shrieker",
+        "bedrock_id": 716,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "220": {
+        "bedrock_name": "minecraft:sculk_shrieker",
+        "bedrock_id": 716,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "221": {
+        "bedrock_name": "minecraft:sculk_shrieker",
+        "bedrock_id": 716,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "222": {
+        "bedrock_name": "minecraft:sculk_shrieker",
+        "bedrock_id": 716,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "245": {
+        "bedrock_name": "minecraft:info_update",
+        "bedrock_id": 248,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "283": {
+        "bedrock_name": "minecraft:packed_mud",
+        "bedrock_id": 732,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "345": {
+        "bedrock_name": "minecraft:muddy_mangrove_roots",
+        "bedrock_id": 738,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "346": {
+        "bedrock_name": "minecraft:muddy_mangrove_roots",
+        "bedrock_id": 738,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "347": {
+        "bedrock_name": "minecraft:muddy_mangrove_roots",
+        "bedrock_id": 738,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "350": {
+        "bedrock_name": "minecraft:mangrove_log",
+        "bedrock_id": 739,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "351": {
+        "bedrock_name": "minecraft:mangrove_log",
+        "bedrock_id": 739,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "352": {
+        "bedrock_name": "minecraft:mangrove_log",
+        "bedrock_id": 739,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "428": {
+        "bedrock_name": "minecraft:mangrove_double_slab",
+        "bedrock_id": 754,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "429": {
+        "bedrock_name": "minecraft:mangrove_double_slab",
+        "bedrock_id": 754,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "610": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "611": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "612": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "613": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "614": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "615": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "616": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "617": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "618": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "619": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "620": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "621": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "622": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "623": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 14,
+        "java_default_state": "??"
+    },
+    "624": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 16,
+        "java_default_state": "??"
+    },
+    "625": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 17,
+        "java_default_state": "??"
+    },
+    "626": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 18,
+        "java_default_state": "??"
+    },
+    "627": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 19,
+        "java_default_state": "??"
+    },
+    "628": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 20,
+        "java_default_state": "??"
+    },
+    "629": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 21,
+        "java_default_state": "??"
+    },
+    "630": {
+        "bedrock_name": "minecraft:lava_cauldron",
+        "bedrock_id": 465,
+        "bedrock_meta": 22,
+        "java_default_state": "??"
+    },
+    "678": {
+        "bedrock_name": "minecraft:hard_glass_pane",
+        "bedrock_id": 190,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "732": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "733": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "734": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "735": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "736": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "737": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "738": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "739": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "740": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "741": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "742": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "743": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "744": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 16,
+        "java_default_state": "??"
+    },
+    "745": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 17,
+        "java_default_state": "??"
+    },
+    "746": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 18,
+        "java_default_state": "??"
+    },
+    "747": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 19,
+        "java_default_state": "??"
+    },
+    "748": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 20,
+        "java_default_state": "??"
+    },
+    "749": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 21,
+        "java_default_state": "??"
+    },
+    "750": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 32,
+        "java_default_state": "??"
+    },
+    "751": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 33,
+        "java_default_state": "??"
+    },
+    "752": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 34,
+        "java_default_state": "??"
+    },
+    "753": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 35,
+        "java_default_state": "??"
+    },
+    "754": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 36,
+        "java_default_state": "??"
+    },
+    "755": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 37,
+        "java_default_state": "??"
+    },
+    "756": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 40,
+        "java_default_state": "??"
+    },
+    "757": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 41,
+        "java_default_state": "??"
+    },
+    "758": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 42,
+        "java_default_state": "??"
+    },
+    "759": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 43,
+        "java_default_state": "??"
+    },
+    "760": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 44,
+        "java_default_state": "??"
+    },
+    "761": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 45,
+        "java_default_state": "??"
+    },
+    "762": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 48,
+        "java_default_state": "??"
+    },
+    "763": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 49,
+        "java_default_state": "??"
+    },
+    "764": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 50,
+        "java_default_state": "??"
+    },
+    "765": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 51,
+        "java_default_state": "??"
+    },
+    "766": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 52,
+        "java_default_state": "??"
+    },
+    "767": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 53,
+        "java_default_state": "??"
+    },
+    "768": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 64,
+        "java_default_state": "??"
+    },
+    "769": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 65,
+        "java_default_state": "??"
+    },
+    "770": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 66,
+        "java_default_state": "??"
+    },
+    "771": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 67,
+        "java_default_state": "??"
+    },
+    "772": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 68,
+        "java_default_state": "??"
+    },
+    "773": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 69,
+        "java_default_state": "??"
+    },
+    "774": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 72,
+        "java_default_state": "??"
+    },
+    "775": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 73,
+        "java_default_state": "??"
+    },
+    "776": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 74,
+        "java_default_state": "??"
+    },
+    "777": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 75,
+        "java_default_state": "??"
+    },
+    "778": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 76,
+        "java_default_state": "??"
+    },
+    "779": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 77,
+        "java_default_state": "??"
+    },
+    "780": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 80,
+        "java_default_state": "??"
+    },
+    "781": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 81,
+        "java_default_state": "??"
+    },
+    "782": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 82,
+        "java_default_state": "??"
+    },
+    "783": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 83,
+        "java_default_state": "??"
+    },
+    "784": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 84,
+        "java_default_state": "??"
+    },
+    "785": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 85,
+        "java_default_state": "??"
+    },
+    "786": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 128,
+        "java_default_state": "??"
+    },
+    "787": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 129,
+        "java_default_state": "??"
+    },
+    "788": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 130,
+        "java_default_state": "??"
+    },
+    "789": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 131,
+        "java_default_state": "??"
+    },
+    "790": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 132,
+        "java_default_state": "??"
+    },
+    "791": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 133,
+        "java_default_state": "??"
+    },
+    "792": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 136,
+        "java_default_state": "??"
+    },
+    "793": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 137,
+        "java_default_state": "??"
+    },
+    "794": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 138,
+        "java_default_state": "??"
+    },
+    "795": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 139,
+        "java_default_state": "??"
+    },
+    "796": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 140,
+        "java_default_state": "??"
+    },
+    "797": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 141,
+        "java_default_state": "??"
+    },
+    "798": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 144,
+        "java_default_state": "??"
+    },
+    "799": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 145,
+        "java_default_state": "??"
+    },
+    "800": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 146,
+        "java_default_state": "??"
+    },
+    "801": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 147,
+        "java_default_state": "??"
+    },
+    "802": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 148,
+        "java_default_state": "??"
+    },
+    "803": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 149,
+        "java_default_state": "??"
+    },
+    "804": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 160,
+        "java_default_state": "??"
+    },
+    "805": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 161,
+        "java_default_state": "??"
+    },
+    "806": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 162,
+        "java_default_state": "??"
+    },
+    "807": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 163,
+        "java_default_state": "??"
+    },
+    "808": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 164,
+        "java_default_state": "??"
+    },
+    "809": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 165,
+        "java_default_state": "??"
+    },
+    "810": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 168,
+        "java_default_state": "??"
+    },
+    "811": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 169,
+        "java_default_state": "??"
+    },
+    "812": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 170,
+        "java_default_state": "??"
+    },
+    "813": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 171,
+        "java_default_state": "??"
+    },
+    "814": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 172,
+        "java_default_state": "??"
+    },
+    "815": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 173,
+        "java_default_state": "??"
+    },
+    "816": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 176,
+        "java_default_state": "??"
+    },
+    "817": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 177,
+        "java_default_state": "??"
+    },
+    "818": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 178,
+        "java_default_state": "??"
+    },
+    "819": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 179,
+        "java_default_state": "??"
+    },
+    "820": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 180,
+        "java_default_state": "??"
+    },
+    "821": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 181,
+        "java_default_state": "??"
+    },
+    "822": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 192,
+        "java_default_state": "??"
+    },
+    "823": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 193,
+        "java_default_state": "??"
+    },
+    "824": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 194,
+        "java_default_state": "??"
+    },
+    "825": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 195,
+        "java_default_state": "??"
+    },
+    "826": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 196,
+        "java_default_state": "??"
+    },
+    "827": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 197,
+        "java_default_state": "??"
+    },
+    "828": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 200,
+        "java_default_state": "??"
+    },
+    "829": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 201,
+        "java_default_state": "??"
+    },
+    "830": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 202,
+        "java_default_state": "??"
+    },
+    "831": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 203,
+        "java_default_state": "??"
+    },
+    "832": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 204,
+        "java_default_state": "??"
+    },
+    "833": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 205,
+        "java_default_state": "??"
+    },
+    "834": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 208,
+        "java_default_state": "??"
+    },
+    "835": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 209,
+        "java_default_state": "??"
+    },
+    "836": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 210,
+        "java_default_state": "??"
+    },
+    "837": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 211,
+        "java_default_state": "??"
+    },
+    "838": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 212,
+        "java_default_state": "??"
+    },
+    "839": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 213,
+        "java_default_state": "??"
+    },
+    "840": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 256,
+        "java_default_state": "??"
+    },
+    "841": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 257,
+        "java_default_state": "??"
+    },
+    "842": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 258,
+        "java_default_state": "??"
+    },
+    "843": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 259,
+        "java_default_state": "??"
+    },
+    "844": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 260,
+        "java_default_state": "??"
+    },
+    "845": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 261,
+        "java_default_state": "??"
+    },
+    "846": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 264,
+        "java_default_state": "??"
+    },
+    "847": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 265,
+        "java_default_state": "??"
+    },
+    "848": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 266,
+        "java_default_state": "??"
+    },
+    "849": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 267,
+        "java_default_state": "??"
+    },
+    "850": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 268,
+        "java_default_state": "??"
+    },
+    "851": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 269,
+        "java_default_state": "??"
+    },
+    "852": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 272,
+        "java_default_state": "??"
+    },
+    "853": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 273,
+        "java_default_state": "??"
+    },
+    "854": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 274,
+        "java_default_state": "??"
+    },
+    "855": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 275,
+        "java_default_state": "??"
+    },
+    "856": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 276,
+        "java_default_state": "??"
+    },
+    "857": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 277,
+        "java_default_state": "??"
+    },
+    "858": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 288,
+        "java_default_state": "??"
+    },
+    "859": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 289,
+        "java_default_state": "??"
+    },
+    "860": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 290,
+        "java_default_state": "??"
+    },
+    "861": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 291,
+        "java_default_state": "??"
+    },
+    "862": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 292,
+        "java_default_state": "??"
+    },
+    "863": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 293,
+        "java_default_state": "??"
+    },
+    "864": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 296,
+        "java_default_state": "??"
+    },
+    "865": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 297,
+        "java_default_state": "??"
+    },
+    "866": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 298,
+        "java_default_state": "??"
+    },
+    "867": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 299,
+        "java_default_state": "??"
+    },
+    "868": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 300,
+        "java_default_state": "??"
+    },
+    "869": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 301,
+        "java_default_state": "??"
+    },
+    "870": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 304,
+        "java_default_state": "??"
+    },
+    "871": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 305,
+        "java_default_state": "??"
+    },
+    "872": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 306,
+        "java_default_state": "??"
+    },
+    "873": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 307,
+        "java_default_state": "??"
+    },
+    "874": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 308,
+        "java_default_state": "??"
+    },
+    "875": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 309,
+        "java_default_state": "??"
+    },
+    "876": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 320,
+        "java_default_state": "??"
+    },
+    "877": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 321,
+        "java_default_state": "??"
+    },
+    "878": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 322,
+        "java_default_state": "??"
+    },
+    "879": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 323,
+        "java_default_state": "??"
+    },
+    "880": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 324,
+        "java_default_state": "??"
+    },
+    "881": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 325,
+        "java_default_state": "??"
+    },
+    "882": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 328,
+        "java_default_state": "??"
+    },
+    "883": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 329,
+        "java_default_state": "??"
+    },
+    "884": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 330,
+        "java_default_state": "??"
+    },
+    "885": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 331,
+        "java_default_state": "??"
+    },
+    "886": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 332,
+        "java_default_state": "??"
+    },
+    "887": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 333,
+        "java_default_state": "??"
+    },
+    "888": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 336,
+        "java_default_state": "??"
+    },
+    "889": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 337,
+        "java_default_state": "??"
+    },
+    "890": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 338,
+        "java_default_state": "??"
+    },
+    "891": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 339,
+        "java_default_state": "??"
+    },
+    "892": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 340,
+        "java_default_state": "??"
+    },
+    "893": {
+        "bedrock_name": "minecraft:mud_brick_wall",
+        "bedrock_id": 736,
+        "bedrock_meta": 341,
+        "java_default_state": "??"
+    },
+    "921": {
+        "bedrock_name": "minecraft:stonecutter",
+        "bedrock_id": 245,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "949": {
+        "bedrock_name": "minecraft:mangrove_planks",
+        "bedrock_id": 741,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "950": {
+        "bedrock_name": "minecraft:invisible_bedrock",
+        "bedrock_id": 95,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "1151": {
+        "bedrock_name": "minecraft:mangrove_slab",
+        "bedrock_id": 744,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "1152": {
+        "bedrock_name": "minecraft:mangrove_slab",
+        "bedrock_id": 744,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "3452": {
+        "bedrock_name": "minecraft:underwater_torch",
+        "bedrock_id": 239,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "3453": {
+        "bedrock_name": "minecraft:underwater_torch",
+        "bedrock_id": 239,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "3454": {
+        "bedrock_name": "minecraft:underwater_torch",
+        "bedrock_id": 239,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "3455": {
+        "bedrock_name": "minecraft:underwater_torch",
+        "bedrock_id": 239,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "3456": {
+        "bedrock_name": "minecraft:underwater_torch",
+        "bedrock_id": 239,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "3457": {
+        "bedrock_name": "minecraft:underwater_torch",
+        "bedrock_id": 239,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "3512": {
+        "bedrock_name": "minecraft:ochre_froglight",
+        "bedrock_id": 726,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "3513": {
+        "bedrock_name": "minecraft:ochre_froglight",
+        "bedrock_id": 726,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "3514": {
+        "bedrock_name": "minecraft:ochre_froglight",
+        "bedrock_id": 726,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "3547": {
+        "bedrock_name": "minecraft:glowingobsidian",
+        "bedrock_id": 246,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "3615": {
+        "bedrock_name": "minecraft:sculk_catalyst",
+        "bedrock_id": 715,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "3616": {
+        "bedrock_name": "minecraft:sculk_catalyst",
+        "bedrock_id": 715,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "3871": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "3872": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "3873": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "3874": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "3875": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "3876": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "3877": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "3878": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "3879": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "3880": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "3881": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "3882": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "3883": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "3884": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "3885": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 14,
+        "java_default_state": "??"
+    },
+    "3886": {
+        "bedrock_name": "minecraft:mangrove_pressure_plate",
+        "bedrock_id": 745,
+        "bedrock_meta": 15,
+        "java_default_state": "??"
+    },
+    "3912": {
+        "bedrock_name": "minecraft:mud_brick_slab",
+        "bedrock_id": 733,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "3913": {
+        "bedrock_name": "minecraft:mud_brick_slab",
+        "bedrock_id": 733,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "4163": {
+        "bedrock_name": "minecraft:mangrove_wood",
+        "bedrock_id": 752,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4164": {
+        "bedrock_name": "minecraft:mangrove_wood",
+        "bedrock_id": 752,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "4165": {
+        "bedrock_name": "minecraft:mangrove_wood",
+        "bedrock_id": 752,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "4166": {
+        "bedrock_name": "minecraft:mangrove_wood",
+        "bedrock_id": 752,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "4167": {
+        "bedrock_name": "minecraft:mangrove_wood",
+        "bedrock_id": 752,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "4168": {
+        "bedrock_name": "minecraft:mangrove_wood",
+        "bedrock_id": 752,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "4215": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4216": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "4217": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "4218": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "4219": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "4220": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "4221": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "4222": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "4223": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "4224": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "4225": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "4226": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "4227": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "4228": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "4229": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 14,
+        "java_default_state": "??"
+    },
+    "4230": {
+        "bedrock_name": "minecraft:mangrove_standing_sign",
+        "bedrock_id": 749,
+        "bedrock_meta": 15,
+        "java_default_state": "??"
+    },
+    "4231": {
+        "bedrock_name": "minecraft:stripped_mangrove_wood",
+        "bedrock_id": 753,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4232": {
+        "bedrock_name": "minecraft:stripped_mangrove_wood",
+        "bedrock_id": 753,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "4233": {
+        "bedrock_name": "minecraft:stripped_mangrove_wood",
+        "bedrock_id": 753,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "4248": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4249": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "4250": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "4251": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "4252": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "4253": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "4254": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "4255": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "4256": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "4257": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "4258": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "4259": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "4260": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 16,
+        "java_default_state": "??"
+    },
+    "4261": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 17,
+        "java_default_state": "??"
+    },
+    "4262": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 18,
+        "java_default_state": "??"
+    },
+    "4263": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 19,
+        "java_default_state": "??"
+    },
+    "4264": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 20,
+        "java_default_state": "??"
+    },
+    "4265": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 21,
+        "java_default_state": "??"
+    },
+    "4266": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 24,
+        "java_default_state": "??"
+    },
+    "4267": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 25,
+        "java_default_state": "??"
+    },
+    "4268": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 26,
+        "java_default_state": "??"
+    },
+    "4269": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 27,
+        "java_default_state": "??"
+    },
+    "4270": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 28,
+        "java_default_state": "??"
+    },
+    "4271": {
+        "bedrock_name": "minecraft:frame",
+        "bedrock_id": 199,
+        "bedrock_meta": 29,
+        "java_default_state": "??"
+    },
+    "4290": {
+        "bedrock_name": "minecraft:client_request_placeholder_block",
+        "bedrock_id": 720,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4401": {
+        "bedrock_name": "minecraft:frog_spawn",
+        "bedrock_id": 723,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4487": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4488": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "4489": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "4490": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "4491": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "4492": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "4493": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "4494": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "4495": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "4496": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "4497": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "4498": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "4499": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "4500": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "4501": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 14,
+        "java_default_state": "??"
+    },
+    "4502": {
+        "bedrock_name": "minecraft:mangrove_trapdoor",
+        "bedrock_id": 751,
+        "bedrock_meta": 15,
+        "java_default_state": "??"
+    },
+    "4597": {
+        "bedrock_name": "minecraft:mangrove_stairs",
+        "bedrock_id": 743,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4598": {
+        "bedrock_name": "minecraft:mangrove_stairs",
+        "bedrock_id": 743,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "4599": {
+        "bedrock_name": "minecraft:mangrove_stairs",
+        "bedrock_id": 743,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "4600": {
+        "bedrock_name": "minecraft:mangrove_stairs",
+        "bedrock_id": 743,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "4601": {
+        "bedrock_name": "minecraft:mangrove_stairs",
+        "bedrock_id": 743,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "4602": {
+        "bedrock_name": "minecraft:mangrove_stairs",
+        "bedrock_id": 743,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "4603": {
+        "bedrock_name": "minecraft:mangrove_stairs",
+        "bedrock_id": 743,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "4604": {
+        "bedrock_name": "minecraft:mangrove_stairs",
+        "bedrock_id": 743,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "4605": {
+        "bedrock_name": "minecraft:reserved6",
+        "bedrock_id": 255,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4614": {
+        "bedrock_name": "minecraft:unknown",
+        "bedrock_id": 560,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4627": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4628": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "4629": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "4630": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "4631": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "4632": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "4633": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "4634": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "4635": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "4636": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "4637": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "4638": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "4639": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "4640": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "4641": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 14,
+        "java_default_state": "??"
+    },
+    "4642": {
+        "bedrock_name": "minecraft:mangrove_fence_gate",
+        "bedrock_id": 747,
+        "bedrock_meta": 15,
+        "java_default_state": "??"
+    },
+    "4768": {
+        "bedrock_name": "minecraft:hard_glass",
+        "bedrock_id": 253,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4901": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "4902": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "4903": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "4904": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "4905": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "4906": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "4907": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "4908": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "4909": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "4910": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "4911": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "4912": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "4913": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 16,
+        "java_default_state": "??"
+    },
+    "4914": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 17,
+        "java_default_state": "??"
+    },
+    "4915": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 18,
+        "java_default_state": "??"
+    },
+    "4916": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 19,
+        "java_default_state": "??"
+    },
+    "4917": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 20,
+        "java_default_state": "??"
+    },
+    "4918": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 21,
+        "java_default_state": "??"
+    },
+    "4919": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 32,
+        "java_default_state": "??"
+    },
+    "4920": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 33,
+        "java_default_state": "??"
+    },
+    "4921": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 34,
+        "java_default_state": "??"
+    },
+    "4922": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 35,
+        "java_default_state": "??"
+    },
+    "4923": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 36,
+        "java_default_state": "??"
+    },
+    "4924": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 37,
+        "java_default_state": "??"
+    },
+    "4925": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 40,
+        "java_default_state": "??"
+    },
+    "4926": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 41,
+        "java_default_state": "??"
+    },
+    "4927": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 42,
+        "java_default_state": "??"
+    },
+    "4928": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 43,
+        "java_default_state": "??"
+    },
+    "4929": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 44,
+        "java_default_state": "??"
+    },
+    "4930": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 45,
+        "java_default_state": "??"
+    },
+    "4931": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 48,
+        "java_default_state": "??"
+    },
+    "4932": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 49,
+        "java_default_state": "??"
+    },
+    "4933": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 50,
+        "java_default_state": "??"
+    },
+    "4934": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 51,
+        "java_default_state": "??"
+    },
+    "4935": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 52,
+        "java_default_state": "??"
+    },
+    "4936": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 53,
+        "java_default_state": "??"
+    },
+    "4937": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 64,
+        "java_default_state": "??"
+    },
+    "4938": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 65,
+        "java_default_state": "??"
+    },
+    "4939": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 66,
+        "java_default_state": "??"
+    },
+    "4940": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 67,
+        "java_default_state": "??"
+    },
+    "4941": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 68,
+        "java_default_state": "??"
+    },
+    "4942": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 69,
+        "java_default_state": "??"
+    },
+    "4943": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 72,
+        "java_default_state": "??"
+    },
+    "4944": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 73,
+        "java_default_state": "??"
+    },
+    "4945": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 74,
+        "java_default_state": "??"
+    },
+    "4946": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 75,
+        "java_default_state": "??"
+    },
+    "4947": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 76,
+        "java_default_state": "??"
+    },
+    "4948": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 77,
+        "java_default_state": "??"
+    },
+    "4949": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 80,
+        "java_default_state": "??"
+    },
+    "4950": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 81,
+        "java_default_state": "??"
+    },
+    "4951": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 82,
+        "java_default_state": "??"
+    },
+    "4952": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 83,
+        "java_default_state": "??"
+    },
+    "4953": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 84,
+        "java_default_state": "??"
+    },
+    "4954": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 85,
+        "java_default_state": "??"
+    },
+    "4955": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 128,
+        "java_default_state": "??"
+    },
+    "4956": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 129,
+        "java_default_state": "??"
+    },
+    "4957": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 130,
+        "java_default_state": "??"
+    },
+    "4958": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 131,
+        "java_default_state": "??"
+    },
+    "4959": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 132,
+        "java_default_state": "??"
+    },
+    "4960": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 133,
+        "java_default_state": "??"
+    },
+    "4961": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 136,
+        "java_default_state": "??"
+    },
+    "4962": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 137,
+        "java_default_state": "??"
+    },
+    "4963": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 138,
+        "java_default_state": "??"
+    },
+    "4964": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 139,
+        "java_default_state": "??"
+    },
+    "4965": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 140,
+        "java_default_state": "??"
+    },
+    "4966": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 141,
+        "java_default_state": "??"
+    },
+    "4967": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 144,
+        "java_default_state": "??"
+    },
+    "4968": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 145,
+        "java_default_state": "??"
+    },
+    "4969": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 146,
+        "java_default_state": "??"
+    },
+    "4970": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 147,
+        "java_default_state": "??"
+    },
+    "4971": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 148,
+        "java_default_state": "??"
+    },
+    "4972": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 149,
+        "java_default_state": "??"
+    },
+    "4973": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 160,
+        "java_default_state": "??"
+    },
+    "4974": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 161,
+        "java_default_state": "??"
+    },
+    "4975": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 162,
+        "java_default_state": "??"
+    },
+    "4976": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 163,
+        "java_default_state": "??"
+    },
+    "4977": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 164,
+        "java_default_state": "??"
+    },
+    "4978": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 165,
+        "java_default_state": "??"
+    },
+    "4979": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 168,
+        "java_default_state": "??"
+    },
+    "4980": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 169,
+        "java_default_state": "??"
+    },
+    "4981": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 170,
+        "java_default_state": "??"
+    },
+    "4982": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 171,
+        "java_default_state": "??"
+    },
+    "4983": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 172,
+        "java_default_state": "??"
+    },
+    "4984": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 173,
+        "java_default_state": "??"
+    },
+    "4985": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 176,
+        "java_default_state": "??"
+    },
+    "4986": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 177,
+        "java_default_state": "??"
+    },
+    "4987": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 178,
+        "java_default_state": "??"
+    },
+    "4988": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 179,
+        "java_default_state": "??"
+    },
+    "4989": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 180,
+        "java_default_state": "??"
+    },
+    "4990": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 181,
+        "java_default_state": "??"
+    },
+    "4991": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 192,
+        "java_default_state": "??"
+    },
+    "4992": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 193,
+        "java_default_state": "??"
+    },
+    "4993": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 194,
+        "java_default_state": "??"
+    },
+    "4994": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 195,
+        "java_default_state": "??"
+    },
+    "4995": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 196,
+        "java_default_state": "??"
+    },
+    "4996": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 197,
+        "java_default_state": "??"
+    },
+    "4997": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 200,
+        "java_default_state": "??"
+    },
+    "4998": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 201,
+        "java_default_state": "??"
+    },
+    "4999": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 202,
+        "java_default_state": "??"
+    },
+    "5000": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 203,
+        "java_default_state": "??"
+    },
+    "5001": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 204,
+        "java_default_state": "??"
+    },
+    "5002": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 205,
+        "java_default_state": "??"
+    },
+    "5003": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 208,
+        "java_default_state": "??"
+    },
+    "5004": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 209,
+        "java_default_state": "??"
+    },
+    "5005": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 210,
+        "java_default_state": "??"
+    },
+    "5006": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 211,
+        "java_default_state": "??"
+    },
+    "5007": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 212,
+        "java_default_state": "??"
+    },
+    "5008": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 213,
+        "java_default_state": "??"
+    },
+    "5009": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 256,
+        "java_default_state": "??"
+    },
+    "5010": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 257,
+        "java_default_state": "??"
+    },
+    "5011": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 258,
+        "java_default_state": "??"
+    },
+    "5012": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 259,
+        "java_default_state": "??"
+    },
+    "5013": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 260,
+        "java_default_state": "??"
+    },
+    "5014": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 261,
+        "java_default_state": "??"
+    },
+    "5015": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 264,
+        "java_default_state": "??"
+    },
+    "5016": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 265,
+        "java_default_state": "??"
+    },
+    "5017": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 266,
+        "java_default_state": "??"
+    },
+    "5018": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 267,
+        "java_default_state": "??"
+    },
+    "5019": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 268,
+        "java_default_state": "??"
+    },
+    "5020": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 269,
+        "java_default_state": "??"
+    },
+    "5021": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 272,
+        "java_default_state": "??"
+    },
+    "5022": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 273,
+        "java_default_state": "??"
+    },
+    "5023": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 274,
+        "java_default_state": "??"
+    },
+    "5024": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 275,
+        "java_default_state": "??"
+    },
+    "5025": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 276,
+        "java_default_state": "??"
+    },
+    "5026": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 277,
+        "java_default_state": "??"
+    },
+    "5027": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 288,
+        "java_default_state": "??"
+    },
+    "5028": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 289,
+        "java_default_state": "??"
+    },
+    "5029": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 290,
+        "java_default_state": "??"
+    },
+    "5030": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 291,
+        "java_default_state": "??"
+    },
+    "5031": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 292,
+        "java_default_state": "??"
+    },
+    "5032": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 293,
+        "java_default_state": "??"
+    },
+    "5033": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 296,
+        "java_default_state": "??"
+    },
+    "5034": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 297,
+        "java_default_state": "??"
+    },
+    "5035": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 298,
+        "java_default_state": "??"
+    },
+    "5036": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 299,
+        "java_default_state": "??"
+    },
+    "5037": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 300,
+        "java_default_state": "??"
+    },
+    "5038": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 301,
+        "java_default_state": "??"
+    },
+    "5039": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 304,
+        "java_default_state": "??"
+    },
+    "5040": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 305,
+        "java_default_state": "??"
+    },
+    "5041": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 306,
+        "java_default_state": "??"
+    },
+    "5042": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 307,
+        "java_default_state": "??"
+    },
+    "5043": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 308,
+        "java_default_state": "??"
+    },
+    "5044": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 309,
+        "java_default_state": "??"
+    },
+    "5045": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 320,
+        "java_default_state": "??"
+    },
+    "5046": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 321,
+        "java_default_state": "??"
+    },
+    "5047": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 322,
+        "java_default_state": "??"
+    },
+    "5048": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 323,
+        "java_default_state": "??"
+    },
+    "5049": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 324,
+        "java_default_state": "??"
+    },
+    "5050": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 325,
+        "java_default_state": "??"
+    },
+    "5051": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 328,
+        "java_default_state": "??"
+    },
+    "5052": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 329,
+        "java_default_state": "??"
+    },
+    "5053": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 330,
+        "java_default_state": "??"
+    },
+    "5054": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 331,
+        "java_default_state": "??"
+    },
+    "5055": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 332,
+        "java_default_state": "??"
+    },
+    "5056": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 333,
+        "java_default_state": "??"
+    },
+    "5057": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 336,
+        "java_default_state": "??"
+    },
+    "5058": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 337,
+        "java_default_state": "??"
+    },
+    "5059": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 338,
+        "java_default_state": "??"
+    },
+    "5060": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 339,
+        "java_default_state": "??"
+    },
+    "5061": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 340,
+        "java_default_state": "??"
+    },
+    "5062": {
+        "bedrock_name": "minecraft:border_block",
+        "bedrock_id": 212,
+        "bedrock_meta": 341,
+        "java_default_state": "??"
+    },
+    "5265": {
+        "bedrock_name": "minecraft:mangrove_wall_sign",
+        "bedrock_id": 750,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5266": {
+        "bedrock_name": "minecraft:mangrove_wall_sign",
+        "bedrock_id": 750,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "5267": {
+        "bedrock_name": "minecraft:mangrove_wall_sign",
+        "bedrock_id": 750,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "5268": {
+        "bedrock_name": "minecraft:mangrove_wall_sign",
+        "bedrock_id": 750,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "5269": {
+        "bedrock_name": "minecraft:mangrove_wall_sign",
+        "bedrock_id": 750,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "5270": {
+        "bedrock_name": "minecraft:mangrove_wall_sign",
+        "bedrock_id": 750,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "5524": {
+        "bedrock_name": "minecraft:mud_brick_stairs",
+        "bedrock_id": 735,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5525": {
+        "bedrock_name": "minecraft:mud_brick_stairs",
+        "bedrock_id": 735,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "5526": {
+        "bedrock_name": "minecraft:mud_brick_stairs",
+        "bedrock_id": 735,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "5527": {
+        "bedrock_name": "minecraft:mud_brick_stairs",
+        "bedrock_id": 735,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "5528": {
+        "bedrock_name": "minecraft:mud_brick_stairs",
+        "bedrock_id": 735,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "5529": {
+        "bedrock_name": "minecraft:mud_brick_stairs",
+        "bedrock_id": 735,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "5530": {
+        "bedrock_name": "minecraft:mud_brick_stairs",
+        "bedrock_id": 735,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "5531": {
+        "bedrock_name": "minecraft:mud_brick_stairs",
+        "bedrock_id": 735,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "5556": {
+        "bedrock_name": "minecraft:element_100",
+        "bedrock_id": 366,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5557": {
+        "bedrock_name": "minecraft:element_101",
+        "bedrock_id": 367,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5558": {
+        "bedrock_name": "minecraft:element_102",
+        "bedrock_id": 368,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5559": {
+        "bedrock_name": "minecraft:element_103",
+        "bedrock_id": 369,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5560": {
+        "bedrock_name": "minecraft:element_104",
+        "bedrock_id": 370,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5561": {
+        "bedrock_name": "minecraft:element_105",
+        "bedrock_id": 371,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5562": {
+        "bedrock_name": "minecraft:element_106",
+        "bedrock_id": 372,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5563": {
+        "bedrock_name": "minecraft:element_107",
+        "bedrock_id": 373,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5564": {
+        "bedrock_name": "minecraft:element_108",
+        "bedrock_id": 374,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5565": {
+        "bedrock_name": "minecraft:element_109",
+        "bedrock_id": 375,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5566": {
+        "bedrock_name": "minecraft:element_113",
+        "bedrock_id": 379,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5567": {
+        "bedrock_name": "minecraft:element_112",
+        "bedrock_id": 378,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5568": {
+        "bedrock_name": "minecraft:element_111",
+        "bedrock_id": 377,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5569": {
+        "bedrock_name": "minecraft:element_110",
+        "bedrock_id": 376,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5570": {
+        "bedrock_name": "minecraft:element_117",
+        "bedrock_id": 383,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5571": {
+        "bedrock_name": "minecraft:element_116",
+        "bedrock_id": 382,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5572": {
+        "bedrock_name": "minecraft:element_115",
+        "bedrock_id": 381,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5573": {
+        "bedrock_name": "minecraft:element_114",
+        "bedrock_id": 380,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5574": {
+        "bedrock_name": "minecraft:element_118",
+        "bedrock_id": 384,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5755": {
+        "bedrock_name": "minecraft:deny",
+        "bedrock_id": 211,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "5834": {
+        "bedrock_name": "minecraft:reinforced_deepslate",
+        "bedrock_id": 721,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6177": {
+        "bedrock_name": "minecraft:mangrove_roots",
+        "bedrock_id": 737,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6210": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6211": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "6212": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "6213": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "6214": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "6215": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "6216": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "6217": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "6218": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "6219": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "6220": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "6221": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "6222": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "6223": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "6224": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 14,
+        "java_default_state": "??"
+    },
+    "6225": {
+        "bedrock_name": "minecraft:hard_stained_glass",
+        "bedrock_id": 254,
+        "bedrock_meta": 15,
+        "java_default_state": "??"
+    },
+    "6405": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6406": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "6407": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "6408": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "6409": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "6410": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "6411": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "6412": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "6413": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "6414": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "6415": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "6416": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "6417": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "6418": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "6419": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 14,
+        "java_default_state": "??"
+    },
+    "6420": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 15,
+        "java_default_state": "??"
+    },
+    "6421": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 16,
+        "java_default_state": "??"
+    },
+    "6422": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 17,
+        "java_default_state": "??"
+    },
+    "6423": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 18,
+        "java_default_state": "??"
+    },
+    "6424": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 19,
+        "java_default_state": "??"
+    },
+    "6425": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 20,
+        "java_default_state": "??"
+    },
+    "6426": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 21,
+        "java_default_state": "??"
+    },
+    "6427": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 22,
+        "java_default_state": "??"
+    },
+    "6428": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 23,
+        "java_default_state": "??"
+    },
+    "6429": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 24,
+        "java_default_state": "??"
+    },
+    "6430": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 25,
+        "java_default_state": "??"
+    },
+    "6431": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 26,
+        "java_default_state": "??"
+    },
+    "6432": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 27,
+        "java_default_state": "??"
+    },
+    "6433": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 28,
+        "java_default_state": "??"
+    },
+    "6434": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 29,
+        "java_default_state": "??"
+    },
+    "6435": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 30,
+        "java_default_state": "??"
+    },
+    "6436": {
+        "bedrock_name": "minecraft:mangrove_door",
+        "bedrock_id": 748,
+        "bedrock_meta": 31,
+        "java_default_state": "??"
+    },
+    "6437": {
+        "bedrock_name": "minecraft:pearlescent_froglight",
+        "bedrock_id": 724,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6438": {
+        "bedrock_name": "minecraft:pearlescent_froglight",
+        "bedrock_id": 724,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "6439": {
+        "bedrock_name": "minecraft:pearlescent_froglight",
+        "bedrock_id": 724,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "6483": {
+        "bedrock_name": "minecraft:verdant_froglight",
+        "bedrock_id": 725,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6484": {
+        "bedrock_name": "minecraft:verdant_froglight",
+        "bedrock_id": 725,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "6485": {
+        "bedrock_name": "minecraft:verdant_froglight",
+        "bedrock_id": 725,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "6635": {
+        "bedrock_name": "minecraft:mangrove_fence",
+        "bedrock_id": 746,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6668": {
+        "bedrock_name": "minecraft:mangrove_leaves",
+        "bedrock_id": 727,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6669": {
+        "bedrock_name": "minecraft:mangrove_leaves",
+        "bedrock_id": 727,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "6670": {
+        "bedrock_name": "minecraft:mangrove_leaves",
+        "bedrock_id": 727,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "6671": {
+        "bedrock_name": "minecraft:mangrove_leaves",
+        "bedrock_id": 727,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "6686": {
+        "bedrock_name": "minecraft:mud",
+        "bedrock_id": 728,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6891": {
+        "bedrock_name": "minecraft:mud_bricks",
+        "bedrock_id": 730,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6978": {
+        "bedrock_name": "minecraft:mangrove_propagule",
+        "bedrock_id": 729,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "6979": {
+        "bedrock_name": "minecraft:mangrove_propagule",
+        "bedrock_id": 729,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "6980": {
+        "bedrock_name": "minecraft:mangrove_propagule",
+        "bedrock_id": 729,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "6981": {
+        "bedrock_name": "minecraft:mangrove_propagule",
+        "bedrock_id": 729,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "6982": {
+        "bedrock_name": "minecraft:mangrove_propagule",
+        "bedrock_id": 729,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "6983": {
+        "bedrock_name": "minecraft:mangrove_propagule",
+        "bedrock_id": 729,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "6984": {
+        "bedrock_name": "minecraft:mangrove_propagule",
+        "bedrock_id": 729,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "6985": {
+        "bedrock_name": "minecraft:mangrove_propagule",
+        "bedrock_id": 729,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "6986": {
+        "bedrock_name": "minecraft:mangrove_propagule",
+        "bedrock_id": 729,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "6987": {
+        "bedrock_name": "minecraft:mangrove_propagule",
+        "bedrock_id": 729,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "7038": {
+        "bedrock_name": "minecraft:sculk",
+        "bedrock_id": 713,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7064": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7065": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "7066": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "7067": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "7068": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "7069": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "7070": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "7071": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "7072": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "7073": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "7074": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "7075": {
+        "bedrock_name": "minecraft:mangrove_button",
+        "bedrock_id": 742,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "7084": {
+        "bedrock_name": "minecraft:allow",
+        "bedrock_id": 210,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7134": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7135": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "7136": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "7137": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "7138": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "7139": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "7140": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "7141": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "7142": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "7143": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "7144": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "7145": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "7146": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "7147": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "7148": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 14,
+        "java_default_state": "??"
+    },
+    "7149": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 15,
+        "java_default_state": "??"
+    },
+    "7150": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 16,
+        "java_default_state": "??"
+    },
+    "7151": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 17,
+        "java_default_state": "??"
+    },
+    "7152": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 18,
+        "java_default_state": "??"
+    },
+    "7153": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 19,
+        "java_default_state": "??"
+    },
+    "7154": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 20,
+        "java_default_state": "??"
+    },
+    "7155": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 21,
+        "java_default_state": "??"
+    },
+    "7156": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 22,
+        "java_default_state": "??"
+    },
+    "7157": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 23,
+        "java_default_state": "??"
+    },
+    "7158": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 24,
+        "java_default_state": "??"
+    },
+    "7159": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 25,
+        "java_default_state": "??"
+    },
+    "7160": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 26,
+        "java_default_state": "??"
+    },
+    "7161": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 27,
+        "java_default_state": "??"
+    },
+    "7162": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 28,
+        "java_default_state": "??"
+    },
+    "7163": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 29,
+        "java_default_state": "??"
+    },
+    "7164": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 30,
+        "java_default_state": "??"
+    },
+    "7165": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 31,
+        "java_default_state": "??"
+    },
+    "7166": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 32,
+        "java_default_state": "??"
+    },
+    "7167": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 33,
+        "java_default_state": "??"
+    },
+    "7168": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 34,
+        "java_default_state": "??"
+    },
+    "7169": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 35,
+        "java_default_state": "??"
+    },
+    "7170": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 36,
+        "java_default_state": "??"
+    },
+    "7171": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 37,
+        "java_default_state": "??"
+    },
+    "7172": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 38,
+        "java_default_state": "??"
+    },
+    "7173": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 39,
+        "java_default_state": "??"
+    },
+    "7174": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 40,
+        "java_default_state": "??"
+    },
+    "7175": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 41,
+        "java_default_state": "??"
+    },
+    "7176": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 42,
+        "java_default_state": "??"
+    },
+    "7177": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 43,
+        "java_default_state": "??"
+    },
+    "7178": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 44,
+        "java_default_state": "??"
+    },
+    "7179": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 45,
+        "java_default_state": "??"
+    },
+    "7180": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 46,
+        "java_default_state": "??"
+    },
+    "7181": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 47,
+        "java_default_state": "??"
+    },
+    "7182": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 48,
+        "java_default_state": "??"
+    },
+    "7183": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 49,
+        "java_default_state": "??"
+    },
+    "7184": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 50,
+        "java_default_state": "??"
+    },
+    "7185": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 51,
+        "java_default_state": "??"
+    },
+    "7186": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 52,
+        "java_default_state": "??"
+    },
+    "7187": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 53,
+        "java_default_state": "??"
+    },
+    "7188": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 54,
+        "java_default_state": "??"
+    },
+    "7189": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 55,
+        "java_default_state": "??"
+    },
+    "7190": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 56,
+        "java_default_state": "??"
+    },
+    "7191": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 57,
+        "java_default_state": "??"
+    },
+    "7192": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 58,
+        "java_default_state": "??"
+    },
+    "7193": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 59,
+        "java_default_state": "??"
+    },
+    "7194": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 60,
+        "java_default_state": "??"
+    },
+    "7195": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 61,
+        "java_default_state": "??"
+    },
+    "7196": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 62,
+        "java_default_state": "??"
+    },
+    "7197": {
+        "bedrock_name": "minecraft:sculk_vein",
+        "bedrock_id": 714,
+        "bedrock_meta": 63,
+        "java_default_state": "??"
+    },
+    "7276": {
+        "bedrock_name": "minecraft:element_1",
+        "bedrock_id": 267,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7277": {
+        "bedrock_name": "minecraft:element_0",
+        "bedrock_id": 36,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7278": {
+        "bedrock_name": "minecraft:element_3",
+        "bedrock_id": 269,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7279": {
+        "bedrock_name": "minecraft:element_2",
+        "bedrock_id": 268,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7280": {
+        "bedrock_name": "minecraft:element_5",
+        "bedrock_id": 271,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7281": {
+        "bedrock_name": "minecraft:element_4",
+        "bedrock_id": 270,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7282": {
+        "bedrock_name": "minecraft:element_7",
+        "bedrock_id": 273,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7283": {
+        "bedrock_name": "minecraft:element_6",
+        "bedrock_id": 272,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7284": {
+        "bedrock_name": "minecraft:element_9",
+        "bedrock_id": 275,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7285": {
+        "bedrock_name": "minecraft:element_8",
+        "bedrock_id": 274,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7286": {
+        "bedrock_name": "minecraft:camera",
+        "bedrock_id": 242,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7296": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7297": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "7298": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "7299": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "7300": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "7301": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "7302": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "7303": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "7304": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "7305": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "7306": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "7307": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "7308": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "7309": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "7310": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 14,
+        "java_default_state": "??"
+    },
+    "7311": {
+        "bedrock_name": "minecraft:chemistry_table",
+        "bedrock_id": 238,
+        "bedrock_meta": 15,
+        "java_default_state": "??"
+    },
+    "7423": {
+        "bedrock_name": "minecraft:netherreactor",
+        "bedrock_id": 247,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7440": {
+        "bedrock_name": "minecraft:chemical_heat",
+        "bedrock_id": 192,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7520": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7521": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "7522": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "7523": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "7524": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "7525": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "7526": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "7527": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "7528": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "7529": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "7530": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "7531": {
+        "bedrock_name": "minecraft:colored_torch_bp",
+        "bedrock_id": 204,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "7532": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7533": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "7534": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "7535": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "7536": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "7537": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "7538": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "7539": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "7540": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "7541": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "7542": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "7543": {
+        "bedrock_name": "minecraft:colored_torch_rg",
+        "bedrock_id": 202,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "7605": {
+        "bedrock_name": "minecraft:element_10",
+        "bedrock_id": 276,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7606": {
+        "bedrock_name": "minecraft:element_11",
+        "bedrock_id": 277,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7607": {
+        "bedrock_name": "minecraft:element_12",
+        "bedrock_id": 278,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7608": {
+        "bedrock_name": "minecraft:element_13",
+        "bedrock_id": 279,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7609": {
+        "bedrock_name": "minecraft:element_14",
+        "bedrock_id": 280,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7610": {
+        "bedrock_name": "minecraft:element_15",
+        "bedrock_id": 281,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7611": {
+        "bedrock_name": "minecraft:element_16",
+        "bedrock_id": 282,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7612": {
+        "bedrock_name": "minecraft:element_17",
+        "bedrock_id": 283,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7613": {
+        "bedrock_name": "minecraft:element_18",
+        "bedrock_id": 284,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7614": {
+        "bedrock_name": "minecraft:element_19",
+        "bedrock_id": 285,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7615": {
+        "bedrock_name": "minecraft:element_36",
+        "bedrock_id": 302,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7616": {
+        "bedrock_name": "minecraft:element_37",
+        "bedrock_id": 303,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7617": {
+        "bedrock_name": "minecraft:element_34",
+        "bedrock_id": 300,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7618": {
+        "bedrock_name": "minecraft:element_35",
+        "bedrock_id": 301,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7619": {
+        "bedrock_name": "minecraft:element_32",
+        "bedrock_id": 298,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7620": {
+        "bedrock_name": "minecraft:element_33",
+        "bedrock_id": 299,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7621": {
+        "bedrock_name": "minecraft:element_30",
+        "bedrock_id": 296,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7622": {
+        "bedrock_name": "minecraft:element_31",
+        "bedrock_id": 297,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7623": {
+        "bedrock_name": "minecraft:element_38",
+        "bedrock_id": 304,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7624": {
+        "bedrock_name": "minecraft:element_39",
+        "bedrock_id": 305,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7625": {
+        "bedrock_name": "minecraft:element_29",
+        "bedrock_id": 295,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7626": {
+        "bedrock_name": "minecraft:element_28",
+        "bedrock_id": 294,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7627": {
+        "bedrock_name": "minecraft:element_21",
+        "bedrock_id": 287,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7628": {
+        "bedrock_name": "minecraft:element_20",
+        "bedrock_id": 286,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7629": {
+        "bedrock_name": "minecraft:element_23",
+        "bedrock_id": 289,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7630": {
+        "bedrock_name": "minecraft:element_22",
+        "bedrock_id": 288,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7631": {
+        "bedrock_name": "minecraft:element_25",
+        "bedrock_id": 291,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7632": {
+        "bedrock_name": "minecraft:element_24",
+        "bedrock_id": 290,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7633": {
+        "bedrock_name": "minecraft:element_27",
+        "bedrock_id": 293,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7634": {
+        "bedrock_name": "minecraft:element_26",
+        "bedrock_id": 292,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7635": {
+        "bedrock_name": "minecraft:element_58",
+        "bedrock_id": 324,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7636": {
+        "bedrock_name": "minecraft:element_59",
+        "bedrock_id": 325,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7637": {
+        "bedrock_name": "minecraft:element_54",
+        "bedrock_id": 320,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7638": {
+        "bedrock_name": "minecraft:element_55",
+        "bedrock_id": 321,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7639": {
+        "bedrock_name": "minecraft:element_56",
+        "bedrock_id": 322,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7640": {
+        "bedrock_name": "minecraft:element_57",
+        "bedrock_id": 323,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7641": {
+        "bedrock_name": "minecraft:element_50",
+        "bedrock_id": 316,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7642": {
+        "bedrock_name": "minecraft:element_51",
+        "bedrock_id": 317,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7643": {
+        "bedrock_name": "minecraft:element_52",
+        "bedrock_id": 318,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7644": {
+        "bedrock_name": "minecraft:element_53",
+        "bedrock_id": 319,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7645": {
+        "bedrock_name": "minecraft:element_49",
+        "bedrock_id": 315,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7646": {
+        "bedrock_name": "minecraft:element_48",
+        "bedrock_id": 314,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7647": {
+        "bedrock_name": "minecraft:element_47",
+        "bedrock_id": 313,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7648": {
+        "bedrock_name": "minecraft:element_46",
+        "bedrock_id": 312,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7649": {
+        "bedrock_name": "minecraft:element_45",
+        "bedrock_id": 311,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7650": {
+        "bedrock_name": "minecraft:element_44",
+        "bedrock_id": 310,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7651": {
+        "bedrock_name": "minecraft:element_43",
+        "bedrock_id": 309,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7652": {
+        "bedrock_name": "minecraft:element_42",
+        "bedrock_id": 308,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7653": {
+        "bedrock_name": "minecraft:element_41",
+        "bedrock_id": 307,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7654": {
+        "bedrock_name": "minecraft:element_40",
+        "bedrock_id": 306,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7655": {
+        "bedrock_name": "minecraft:element_72",
+        "bedrock_id": 338,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7656": {
+        "bedrock_name": "minecraft:element_73",
+        "bedrock_id": 339,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7657": {
+        "bedrock_name": "minecraft:element_70",
+        "bedrock_id": 336,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7658": {
+        "bedrock_name": "minecraft:element_71",
+        "bedrock_id": 337,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7659": {
+        "bedrock_name": "minecraft:element_76",
+        "bedrock_id": 342,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7660": {
+        "bedrock_name": "minecraft:element_77",
+        "bedrock_id": 343,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7661": {
+        "bedrock_name": "minecraft:element_74",
+        "bedrock_id": 340,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7662": {
+        "bedrock_name": "minecraft:element_75",
+        "bedrock_id": 341,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7663": {
+        "bedrock_name": "minecraft:element_78",
+        "bedrock_id": 344,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7664": {
+        "bedrock_name": "minecraft:element_79",
+        "bedrock_id": 345,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7665": {
+        "bedrock_name": "minecraft:element_65",
+        "bedrock_id": 331,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7666": {
+        "bedrock_name": "minecraft:element_64",
+        "bedrock_id": 330,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7667": {
+        "bedrock_name": "minecraft:element_67",
+        "bedrock_id": 333,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7668": {
+        "bedrock_name": "minecraft:element_66",
+        "bedrock_id": 332,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7669": {
+        "bedrock_name": "minecraft:element_61",
+        "bedrock_id": 327,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7670": {
+        "bedrock_name": "minecraft:element_60",
+        "bedrock_id": 326,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7671": {
+        "bedrock_name": "minecraft:element_63",
+        "bedrock_id": 329,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7672": {
+        "bedrock_name": "minecraft:element_62",
+        "bedrock_id": 328,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7673": {
+        "bedrock_name": "minecraft:element_69",
+        "bedrock_id": 335,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7674": {
+        "bedrock_name": "minecraft:element_68",
+        "bedrock_id": 334,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7675": {
+        "bedrock_name": "minecraft:element_98",
+        "bedrock_id": 364,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7676": {
+        "bedrock_name": "minecraft:element_99",
+        "bedrock_id": 365,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7677": {
+        "bedrock_name": "minecraft:element_90",
+        "bedrock_id": 356,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7678": {
+        "bedrock_name": "minecraft:element_91",
+        "bedrock_id": 357,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7679": {
+        "bedrock_name": "minecraft:element_92",
+        "bedrock_id": 358,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7680": {
+        "bedrock_name": "minecraft:element_93",
+        "bedrock_id": 359,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7681": {
+        "bedrock_name": "minecraft:element_94",
+        "bedrock_id": 360,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7682": {
+        "bedrock_name": "minecraft:element_95",
+        "bedrock_id": 361,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7683": {
+        "bedrock_name": "minecraft:element_96",
+        "bedrock_id": 362,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7684": {
+        "bedrock_name": "minecraft:element_97",
+        "bedrock_id": 363,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7685": {
+        "bedrock_name": "minecraft:element_89",
+        "bedrock_id": 355,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7686": {
+        "bedrock_name": "minecraft:element_88",
+        "bedrock_id": 354,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7687": {
+        "bedrock_name": "minecraft:element_83",
+        "bedrock_id": 349,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7688": {
+        "bedrock_name": "minecraft:element_82",
+        "bedrock_id": 348,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7689": {
+        "bedrock_name": "minecraft:element_81",
+        "bedrock_id": 347,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7690": {
+        "bedrock_name": "minecraft:element_80",
+        "bedrock_id": 346,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7691": {
+        "bedrock_name": "minecraft:element_87",
+        "bedrock_id": 353,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7692": {
+        "bedrock_name": "minecraft:element_86",
+        "bedrock_id": 352,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7693": {
+        "bedrock_name": "minecraft:element_85",
+        "bedrock_id": 351,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7694": {
+        "bedrock_name": "minecraft:element_84",
+        "bedrock_id": 350,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "7810": {
+        "bedrock_name": "minecraft:info_update2",
+        "bedrock_id": 249,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "8024": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "8025": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "8026": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    },
+    "8027": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 3,
+        "java_default_state": "??"
+    },
+    "8028": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 4,
+        "java_default_state": "??"
+    },
+    "8029": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 5,
+        "java_default_state": "??"
+    },
+    "8030": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 6,
+        "java_default_state": "??"
+    },
+    "8031": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 7,
+        "java_default_state": "??"
+    },
+    "8032": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 8,
+        "java_default_state": "??"
+    },
+    "8033": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 9,
+        "java_default_state": "??"
+    },
+    "8034": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 10,
+        "java_default_state": "??"
+    },
+    "8035": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 11,
+        "java_default_state": "??"
+    },
+    "8036": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 12,
+        "java_default_state": "??"
+    },
+    "8037": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 13,
+        "java_default_state": "??"
+    },
+    "8038": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 14,
+        "java_default_state": "??"
+    },
+    "8039": {
+        "bedrock_name": "minecraft:hard_stained_glass_pane",
+        "bedrock_id": 191,
+        "bedrock_meta": 15,
+        "java_default_state": "??"
+    },
+    "8286": {
+        "bedrock_name": "minecraft:stripped_mangrove_log",
+        "bedrock_id": 740,
+        "bedrock_meta": 0,
+        "java_default_state": "??"
+    },
+    "8287": {
+        "bedrock_name": "minecraft:stripped_mangrove_log",
+        "bedrock_id": 740,
+        "bedrock_meta": 1,
+        "java_default_state": "??"
+    },
+    "8288": {
+        "bedrock_name": "minecraft:stripped_mangrove_log",
+        "bedrock_id": 740,
+        "bedrock_meta": 2,
+        "java_default_state": "??"
+    }
+}
