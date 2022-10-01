@@ -1,12 +1,10 @@
 package org.barrelmc.barrel.network.translator.java;
 
+import com.github.steveice10.mc.protocol.data.game.entity.player.PlayerAction;
 import com.github.steveice10.packetlib.packet.Packet;
 import com.nukkitx.math.vector.Vector3f;
 import com.nukkitx.math.vector.Vector3i;
-import com.nukkitx.protocol.bedrock.data.AuthoritativeMovementMode;
-import com.nukkitx.protocol.bedrock.data.PlayerActionType;
-import com.nukkitx.protocol.bedrock.data.PlayerAuthInputData;
-import com.nukkitx.protocol.bedrock.data.PlayerBlockActionData;
+import com.nukkitx.protocol.bedrock.data.*;
 import com.nukkitx.protocol.bedrock.data.inventory.ItemData;
 import com.nukkitx.protocol.bedrock.data.inventory.ItemUseTransaction;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;
@@ -22,11 +20,15 @@ public class ClientPlayerActionPacket implements JavaPacketTranslator {
     public void translate(Packet pk, Player player) {
         com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerActionPacket playerActionPacket = (com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerActionPacket) pk;
 
-        PlayerBlockActionData blockActionData = new PlayerBlockActionData();
+        PlayerBlockActionData blockActionData;
 
         Vector3i blockPos = Vector3i.from(playerActionPacket.getPosition().getX(), playerActionPacket.getPosition().getY(), playerActionPacket.getPosition().getZ());
 
-        switch (playerActionPacket.getAction()) {
+        PlayerAction action = playerActionPacket.getAction();
+        if (action == PlayerAction.START_DIGGING && player.getGameMode() == GameType.CREATIVE) {
+            action = PlayerAction.FINISH_DIGGING;
+        }
+        switch (action) {
             case START_DIGGING:
                 if (player.getStartGamePacketCache().getPlayerMovementSettings().getMovementMode() == AuthoritativeMovementMode.CLIENT) {
                     // TODO: implement for client authoritative
@@ -80,6 +82,7 @@ public class ClientPlayerActionPacket implements JavaPacketTranslator {
                     player.setPlayerAuthInputItemUseTransaction(itemUseTransaction);
 
                     // perform stop break block action
+                    /*
                     player.getPlayerAuthInputData().add(PlayerAuthInputData.PERFORM_BLOCK_ACTIONS);
                     player.setDiggingStatus(PlayerActionType.STOP_BREAK);
 
@@ -88,6 +91,7 @@ public class ClientPlayerActionPacket implements JavaPacketTranslator {
                     blockActionData.setBlockPosition(blockPos);
                     blockActionData.setFace(playerActionPacket.getFace().ordinal());
                     player.getPlayerAuthInputActions().add(blockActionData);
+                    */
                 }
                 break;
         }
