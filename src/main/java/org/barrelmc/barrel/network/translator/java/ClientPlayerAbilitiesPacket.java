@@ -6,7 +6,6 @@ import com.nukkitx.protocol.bedrock.data.AbilityType;
 import com.nukkitx.protocol.bedrock.data.AdventureSetting;
 import com.nukkitx.protocol.bedrock.packet.AdventureSettingsPacket;
 import com.nukkitx.protocol.bedrock.packet.RequestAbilityPacket;
-import com.nukkitx.protocol.bedrock.v527.serializer.RequestAbilitySerializer_v527;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;
 import org.barrelmc.barrel.player.Player;
 

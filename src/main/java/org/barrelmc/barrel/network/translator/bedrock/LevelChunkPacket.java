@@ -68,12 +68,15 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
 
     public void networkDecodeVersionNine(ByteBuf byteBuf, Chunk[] chunkSections, int sectionIndex) {
         byte storageSize = byteBuf.readByte();
-        byteBuf.readByte();
+        byteBuf.readByte(); // height
         networkDecodeVersionEight(byteBuf, chunkSections, sectionIndex, storageSize);
     }
 
     public void networkDecodeVersionEight(ByteBuf byteBuf, Chunk[] chunkSections, int sectionIndex, byte storageSize) {
         for (int storageReadIndex = 0; storageReadIndex < storageSize; storageReadIndex++) {
+            if (storageReadIndex > 1) {
+                return;
+            }
             byte paletteHeader = byteBuf.readByte();
             boolean isRuntime = (paletteHeader & 1) == 1;
             int paletteVersion = (paletteHeader | 1) >> 1;
@@ -108,18 +111,31 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
                 }
             }
 
-            if (storageReadIndex == 0) {
-                int index = 0;
-                for (int x = 0; x < 16; x++) {
-                    for (int z = 0; z < 16; z++) {
-                        for (int y = 0; y < 16; y++) {
-                            int paletteIndex = bitArray.get(index);
-                            int mcbeBlockId = sectionPalette[paletteIndex];
+            int index = 0;
+            for (int x = 0; x < 16; x++) {
+                for (int z = 0; z < 16; z++) {
+                    for (int y = 0; y < 16; y++) {
+                        int paletteIndex = bitArray.get(index);
+                        int mcbeBlockId = sectionPalette[paletteIndex];
+                        int javaStateId = BlockConverter.bedrockRuntimeToJavaStateId(mcbeBlockId);
 
-                            chunkSections[sectionIndex].set(x, y, z, BlockConverter.bedrockRuntimeToJavaStateId(mcbeBlockId));
-
-                            index++;
+                        if (storageReadIndex == 0) {
+                            chunkSections[sectionIndex].set(x, y, z, javaStateId);
+                        } else {
+                            if (javaStateId == 34 || javaStateId == 35) { // water
+                                int layer0 = chunkSections[sectionIndex].get(x, y, z);
+                                if (layer0 != 0) {
+                                    int waterlogged = BlockConverter.javaBlockToWaterlogged(layer0);
+                                    if (waterlogged != 1) {
+                                        chunkSections[sectionIndex].set(x, y, z, waterlogged);
+                                    }
+                                } else {
+                                    chunkSections[sectionIndex].set(x, y, z, javaStateId);
+                                }
+                            }
                         }
+
+                        index++;
                     }
                 }
             }

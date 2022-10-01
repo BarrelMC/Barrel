@@ -15,10 +15,12 @@ public class UpdateBlockPacket implements BedrockPacketTranslator {
     public void translate(BedrockPacket pk, Player player) {
         com.nukkitx.protocol.bedrock.packet.UpdateBlockPacket packet = (com.nukkitx.protocol.bedrock.packet.UpdateBlockPacket) pk;
 
-        Vector3i pos = packet.getBlockPosition();
-        int blockState = BlockConverter.bedrockRuntimeToJavaStateId(packet.getRuntimeId());
+        if (packet.getDataLayer() == 0) {
+            Vector3i pos = packet.getBlockPosition();
+            int blockState = BlockConverter.bedrockRuntimeToJavaStateId(packet.getRuntimeId());
 
-        BlockChangeRecord blockChangeRecord = new BlockChangeRecord(new Position(pos.getX(), pos.getY(), pos.getZ()), blockState);
-        player.getJavaSession().send(new ServerBlockChangePacket(blockChangeRecord));
+            BlockChangeRecord blockChangeRecord = new BlockChangeRecord(new Position(pos.getX(), pos.getY(), pos.getZ()), blockState);
+            player.getJavaSession().send(new ServerBlockChangePacket(blockChangeRecord));
+        }
     }
 }
