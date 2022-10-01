@@ -21,6 +21,7 @@ import com.nukkitx.protocol.bedrock.data.*;
 import com.nukkitx.protocol.bedrock.data.inventory.ItemUseTransaction;
 import com.nukkitx.protocol.bedrock.packet.LoginPacket;
 import com.nukkitx.protocol.bedrock.packet.PlayerAuthInputPacket;
+import com.nukkitx.protocol.bedrock.packet.RequestNetworkSettingsPacket;
 import com.nukkitx.protocol.bedrock.packet.StartGamePacket;
 import com.nukkitx.protocol.bedrock.util.EncryptionUtils;
 import io.netty.util.AsciiString;
@@ -161,6 +162,7 @@ public class Player extends Vector3 {
     private void onlineLogin(LoginStartPacket javaLoginPacket) {
         InetSocketAddress bindAddress = new InetSocketAddress("0.0.0.0", ThreadLocalRandom.current().nextInt(30000, 60000));
         BedrockClient client = new BedrockClient(bindAddress);
+        client.setRakNetVersion(ProxyServer.getInstance().getBedrockPacketCodec().getRaknetProtocolVersion());
 
         this.bedrockClient = client;
         ProxyServer.getInstance().getOnlinePlayers().put(javaLoginPacket.getUsername(), this);
@@ -178,11 +180,9 @@ public class Player extends Vector3 {
             session.setPacketCodec(ProxyServer.getInstance().getBedrockPacketCodec());
             session.addDisconnectHandler((reason) -> javaSession.disconnect("Client disconnected! " + reason.toString()));
             session.setBatchHandler(new BedrockBatchHandler(this));
-            try {
-                session.sendPacketImmediately(this.getOnlineLoginPacket());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            RequestNetworkSettingsPacket requestNetworkSettingsPacket = new RequestNetworkSettingsPacket();
+            requestNetworkSettingsPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
+            session.sendPacketImmediately(requestNetworkSettingsPacket);
         }).join();
     }
 
@@ -255,6 +255,7 @@ public class Player extends Vector3 {
     private void offlineLogin(LoginStartPacket javaLoginPacket) {
         InetSocketAddress bindAddress = new InetSocketAddress("0.0.0.0", ThreadLocalRandom.current().nextInt(30000, 60000));
         BedrockClient client = new BedrockClient(bindAddress);
+        client.setRakNetVersion(ProxyServer.getInstance().getBedrockPacketCodec().getRaknetProtocolVersion());
 
         this.xuid = "";
         this.username = javaLoginPacket.getUsername();
@@ -275,11 +276,13 @@ public class Player extends Vector3 {
             session.setPacketCodec(ProxyServer.getInstance().getBedrockPacketCodec());
             session.addDisconnectHandler((reason) -> javaSession.disconnect("Client disconnected! " + reason.toString()));
             session.setBatchHandler(new BedrockBatchHandler(this));
-            session.sendPacketImmediately(this.getLoginPacket());
+            RequestNetworkSettingsPacket requestNetworkSettingsPacket = new RequestNetworkSettingsPacket();
+            requestNetworkSettingsPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
+            session.sendPacketImmediately(requestNetworkSettingsPacket);
         }).join();
     }
 
-    private LoginPacket getLoginPacket() {
+    public LoginPacket getLoginPacket() {
         LoginPacket loginPacket = new LoginPacket();
 
         KeyPair ecdsa384KeyPair = EncryptionUtils.createKeyPair();
