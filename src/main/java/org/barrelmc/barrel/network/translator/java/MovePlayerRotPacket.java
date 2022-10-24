@@ -1,17 +1,18 @@
 package org.barrelmc.barrel.network.translator.java;
 
-import com.github.steveice10.packetlib.packet.Packet;
+import com.github.steveice10.mc.protocol.codec.MinecraftPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.serverbound.player.ServerboundMovePlayerRotPacket;
 import com.nukkitx.math.vector.Vector3f;
 import com.nukkitx.protocol.bedrock.data.AuthoritativeMovementMode;
 import com.nukkitx.protocol.bedrock.packet.MovePlayerPacket;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;
 import org.barrelmc.barrel.player.Player;
 
-public class ClientPlayerRotationPacket implements JavaPacketTranslator {
+public class MovePlayerRotPacket implements JavaPacketTranslator {
 
     @Override
-    public void translate(Packet pk, Player player) {
-        com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerRotationPacket packet = (com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerRotationPacket) pk;
+    public void translate(MinecraftPacket pk, Player player) {
+        ServerboundMovePlayerRotPacket packet = (ServerboundMovePlayerRotPacket) pk;
 
         player.setRotation(packet.getYaw(), packet.getPitch());
 

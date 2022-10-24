@@ -1,6 +1,6 @@
 package org.barrelmc.barrel.network.translator.bedrock;
 
-import com.github.steveice10.mc.protocol.packet.ingame.server.entity.player.ServerPlayerPositionRotationPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.clientbound.entity.player.ClientboundPlayerPositionPacket;
 import com.nukkitx.math.vector.Vector2f;
 import com.nukkitx.math.vector.Vector3f;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
@@ -37,7 +37,7 @@ public class PlayStatusPacket implements BedrockPacketTranslator {
 
             Vector3f pos = player.getLastServerPosition();
             Vector2f rotation = player.getLastServerRotation();
-            player.getJavaSession().send(new ServerPlayerPositionRotationPacket(pos.getX(), pos.getY(), pos.getZ(), rotation.getY(), pos.getX(), 0, false));
+            player.getJavaSession().send(new ClientboundPlayerPositionPacket(pos.getX(), pos.getY(), pos.getZ(), rotation.getY(), pos.getX(), 0, false));
         }
     }
 }

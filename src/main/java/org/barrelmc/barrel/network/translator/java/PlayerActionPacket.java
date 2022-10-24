@@ -1,7 +1,8 @@
 package org.barrelmc.barrel.network.translator.java;
 
+import com.github.steveice10.mc.protocol.codec.MinecraftPacket;
 import com.github.steveice10.mc.protocol.data.game.entity.player.PlayerAction;
-import com.github.steveice10.packetlib.packet.Packet;
+import com.github.steveice10.mc.protocol.packet.ingame.serverbound.player.ServerboundPlayerActionPacket;
 import com.nukkitx.math.vector.Vector3f;
 import com.nukkitx.math.vector.Vector3i;
 import com.nukkitx.protocol.bedrock.data.*;
@@ -10,15 +11,15 @@ import com.nukkitx.protocol.bedrock.data.inventory.ItemUseTransaction;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;
 import org.barrelmc.barrel.player.Player;
 
-public class ClientPlayerActionPacket implements JavaPacketTranslator {
+public class PlayerActionPacket implements JavaPacketTranslator {
 
     private static final int ACTION_CLICK_BLOCK = 0;
     private static final int ACTION_CLICK_AIR = 1;
     private static final int ACTION_BREAK_BLOCK = 2;
 
     @Override
-    public void translate(Packet pk, Player player) {
-        com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerActionPacket playerActionPacket = (com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerActionPacket) pk;
+    public void translate(MinecraftPacket pk, Player player) {
+        ServerboundPlayerActionPacket playerActionPacket = (ServerboundPlayerActionPacket) pk;
 
         PlayerBlockActionData blockActionData;
 

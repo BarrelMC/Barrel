@@ -1,19 +1,20 @@
 package org.barrelmc.barrel.network.translator.java;
 
-import com.github.steveice10.mc.protocol.data.game.ClientRequest;
-import com.github.steveice10.packetlib.packet.Packet;
+import com.github.steveice10.mc.protocol.codec.MinecraftPacket;
+import com.github.steveice10.mc.protocol.data.game.ClientCommand;
+import com.github.steveice10.mc.protocol.packet.ingame.serverbound.ServerboundClientCommandPacket;
 import com.nukkitx.math.vector.Vector3f;
 import com.nukkitx.protocol.bedrock.packet.RespawnPacket;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;
 import org.barrelmc.barrel.player.Player;
 
-public class ClientRequestPacket implements JavaPacketTranslator {
+public class ClientCommandPacket implements JavaPacketTranslator {
 
     @Override
-    public void translate(Packet pk, Player player) {
-        com.github.steveice10.mc.protocol.packet.ingame.client.ClientRequestPacket packet = (com.github.steveice10.mc.protocol.packet.ingame.client.ClientRequestPacket) pk;
+    public void translate(MinecraftPacket pk, Player player) {
+        ServerboundClientCommandPacket packet = (ServerboundClientCommandPacket) pk;
 
-        if (packet.getRequest() == ClientRequest.RESPAWN) {
+        if (packet.getRequest() == ClientCommand.RESPAWN) {
             RespawnPacket respawnPacket = new RespawnPacket();
 
             respawnPacket.setPosition(Vector3f.from(0, 0, 0));

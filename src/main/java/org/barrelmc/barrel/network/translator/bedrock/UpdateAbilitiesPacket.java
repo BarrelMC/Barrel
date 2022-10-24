@@ -1,8 +1,8 @@
 package org.barrelmc.barrel.network.translator.bedrock;
 
-import com.github.steveice10.mc.protocol.data.game.world.notify.ClientNotification;
-import com.github.steveice10.mc.protocol.packet.ingame.server.entity.player.ServerPlayerAbilitiesPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerNotifyClientPacket;
+import com.github.steveice10.mc.protocol.data.game.level.notify.GameEvent;
+import com.github.steveice10.mc.protocol.packet.ingame.clientbound.entity.player.ClientboundPlayerAbilitiesPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.clientbound.level.ClientboundGameEventPacket;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
 import com.nukkitx.protocol.bedrock.data.Ability;
 import com.nukkitx.protocol.bedrock.data.AbilityLayer;
@@ -24,9 +24,9 @@ public class UpdateAbilitiesPacket implements BedrockPacketTranslator {
                     Set<Ability> abilityValues = abilityLayer.getAbilityValues();
                     if (abilityValues.contains(Ability.NO_CLIP) && player.getGameMode() == GameType.CREATIVE) {
                         player.setGameMode(GameType.SURVIVAL_VIEWER);
-                        player.getJavaSession().send(new ServerNotifyClientPacket(ClientNotification.CHANGE_GAMEMODE, TranslatorUtils.translateGamemodeToJE(GameType.SURVIVAL_VIEWER)));
+                        player.getJavaSession().send(new ClientboundGameEventPacket(GameEvent.CHANGE_GAMEMODE, TranslatorUtils.translateGamemodeToJE(GameType.SURVIVAL_VIEWER)));
                     }
-                    player.getJavaSession().send(new ServerPlayerAbilitiesPacket(abilityValues.contains(Ability.INVULNERABLE), abilityValues.contains(Ability.MAY_FLY), abilityValues.contains(Ability.FLYING), abilityValues.contains(Ability.INSTABUILD), 0.05f, 0.1f));
+                    player.getJavaSession().send(new ClientboundPlayerAbilitiesPacket(abilityValues.contains(Ability.INVULNERABLE), abilityValues.contains(Ability.MAY_FLY), abilityValues.contains(Ability.FLYING), abilityValues.contains(Ability.INSTABUILD), 0.05f, 0.1f));
                 }
             }
         }

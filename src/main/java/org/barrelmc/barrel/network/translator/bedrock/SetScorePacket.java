@@ -1,6 +1,6 @@
 package org.barrelmc.barrel.network.translator.bedrock;
 
-import com.github.steveice10.mc.protocol.packet.ingame.server.scoreboard.ServerUpdateScorePacket;
+import com.github.steveice10.mc.protocol.packet.ingame.clientbound.scoreboard.ClientboundSetScorePacket;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
 import com.nukkitx.protocol.bedrock.data.ScoreInfo;
 import org.barrelmc.barrel.network.translator.interfaces.BedrockPacketTranslator;
@@ -21,7 +21,7 @@ public class SetScorePacket implements BedrockPacketTranslator {
                 score = -score;
             }
 
-            player.getJavaSession().send(new ServerUpdateScorePacket(Utils.lengthCutter(scoreInfo.getName(), 40), scoreInfo.getObjectiveId(), score));
+            player.getJavaSession().send(new ClientboundSetScorePacket(Utils.lengthCutter(scoreInfo.getName(), 40), scoreInfo.getObjectiveId(), score));
         }
     }
 }
