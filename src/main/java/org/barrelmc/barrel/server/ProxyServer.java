@@ -24,7 +24,7 @@ import com.github.steveice10.packetlib.event.server.SessionAddedEvent;
 import com.github.steveice10.packetlib.event.server.SessionRemovedEvent;
 import com.github.steveice10.packetlib.tcp.TcpServer;
 import com.nukkitx.protocol.bedrock.BedrockPacketCodec;
-import com.nukkitx.protocol.bedrock.v557.Bedrock_v557;
+import com.nukkitx.protocol.bedrock.v560.Bedrock_v560;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
 import org.barrelmc.barrel.Barrel;
@@ -54,7 +54,7 @@ public class ProxyServer {
     @Getter
     private final Map<String, Player> onlinePlayers = new ConcurrentHashMap<>();
     @Getter
-    private final BedrockPacketCodec bedrockPacketCodec = Bedrock_v557.V557_CODEC;
+    private final BedrockPacketCodec bedrockPacketCodec = Bedrock_v560.V560_CODEC;
 
     @Getter
     private final Path dataPath;
