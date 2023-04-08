@@ -15,6 +15,7 @@ import java.util.Map;
 public class BlockConverter {
 
     public static final HashMap<Integer, Integer> BEDROCK_BLOCK_RUNTIME_TO_JAVA_BLOCK_STATE = new HashMap<>();
+    public static final HashMap<Integer, Integer> WATERLOGGED_JAVA_BLOCK = new HashMap<>();
 
     public static void init() {
         JsonObject jsonObject = FileManager.getJsonObjectFromResource("runtime_blocks.json");
@@ -27,11 +28,19 @@ public class BlockConverter {
             Integer javaStateId = blockEntry.get("java_default_state").getAsInt();
 
             BEDROCK_BLOCK_RUNTIME_TO_JAVA_BLOCK_STATE.put(bedrockRuntimeId, javaStateId);
+            JsonElement waterlogged = blockEntry.get("java_waterlogged_state");
+            if (waterlogged != null) {
+                WATERLOGGED_JAVA_BLOCK.put(javaStateId, waterlogged.getAsInt());
+            }
         }
     }
 
     // Convert mc bedrock runtime block id to java block state id
     public static int bedrockRuntimeToJavaStateId(int bedrockBlockId) {
         return BEDROCK_BLOCK_RUNTIME_TO_JAVA_BLOCK_STATE.getOrDefault(bedrockBlockId, 1);
+    }
+
+    public static int javaBlockToWaterlogged(int javaBlockId) {
+        return WATERLOGGED_JAVA_BLOCK.getOrDefault(javaBlockId, 1);
     }
 }

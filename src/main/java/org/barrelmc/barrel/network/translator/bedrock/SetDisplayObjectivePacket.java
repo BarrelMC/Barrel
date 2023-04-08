@@ -3,8 +3,8 @@ package org.barrelmc.barrel.network.translator.bedrock;
 import com.github.steveice10.mc.protocol.data.game.scoreboard.ObjectiveAction;
 import com.github.steveice10.mc.protocol.data.game.scoreboard.ScoreType;
 import com.github.steveice10.mc.protocol.data.game.scoreboard.ScoreboardPosition;
-import com.github.steveice10.mc.protocol.packet.ingame.server.scoreboard.ServerDisplayScoreboardPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.server.scoreboard.ServerScoreboardObjectivePacket;
+import com.github.steveice10.mc.protocol.packet.ingame.clientbound.scoreboard.ClientboundSetDisplayObjectivePacket;
+import com.github.steveice10.mc.protocol.packet.ingame.clientbound.scoreboard.ClientboundSetObjectivePacket;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
 import net.kyori.adventure.text.Component;
 import org.barrelmc.barrel.network.translator.interfaces.BedrockPacketTranslator;
@@ -22,8 +22,8 @@ public class SetDisplayObjectivePacket implements BedrockPacketTranslator {
         if ("sidebar".equals(packet.getDisplaySlot())) {
             player.setScoreSortorder(packet.getSortOrder());
 
-            player.getJavaSession().send(new ServerScoreboardObjectivePacket(packet.getObjectiveId(), ObjectiveAction.ADD, Component.text(name), ScoreType.INTEGER));
-            player.getJavaSession().send(new ServerDisplayScoreboardPacket(ScoreboardPosition.SIDEBAR, packet.getObjectiveId()));
+            player.getJavaSession().send(new ClientboundSetObjectivePacket(packet.getObjectiveId(), ObjectiveAction.ADD, Component.text(name), ScoreType.INTEGER));
+            player.getJavaSession().send(new ClientboundSetDisplayObjectivePacket(ScoreboardPosition.SIDEBAR, packet.getObjectiveId()));
         }
     }
 }
