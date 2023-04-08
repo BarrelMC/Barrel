@@ -11,6 +11,7 @@
 
 package org.barrelmc.barrel;
 
+import org.barrelmc.barrel.network.converter.BlockConverter;
 import org.barrelmc.barrel.server.ProxyServer;
 
 public class Barrel {
@@ -19,6 +20,7 @@ public class Barrel {
 
     public static void main(String[] args) {
         System.out.println("Starting Barrel Proxy software");
+        BlockConverter.init();
         new ProxyServer(DATA_PATH);
     }
 }

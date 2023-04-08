@@ -1,7 +1,6 @@
 package org.barrelmc.barrel.network.translator.bedrock;
 
-import com.github.steveice10.mc.protocol.data.game.MessageType;
-import com.github.steveice10.mc.protocol.packet.ingame.server.ServerChatPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.clientbound.ClientboundSystemChatPacket;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
 import net.kyori.adventure.text.Component;
 import org.barrelmc.barrel.network.translator.interfaces.BedrockPacketTranslator;
@@ -20,7 +19,7 @@ public class TextPacket implements BedrockPacketTranslator {
                 break;
             }
             case SYSTEM: {
-                player.getJavaSession().send(new ServerChatPacket(Component.text(packet.getMessage()), MessageType.SYSTEM));
+                player.getJavaSession().send(new ClientboundSystemChatPacket(Component.text(packet.getMessage()), false));
                 break;
             }
             default: {

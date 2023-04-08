@@ -24,6 +24,7 @@ public class BedrockBatchHandler implements BatchHandler {
     @Override
     public void handle(BedrockSession bedrockSession, ByteBuf byteBuf, Collection<BedrockPacket> collection) {
         for (BedrockPacket packet : collection) {
+            //System.out.println("Received Bedrock " + packet.toString());
             player.getPacketTranslatorManager().translate(packet);
         }
     }

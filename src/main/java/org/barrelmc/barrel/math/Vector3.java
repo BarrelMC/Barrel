@@ -35,6 +35,12 @@ public class Vector3 {
         return GenericMath.floor(this.z);
     }
 
+    public void setPosition(Vector3f vector3f) {
+        this.x = vector3f.getX();
+        this.y = vector3f.getY();
+        this.z = vector3f.getZ();
+    }
+
     public void setPosition(double x, double y, double z) {
         this.x = x;
         this.y = y;

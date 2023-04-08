@@ -1,8 +1,7 @@
 package org.barrelmc.barrel.network.translator.bedrock;
 
-import com.github.steveice10.mc.protocol.data.game.entity.metadata.Position;
 import com.github.steveice10.mc.protocol.data.game.entity.player.BlockBreakStage;
-import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerBlockBreakAnimPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.clientbound.level.ClientboundBlockDestructionPacket;
 import com.nukkitx.math.vector.Vector3f;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
 import com.nukkitx.protocol.bedrock.data.LevelEventType;
@@ -17,10 +16,10 @@ public class LevelEventPacket implements BedrockPacketTranslator {
 
         if (packet.getType() == LevelEventType.BLOCK_START_BREAK) {
             Vector3f pos = packet.getPosition();
-            player.getJavaSession().send(new ServerBlockBreakAnimPacket(0, new Position((int) pos.getX(), (int) pos.getY(), (int) pos.getZ()), BlockBreakStage.STAGE_1));
+            player.getJavaSession().send(new ClientboundBlockDestructionPacket(0, pos.toInt(), BlockBreakStage.STAGE_1));
         } else if (packet.getType() == LevelEventType.BLOCK_STOP_BREAK) {
             Vector3f pos = packet.getPosition();
-            player.getJavaSession().send(new ServerBlockBreakAnimPacket(0, new Position((int) pos.getX(), (int) pos.getY(), (int) pos.getZ()), BlockBreakStage.RESET));
+            player.getJavaSession().send(new ClientboundBlockDestructionPacket(0, pos.toInt(), BlockBreakStage.RESET));
         }
     }
 }
