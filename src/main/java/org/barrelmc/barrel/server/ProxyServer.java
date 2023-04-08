@@ -22,14 +22,16 @@ import com.github.steveice10.packetlib.event.server.SessionAddedEvent;
 import com.github.steveice10.packetlib.event.server.SessionRemovedEvent;
 import com.github.steveice10.packetlib.tcp.TcpServer;
 import com.nukkitx.protocol.bedrock.BedrockPacketCodec;
-import com.nukkitx.protocol.bedrock.v440.Bedrock_v440;
+import com.nukkitx.protocol.bedrock.v544.Bedrock_v544;
 import lombok.Getter;
 import net.kyori.adventure.text.Component;
+import org.barrelmc.barrel.Barrel;
 import org.barrelmc.barrel.auth.AuthManager;
 import org.barrelmc.barrel.auth.server.AuthServer;
 import org.barrelmc.barrel.config.Config;
 import org.barrelmc.barrel.network.JavaPacketHandler;
 import org.barrelmc.barrel.player.Player;
+import org.barrelmc.barrel.utils.FileManager;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
@@ -38,6 +40,7 @@ import java.io.InputStream;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class ProxyServer {
@@ -47,7 +50,7 @@ public class ProxyServer {
     @Getter
     private final Map<String, Player> onlinePlayers = new ConcurrentHashMap<>();
     @Getter
-    private final BedrockPacketCodec bedrockPacketCodec = Bedrock_v440.V440_CODEC;
+    private final BedrockPacketCodec bedrockPacketCodec = Bedrock_v544.V544_CODEC;
 
     @Getter
     private final Path dataPath;
@@ -55,12 +58,24 @@ public class ProxyServer {
     @Getter
     private Config config;
 
+    @Getter
+    private String defaultSkinData;
+    @Getter
+    private String defaultSkinGeometry;
+
     public ProxyServer(String dataPath) {
         instance = this;
         this.dataPath = Paths.get(dataPath);
         if (!this.initConfig()) {
             System.out.println("Config file not found! Terminating...");
             System.exit(0);
+        }
+
+        try {
+            defaultSkinData = FileManager.getFileContents(Objects.requireNonNull(Barrel.class.getClassLoader().getResourceAsStream("skin/skin_data.txt")));
+            defaultSkinGeometry = FileManager.getFileContents(Objects.requireNonNull(Barrel.class.getClassLoader().getResourceAsStream("skin/skin_geometry.json")));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         this.startServer();
@@ -100,7 +115,11 @@ public class ProxyServer {
         server.addListener(new ServerAdapter() {
             @Override
             public void serverClosed(ServerClosedEvent event) {
-                // TODO: disconnect all bedrock client
+                for (var entry : ProxyServer.getInstance().getOnlinePlayers().entrySet()) {
+                    Player player = entry.getValue();
+
+                    player.disconnect("Proxy closed");
+                }
                 System.out.println("Server closed.");
             }
 
@@ -163,7 +182,9 @@ public class ProxyServer {
         overworldTag.put(new ByteTag("bed_works", (byte) 1));
         overworldTag.put(new StringTag("effects", "minecraft:overworld"));
         overworldTag.put(new ByteTag("has_raids", (byte) 1));
-        overworldTag.put(new IntTag("logical_height", 256));
+        overworldTag.put(new IntTag("logical_height", 320));
+        overworldTag.put(new IntTag("height", 320));
+        overworldTag.put(new IntTag("min_y", -64));
         overworldTag.put(new FloatTag("coordinate_scale", 1f));
         overworldTag.put(new ByteTag("ultrawarm", (byte) 0));
         overworldTag.put(new ByteTag("has_ceiling", (byte) 0));

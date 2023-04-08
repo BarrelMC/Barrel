@@ -10,8 +10,10 @@ public class ClientPlayerChangeHeldItemPacket implements JavaPacketTranslator {
     @Override
     public void translate(Packet pk, Player player) {
         com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerChangeHeldItemPacket packet = (com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerChangeHeldItemPacket) pk;
-        PlayerHotbarPacket playerHotbarPacket = new PlayerHotbarPacket();
 
+        player.setHotbarSlot(packet.getSlot());
+
+        PlayerHotbarPacket playerHotbarPacket = new PlayerHotbarPacket();
         playerHotbarPacket.setContainerId(0);
         playerHotbarPacket.setSelectedHotbarSlot(packet.getSlot());
         playerHotbarPacket.setSelectHotbarSlot(true);

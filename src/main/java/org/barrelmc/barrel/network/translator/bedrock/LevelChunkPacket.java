@@ -4,15 +4,22 @@ import com.github.steveice10.mc.protocol.data.game.chunk.Chunk;
 import com.github.steveice10.mc.protocol.data.game.chunk.Column;
 import com.github.steveice10.mc.protocol.packet.ingame.server.world.ServerChunkDataPacket;
 import com.github.steveice10.opennbt.tag.builtin.CompoundTag;
+import com.nukkitx.nbt.NBTInputStream;
+import com.nukkitx.nbt.NbtMap;
+import com.nukkitx.nbt.NbtMapBuilder;
+import com.nukkitx.nbt.util.stream.NetworkDataInputStream;
 import com.nukkitx.network.VarInts;
 import com.nukkitx.protocol.bedrock.BedrockPacket;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.Unpooled;
 import org.barrelmc.barrel.network.converter.BlockConverter;
 import org.barrelmc.barrel.network.translator.interfaces.BedrockPacketTranslator;
 import org.barrelmc.barrel.player.Player;
 import org.barrelmc.barrel.utils.nukkit.BitArray;
 import org.barrelmc.barrel.utils.nukkit.BitArrayVersion;
+
+import java.io.IOException;
 
 public class LevelChunkPacket implements BedrockPacketTranslator {
 
@@ -25,12 +32,18 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
         ByteBuf byteBuf = Unpooled.buffer();
         byteBuf.writeBytes(packet.getData());
 
-        for (int sectionIndex = 0; sectionIndex < packet.getSubChunksLength(); sectionIndex++) {
+        int subChunksLength = packet.getSubChunksLength();
+
+        if (subChunksLength > 15) {
+            subChunksLength = 15;
+        }
+
+        for (int sectionIndex = 0; sectionIndex < subChunksLength; sectionIndex++) {
             chunkSections[sectionIndex] = new Chunk();
             int chunkVersion = byteBuf.readByte();
 
             if (chunkVersion != 1 && chunkVersion != 8) {
-                this.networkDecodeVersionZero(byteBuf, chunkSections[sectionIndex]);
+                // TODO: Support chunk version 0 (pm 3.0.0 legacy chunk)
                 continue;
             }
 
@@ -48,30 +61,10 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
         player.getJavaSession().send(chunkPacket);
     }
 
-    public void networkDecodeVersionZero(ByteBuf byteBuf, Chunk chunkSection) {
-        byte[] blockIds = new byte[4096];
-        byteBuf.readBytes(blockIds);
-
-        byte[] metaIds = new byte[2048];
-        byteBuf.readBytes(metaIds);
-
-        for (int x = 0; x < 16; x++) {
-            for (int y = 0; y < 16; y++) {
-                for (int z = 0; z < 16; z++) {
-                    int index = (x << 8) + (z << 4) + y;
-
-                    int id = blockIds[index];
-                    int meta = metaIds[index >> 1] >> (index & 1) * 4 & 15;
-
-                    chunkSection.set(x, y, z, BlockConverter.toJavaStateId(id));
-                }
-            }
-        }
-    }
-
     public void networkDecodeVersionEight(ByteBuf byteBuf, Chunk[] chunkSections, int sectionIndex, byte storageSize) {
         for (int storageReadIndex = 0; storageReadIndex < storageSize; storageReadIndex++) {
             byte paletteHeader = byteBuf.readByte();
+            boolean isRuntime = (paletteHeader & 1) == 1;
             int paletteVersion = (paletteHeader | 1) >> 1;
 
             BitArrayVersion bitArrayVersion = BitArrayVersion.get(paletteVersion, true);
@@ -87,8 +80,21 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
 
             int paletteSize = VarInts.readInt(byteBuf);
             int[] sectionPalette = new int[paletteSize];
+            NBTInputStream nbtStream = isRuntime ? null : new NBTInputStream(new NetworkDataInputStream(new ByteBufInputStream(byteBuf)));
             for (int i = 0; i < paletteSize; i++) {
-                sectionPalette[i] = VarInts.readInt(byteBuf);
+                if (isRuntime) {
+                    sectionPalette[i] = VarInts.readInt(byteBuf);
+                } else {
+                    try {
+                        NbtMapBuilder map = ((NbtMap) nbtStream.readTag()).toBuilder();
+                        map.replace("name", "minecraft:" + map.get("name").toString());
+
+                        System.out.println(map.build().toString());
+                        //sectionPalette[i] = BlockPaletteTranslator.getBedrockBlockId(BlockPaletteTranslator.bedrockStateFromNBTMap(map.build()));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
 
             if (storageReadIndex == 0) {
@@ -99,9 +105,8 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
                             int paletteIndex = bitArray.get(index);
                             int mcbeBlockId = sectionPalette[paletteIndex];
 
-                            if (mcbeBlockId != 0) {
-                                chunkSections[sectionIndex].set(x, y, z, BlockConverter.toJavaStateId(mcbeBlockId));
-                            }
+                            chunkSections[sectionIndex].set(x, y, z, BlockConverter.bedrockRuntimeToJavaStateId(mcbeBlockId));
+
                             index++;
                         }
                     }

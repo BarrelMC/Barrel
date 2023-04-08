@@ -5,6 +5,10 @@
 
 package org.barrelmc.barrel.utils;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import org.barrelmc.barrel.Barrel;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +18,8 @@ import java.nio.file.Paths;
 import java.util.zip.GZIPInputStream;
 
 public class FileManager {
+
+    public static JsonParser jsonParser = new JsonParser();
 
     public static String getFileContents(String path) {
         try {
@@ -53,5 +59,20 @@ public class FileManager {
         inputStream.close();
         gZIPInputStream.close();
         return byteArrayOutputStream.toString(StandardCharsets.UTF_8);
+    }
+
+    public static JsonObject getJsonObjectFromResource(String resourceName) {
+        InputStream inputStream = Barrel.class.getClassLoader().getResourceAsStream(resourceName);
+        if (inputStream == null) {
+            System.out.println("Resource \"" + resourceName + "\" does not exist!");
+            return null;
+        }
+
+        try {
+            return jsonParser.parse(getFileContents(inputStream)).getAsJsonObject();
+        } catch (Exception e) {
+            System.out.println("Failed to read \"" + resourceName + "\": " + e.getMessage());
+            return null;
+        }
     }
 }

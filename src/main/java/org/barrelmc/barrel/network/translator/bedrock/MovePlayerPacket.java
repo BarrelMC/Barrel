@@ -16,7 +16,7 @@ public class MovePlayerPacket implements BedrockPacketTranslator {
         Vector3f position = packet.getPosition(), rotation = packet.getRotation();
 
         if (packet.getRuntimeEntityId() == player.getRuntimeEntityId()) {
-            player.getJavaSession().send(new ServerPlayerPositionRotationPacket(position.getX(), position.getY() - 1.62, position.getZ(), rotation.getY(), rotation.getX(), 1));
+            player.getJavaSession().send(new ServerPlayerPositionRotationPacket(position.getX(), position.getY() - 1.62, position.getZ(), rotation.getY(), rotation.getX(), 1, false));
             player.setPosition(position.getX(), position.getY() - 1.62, position.getZ());
         } else {
             player.getJavaSession().send(new ServerEntityTeleportPacket((int) packet.getRuntimeEntityId(), position.getX(), position.getY() - 1.62F, position.getZ(), rotation.getY(), rotation.getX(), packet.isOnGround()));
