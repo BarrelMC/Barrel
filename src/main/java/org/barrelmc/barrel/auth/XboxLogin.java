@@ -9,7 +9,6 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.List;
 
-// Thanks https://github.com/Project-EZ4H/EZ4H/blob/main/src/main/java/me/liuli/ez4h/minecraft/auth/XboxLogin.java
 public class XboxLogin {
     private static final String XBOX_PRE_AUTH_URL = "https://login.live.com/oauth20_authorize.srf?client_id=00000000441cc96b&redirect_uri=https://login.live.com/oauth20_desktop.srf&response_type=token&display=touch&scope=service::user.auth.xboxlive.com::MBI_SSL&locale=en";
 

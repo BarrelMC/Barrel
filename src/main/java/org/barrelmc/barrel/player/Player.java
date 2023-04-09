@@ -196,10 +196,10 @@ public class Player extends Vector3 {
         this.privateKey = (ECPrivateKey) ecdsa256KeyPair.getPrivate();
 
         Xbox xbox = new Xbox(this.accessToken);
-        String userToken = xbox.getUserToken(this.publicKey, this.privateKey);
+        //String userToken = xbox.getUserToken(this.publicKey, this.privateKey);
         String deviceToken = xbox.getDeviceToken(this.publicKey, this.privateKey);
-        String titleToken = xbox.getTitleToken(this.publicKey, this.privateKey, deviceToken);
-        String xsts = xbox.getXstsToken(userToken, deviceToken, titleToken, this.publicKey, this.privateKey);
+        //String titleToken = xbox.getTitleToken(this.publicKey, this.privateKey, deviceToken);
+        String xsts = xbox.getXBLToken(this.accessToken, this.publicKey, this.privateKey, deviceToken);
 
         KeyPair ecdsa384KeyPair = EncryptionUtils.createKeyPair();
         this.publicKey = (ECPublicKey) ecdsa384KeyPair.getPublic();

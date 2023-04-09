@@ -18,14 +18,6 @@ import java.time.Instant;
 import java.util.Base64;
 import java.util.UUID;
 
-/*
- * This note refers to all auth/JWT related classes, I know there are JWT parsing dependencies(already built into the protocol
- * dependence) but I want to to be "up front", meaning I/we see everything that is going on, meaning we can see exactly how
- * the header, payload and signature are formed, rather then using some library that make take a couple minutes to understand(how
- * it works), I also do know, at some points it would be easier to use the JWT dependence but my stance above still applies,
- * maybe ill make my own simple class :shrug:
- */
-//based off https://github.com/Sandertv/gophertunnel/tree/master/minecraft/auth
 @SuppressWarnings("FieldCanBeLocal")
 public class Xbox {
     private final String accessToken;
@@ -35,6 +27,7 @@ public class Xbox {
     private final String xboxDeviceAuthURL = "https://device.auth.xboxlive.com/device/authenticate";
     private final String xboxTitleAuthURL = "https://title.auth.xboxlive.com/title/authenticate";
     private final String minecraftAuthURL = "https://multiplayer.minecraft.net/authentication";
+    private final String xboxSisuURL = "https://sisu.xboxlive.com/authorize";
 
     public Xbox(String accessToken) {
         this.accessToken = accessToken;
@@ -201,6 +194,41 @@ public class Xbox {
         this.writeJsonObjectToPost(connection, jsonObject);
 
         return FileManager.getFileContents(connection.getInputStream());
+    }
+
+    public String getXBLToken(String accessToken, ECPublicKey publicKey, ECPrivateKey privateKey, String deviceToken) throws Exception {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("AccessToken", "t=" + accessToken);
+        jsonObject.put("AppId", "00000000441cc96b");
+        jsonObject.put("deviceToken", deviceToken);
+        jsonObject.put("Sandbox", "RETAIL");
+        jsonObject.put("UseModernGamertag", true);
+        jsonObject.put("SiteName", "user.auth.xboxlive.com");
+        jsonObject.put("RelyingParty", "https://multiplayer.minecraft.net/");
+
+        JSONObject proofKey = new JSONObject();
+        jsonObject.put("ProofKey", proofKey);
+        proofKey.put("crv", "P-256");
+        proofKey.put("alg", "ES256");
+        proofKey.put("use", "sig");
+        proofKey.put("kty", "EC");
+        proofKey.put("x", this.getProofKeyX(publicKey));
+        proofKey.put("y", this.getProofKeyY(publicKey));
+
+        URL url = new URL(this.xboxSisuURL);
+        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+
+        connection.setRequestMethod("POST");
+        connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+        connection.setRequestProperty("x-xbl-contract-version", "1");
+
+        this.addSignatureHeader(connection, jsonObject, privateKey);
+        this.writeJsonObjectToPost(connection, jsonObject);
+
+        String responce = FileManager.getFileContents(connection.getInputStream());
+        JSONObject responceJsonObject = JSONObject.parseObject(responce);
+
+        return responceJsonObject.getJSONObject("AuthorizationToken").toString();
     }
 
     public String requestMinecraftChain(String xsts, ECPublicKey publicKey) throws Exception {

@@ -149,6 +149,10 @@ public class ProxyServer {
                 if (AuthManager.getInstance().getLoginPlayers().get(player.getUsername())) {
                     AuthManager.getInstance().getLoginPlayers().remove(player.getUsername());
                 }
+                if (AuthManager.getInstance().getTimers().get(player.getUsername()) != null) {
+                    AuthManager.getInstance().getTimers().get(player.getUsername()).cancel();
+                    AuthManager.getInstance().getTimers().remove(player.getUsername());
+                }
                 System.out.println(profile.getName() + " logged out");
                 player.disconnect("logged out");
             }

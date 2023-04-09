@@ -16,12 +16,10 @@ import com.github.steveice10.mc.protocol.packet.ingame.clientbound.ClientboundSy
 import com.github.steveice10.mc.protocol.packet.ingame.clientbound.entity.player.ClientboundPlayerPositionPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.clientbound.level.ClientboundLevelChunkWithLightPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.clientbound.level.ClientboundSetDefaultSpawnPositionPacket;
-import com.github.steveice10.mc.protocol.packet.ingame.serverbound.ServerboundChatPacket;
 import com.github.steveice10.opennbt.tag.builtin.CompoundTag;
 import com.github.steveice10.opennbt.tag.builtin.LongArrayTag;
 import com.github.steveice10.packetlib.Session;
 import com.github.steveice10.packetlib.event.session.SessionAdapter;
-import com.github.steveice10.packetlib.packet.Packet;
 import com.nukkitx.math.vector.Vector3i;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -32,6 +30,7 @@ import org.barrelmc.barrel.utils.Utils;
 
 import java.util.BitSet;
 import java.util.Collections;
+import java.util.Timer;
 
 public class AuthServer extends SessionAdapter {
 
@@ -81,37 +80,14 @@ public class AuthServer extends SessionAdapter {
 
         session.send(new ClientboundSetDefaultSpawnPositionPacket(Vector3i.from(8, 82, 8), 0));
         session.send(new ClientboundPlayerPositionPacket(8, 82, 8, 0, 0, 0, false));
-        session.send(new ClientboundSystemChatPacket(Component.text("§ePlease input your email and password.\n§aEx: account@mail.com:password123"), false));
-    }
 
-    @Override
-    public void packetReceived(Session session, Packet packet) {
-        if (packet instanceof ServerboundChatPacket) {
-            String messageStr = ((ServerboundChatPacket) packet).getMessage();
-
-            String[] message = messageStr.split(":");
-            if (message.length != 2) {
-                session.send(new ClientboundSystemChatPacket(Component.text("§cWrong format"), false));
-                return;
-            }
-
-            if (message[1].length() < 8) {
-                session.send(new ClientboundSystemChatPacket(Component.text("§cInvalid password length"), false));
-                return;
-            }
-
-            session.send(new ClientboundSystemChatPacket(Component.text("§eLogging in..."), false));
-
-            try {
-                String token = AuthManager.getInstance().getXboxLogin().getAccessToken(message[0], message[1]);
-                AuthManager.getInstance().getAccessTokens().put(this.username, token);
-                AuthManager.getInstance().getLoginPlayers().put(this.username, true);
-            } catch (Exception e) {
-                session.send(new ClientboundSystemChatPacket(Component.text("§cLogin failed! Account or password invalid, please re-input the email and password"), false));
-                return;
-            }
-
-            session.send(new ClientboundSystemChatPacket(Component.text("§aLogin successfull! Please re-join."), false));
+        session.send(new ClientboundSystemChatPacket(Component.text("§ePlease login with your Xbox account"), false));
+        try {
+            Timer timer = AuthManager.getInstance().getXboxLive().requestLiveToken(session, this.username);
+            AuthManager.getInstance().getTimers().put(this.username, timer);
+        } catch (Exception e) {
+            session.disconnect("§cAn error occurred while authenticating to Xbox Live.");
+            e.printStackTrace();
         }
     }
 }
