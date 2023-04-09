@@ -29,13 +29,13 @@ import lombok.Getter;
 import lombok.Setter;
 import net.kyori.adventure.text.Component;
 import org.barrelmc.barrel.auth.AuthManager;
-import org.barrelmc.barrel.auth.JoseStuff;
 import org.barrelmc.barrel.auth.Xbox;
 import org.barrelmc.barrel.config.Config;
 import org.barrelmc.barrel.math.Vector3;
 import org.barrelmc.barrel.network.BedrockBatchHandler;
 import org.barrelmc.barrel.network.translator.PacketTranslatorManager;
 import org.barrelmc.barrel.server.ProxyServer;
+import org.barrelmc.barrel.utils.Utils;
 
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
@@ -380,7 +380,7 @@ public class Player extends Vector3 {
             Signature signature = Signature.getInstance("SHA384withECDSA");
             signature.initSign(this.privateKey);
             signature.update(dataToSign);
-            signatureBytes = JoseStuff.DERToJOSE(signature.sign(), JoseStuff.AlgorithmType.ECDSA384);
+            signatureBytes = Utils.DERToJOSE(signature.sign(), Utils.AlgorithmType.ECDSA384);
         } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException ignored) {
         }
         String signatureString = Base64.getUrlEncoder().withoutPadding().encodeToString(signatureBytes);

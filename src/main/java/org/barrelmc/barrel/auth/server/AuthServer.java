@@ -34,10 +34,7 @@ import java.util.Timer;
 
 public class AuthServer extends SessionAdapter {
 
-    private final String username;
-
     public AuthServer(Session session, String username) {
-        this.username = username;
         session.send(new ClientboundLoginPacket(
                 0, false, GameMode.ADVENTURE, GameMode.ADVENTURE,
                 1, new String[]{"minecraft:overworld"}, ProxyServer.getInstance().getDimensionTag(),
@@ -45,6 +42,22 @@ public class AuthServer extends SessionAdapter {
                 10, 6, 6, false, true, false, false, null
         ));
 
+        this.generateWorld(session);
+
+        session.send(new ClientboundSetDefaultSpawnPositionPacket(Vector3i.from(8, 82, 8), 0));
+        session.send(new ClientboundPlayerPositionPacket(8, 82, 8, 0, 0, 0, false));
+
+        session.send(new ClientboundSystemChatPacket(Component.text("§cPlease login with your Xbox account"), false));
+        try {
+            Timer timer = AuthManager.getInstance().getXboxLive().requestLiveToken(session, username);
+            AuthManager.getInstance().getTimers().put(username, timer);
+        } catch (Exception e) {
+            session.disconnect("§cAn error occurred while authenticating to Xbox Live. Please rejoin the server.");
+            e.printStackTrace();
+        }
+    }
+
+    private void generateWorld(Session session) {
         ChunkSection emptyChunk = new ChunkSection();
         Utils.fillPalette(emptyChunk.getChunkData());
         Utils.fillPalette(emptyChunk.getBiomeData());
@@ -77,17 +90,5 @@ public class AuthServer extends SessionAdapter {
                 new LightUpdateData(new BitSet(), new BitSet(), new BitSet(), new BitSet(), Collections.emptyList(), Collections.emptyList(), true)
         ));
         bytebuf.release();
-
-        session.send(new ClientboundSetDefaultSpawnPositionPacket(Vector3i.from(8, 82, 8), 0));
-        session.send(new ClientboundPlayerPositionPacket(8, 82, 8, 0, 0, 0, false));
-
-        session.send(new ClientboundSystemChatPacket(Component.text("§ePlease login with your Xbox account"), false));
-        try {
-            Timer timer = AuthManager.getInstance().getXboxLive().requestLiveToken(session, this.username);
-            AuthManager.getInstance().getTimers().put(this.username, timer);
-        } catch (Exception e) {
-            session.disconnect("§cAn error occurred while authenticating to Xbox Live.");
-            e.printStackTrace();
-        }
     }
 }

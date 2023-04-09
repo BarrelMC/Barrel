@@ -13,16 +13,13 @@ public class AuthManager {
     @Getter
     private final Map<String, String> accessTokens = new HashMap<>();
     @Getter
-    private final XboxLogin xboxLogin;
-    @Getter
     private final Map<String, Boolean> loginPlayers = new ConcurrentHashMap<>();
     @Getter
-    private final Live xboxLive;
-    @Getter
     private final Map<String, Timer> timers = new ConcurrentHashMap<>();
+    @Getter
+    private final Live xboxLive;
 
     public AuthManager() {
-        xboxLogin = new XboxLogin();
         xboxLive = new Live();
     }
 

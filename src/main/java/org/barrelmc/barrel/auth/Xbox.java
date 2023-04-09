@@ -48,7 +48,7 @@ public class Xbox {
 
     public String getUserToken(ECPublicKey publicKey, ECPrivateKey privateKey) throws Exception {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("RelyingParty", "http://auth.xboxlive.com");
+        jsonObject.put("RelyingParty", "https://auth.xboxlive.com");
         jsonObject.put("TokenType", "JWT");
 
         JSONObject properties = new JSONObject();
@@ -76,15 +76,15 @@ public class Xbox {
 
         this.writeJsonObjectToPost(connection, jsonObject);
 
-        String responce = FileManager.getFileContents(connection.getInputStream());
-        JSONObject responceJsonObject = JSONObject.parseObject(responce);
+        String response = FileManager.getFileContents(connection.getInputStream());
+        JSONObject responseJsonObject = JSONObject.parseObject(response);
 
-        return responceJsonObject.getString("Token");
+        return responseJsonObject.getString("Token");
     }
 
     public String getDeviceToken(ECPublicKey publicKey, ECPrivateKey privateKey) throws Exception {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("RelyingParty", "http://auth.xboxlive.com");
+        jsonObject.put("RelyingParty", "https://auth.xboxlive.com");
         jsonObject.put("TokenType", "JWT");
 
         JSONObject properties = new JSONObject();
@@ -122,7 +122,7 @@ public class Xbox {
 
     public String getTitleToken(ECPublicKey publicKey, ECPrivateKey privateKey, String deviceToken) throws Exception {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("RelyingParty", "http://auth.xboxlive.com");
+        jsonObject.put("RelyingParty", "https://auth.xboxlive.com");
         jsonObject.put("TokenType", "JWT");
 
         JSONObject properties = new JSONObject();
@@ -225,10 +225,10 @@ public class Xbox {
         this.addSignatureHeader(connection, jsonObject, privateKey);
         this.writeJsonObjectToPost(connection, jsonObject);
 
-        String responce = FileManager.getFileContents(connection.getInputStream());
-        JSONObject responceJsonObject = JSONObject.parseObject(responce);
+        String response = FileManager.getFileContents(connection.getInputStream());
+        JSONObject responseJsonObject = JSONObject.parseObject(response);
 
-        return responceJsonObject.getJSONObject("AuthorizationToken").toString();
+        return responseJsonObject.getJSONObject("AuthorizationToken").toString();
     }
 
     public String requestMinecraftChain(String xsts, ECPublicKey publicKey) throws Exception {
@@ -297,7 +297,7 @@ public class Xbox {
         Signature signature = Signature.getInstance("SHA256withECDSA");
         signature.initSign(privateKey);
         signature.update(bytesToSign.toByteArray());
-        byte[] signatureBytes = JoseStuff.DERToJOSE(signature.sign(), JoseStuff.AlgorithmType.ECDSA256);
+        byte[] signatureBytes = Utils.DERToJOSE(signature.sign(), Utils.AlgorithmType.ECDSA256);
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         byteArrayOutputStream.write(new byte[]{0, 0, 0, 1});
