@@ -48,7 +48,7 @@ public class Xbox {
 
     public String getUserToken(ECPublicKey publicKey, ECPrivateKey privateKey) throws Exception {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("RelyingParty", "https://auth.xboxlive.com");
+        jsonObject.put("RelyingParty", "http://auth.xboxlive.com");
         jsonObject.put("TokenType", "JWT");
 
         JSONObject properties = new JSONObject();
@@ -84,7 +84,7 @@ public class Xbox {
 
     public String getDeviceToken(ECPublicKey publicKey, ECPrivateKey privateKey) throws Exception {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("RelyingParty", "https://auth.xboxlive.com");
+        jsonObject.put("RelyingParty", "http://auth.xboxlive.com");
         jsonObject.put("TokenType", "JWT");
 
         JSONObject properties = new JSONObject();
@@ -122,7 +122,7 @@ public class Xbox {
 
     public String getTitleToken(ECPublicKey publicKey, ECPrivateKey privateKey, String deviceToken) throws Exception {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("RelyingParty", "https://auth.xboxlive.com");
+        jsonObject.put("RelyingParty", "http://auth.xboxlive.com");
         jsonObject.put("TokenType", "JWT");
 
         JSONObject properties = new JSONObject();
