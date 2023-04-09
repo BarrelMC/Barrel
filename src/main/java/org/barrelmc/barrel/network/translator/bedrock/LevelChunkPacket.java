@@ -33,16 +33,11 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
     public void translate(BedrockPacket pk, Player player) {
         com.nukkitx.protocol.bedrock.packet.LevelChunkPacket packet = (com.nukkitx.protocol.bedrock.packet.LevelChunkPacket) pk;
 
-        ChunkSection[] chunkSections = new ChunkSection[16];
+        int subChunksLength = packet.getSubChunksLength();
+        ChunkSection[] chunkSections = new ChunkSection[subChunksLength];
 
         ByteBuf byteBuf = Unpooled.buffer();
         byteBuf.writeBytes(packet.getData());
-
-        int subChunksLength = packet.getSubChunksLength();
-
-        if (subChunksLength > 15) {
-            subChunksLength = 15;
-        }
 
         ByteBuf chunkByteBuf = Unpooled.buffer();
         for (int sectionIndex = 0; sectionIndex < subChunksLength; sectionIndex++) {
