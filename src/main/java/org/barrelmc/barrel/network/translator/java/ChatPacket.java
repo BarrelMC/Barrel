@@ -1,15 +1,16 @@
 package org.barrelmc.barrel.network.translator.java;
 
-import com.github.steveice10.packetlib.packet.Packet;
+import com.github.steveice10.mc.protocol.codec.MinecraftPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.serverbound.ServerboundChatPacket;
 import com.nukkitx.protocol.bedrock.packet.TextPacket;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;
 import org.barrelmc.barrel.player.Player;
 
-public class ClientChatPacket implements JavaPacketTranslator {
+public class ChatPacket implements JavaPacketTranslator {
 
     @Override
-    public void translate(Packet pk, Player player) {
-        com.github.steveice10.mc.protocol.packet.ingame.client.ClientChatPacket chatPacket = (com.github.steveice10.mc.protocol.packet.ingame.client.ClientChatPacket) pk;
+    public void translate(MinecraftPacket pk, Player player) {
+        ServerboundChatPacket chatPacket = (ServerboundChatPacket) pk;
         TextPacket textPacket = new TextPacket();
 
         textPacket.setType(TextPacket.Type.CHAT);

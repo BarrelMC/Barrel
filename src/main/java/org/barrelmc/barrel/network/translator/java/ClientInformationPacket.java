@@ -1,15 +1,16 @@
 package org.barrelmc.barrel.network.translator.java;
 
-import com.github.steveice10.packetlib.packet.Packet;
+import com.github.steveice10.mc.protocol.codec.MinecraftPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.serverbound.ServerboundClientInformationPacket;
 import com.nukkitx.protocol.bedrock.packet.RequestChunkRadiusPacket;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;
 import org.barrelmc.barrel.player.Player;
 
-public class ClientSettingsPacket implements JavaPacketTranslator {
+public class ClientInformationPacket implements JavaPacketTranslator {
 
     @Override
-    public void translate(Packet pk, Player player) {
-        com.github.steveice10.mc.protocol.packet.ingame.client.ClientSettingsPacket settingsPacket = (com.github.steveice10.mc.protocol.packet.ingame.client.ClientSettingsPacket) pk;
+    public void translate(MinecraftPacket pk, Player player) {
+        ServerboundClientInformationPacket settingsPacket = (ServerboundClientInformationPacket) pk;
         RequestChunkRadiusPacket chunkRadiusPacket = new RequestChunkRadiusPacket();
 
         chunkRadiusPacket.setRadius(settingsPacket.getRenderDistance());

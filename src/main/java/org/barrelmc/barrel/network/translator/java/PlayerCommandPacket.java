@@ -1,6 +1,7 @@
 package org.barrelmc.barrel.network.translator.java;
 
-import com.github.steveice10.packetlib.packet.Packet;
+import com.github.steveice10.mc.protocol.codec.MinecraftPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.serverbound.player.ServerboundPlayerCommandPacket;
 import com.nukkitx.math.vector.Vector3i;
 import com.nukkitx.protocol.bedrock.data.AuthoritativeMovementMode;
 import com.nukkitx.protocol.bedrock.data.PlayerActionType;
@@ -9,11 +10,11 @@ import com.nukkitx.protocol.bedrock.packet.PlayerActionPacket;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;
 import org.barrelmc.barrel.player.Player;
 
-public class ClientPlayerStatePacket implements JavaPacketTranslator {
+public class PlayerCommandPacket implements JavaPacketTranslator {
 
     @Override
-    public void translate(Packet pk, Player player) {
-        com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerStatePacket packet = (com.github.steveice10.mc.protocol.packet.ingame.client.player.ClientPlayerStatePacket) pk;
+    public void translate(MinecraftPacket pk, Player player) {
+        ServerboundPlayerCommandPacket packet = (ServerboundPlayerCommandPacket) pk;
 
         switch (packet.getState()) {
             case START_SNEAKING: {

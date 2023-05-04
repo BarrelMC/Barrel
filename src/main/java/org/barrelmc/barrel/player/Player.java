@@ -7,10 +7,10 @@ package org.barrelmc.barrel.player;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.github.steveice10.mc.protocol.data.game.MessageType;
-import com.github.steveice10.mc.protocol.data.game.world.block.BlockFace;
-import com.github.steveice10.mc.protocol.packet.ingame.server.ServerChatPacket;
-import com.github.steveice10.mc.protocol.packet.login.client.LoginStartPacket;
+import com.github.steveice10.mc.protocol.data.game.entity.object.Direction;
+import com.github.steveice10.mc.protocol.packet.ingame.clientbound.ClientboundSystemChatPacket;
+import com.github.steveice10.mc.protocol.packet.ingame.clientbound.level.ClientboundSetChunkCacheCenterPacket;
+import com.github.steveice10.mc.protocol.packet.login.serverbound.ServerboundHelloPacket;
 import com.github.steveice10.packetlib.Session;
 import com.nukkitx.math.vector.Vector2f;
 import com.nukkitx.math.vector.Vector3f;
@@ -20,6 +20,7 @@ import com.nukkitx.protocol.bedrock.data.*;
 import com.nukkitx.protocol.bedrock.data.inventory.ItemUseTransaction;
 import com.nukkitx.protocol.bedrock.packet.LoginPacket;
 import com.nukkitx.protocol.bedrock.packet.PlayerAuthInputPacket;
+import com.nukkitx.protocol.bedrock.packet.RequestNetworkSettingsPacket;
 import com.nukkitx.protocol.bedrock.packet.StartGamePacket;
 import com.nukkitx.protocol.bedrock.util.EncryptionUtils;
 import io.netty.util.AsciiString;
@@ -28,13 +29,13 @@ import lombok.Getter;
 import lombok.Setter;
 import net.kyori.adventure.text.Component;
 import org.barrelmc.barrel.auth.AuthManager;
-import org.barrelmc.barrel.auth.JoseStuff;
 import org.barrelmc.barrel.auth.Xbox;
 import org.barrelmc.barrel.config.Config;
 import org.barrelmc.barrel.math.Vector3;
 import org.barrelmc.barrel.network.BedrockBatchHandler;
 import org.barrelmc.barrel.network.translator.PacketTranslatorManager;
 import org.barrelmc.barrel.server.ProxyServer;
+import org.barrelmc.barrel.utils.Utils;
 
 import java.net.InetSocketAddress;
 import java.nio.charset.StandardCharsets;
@@ -91,6 +92,18 @@ public class Player extends Vector3 {
 
     @Setter
     @Getter
+    private Vector3f lastServerPosition;
+
+    @Setter
+    @Getter
+    private Vector2f lastServerRotation;
+
+    @Setter
+    @Getter
+    private boolean isImmobile = false;
+
+    @Setter
+    @Getter
     private boolean isSneaking = false;
     @Setter
     @Getter
@@ -103,7 +116,11 @@ public class Player extends Vector3 {
     private Vector3i diggingPosition;
     @Setter
     @Getter
-    private BlockFace diggingFace;
+    private Direction diggingFace;
+
+    @Setter
+    @Getter
+    private GameType gameMode = GameType.ADVENTURE;
 
     @Getter
     private final Set<PlayerAuthInputData> playerAuthInputData = EnumSet.noneOf(PlayerAuthInputData.class);
@@ -117,7 +134,7 @@ public class Player extends Vector3 {
     @Setter
     private int hotbarSlot = 0;
 
-    public Player(LoginStartPacket loginPacket, Session javaSession) {
+    public Player(ServerboundHelloPacket loginPacket, Session javaSession) {
         this.packetTranslatorManager = new PacketTranslatorManager(this);
         this.javaSession = javaSession;
 
@@ -141,9 +158,10 @@ public class Player extends Vector3 {
         }
     }
 
-    private void onlineLogin(LoginStartPacket javaLoginPacket) {
+    private void onlineLogin(ServerboundHelloPacket javaLoginPacket) {
         InetSocketAddress bindAddress = new InetSocketAddress("0.0.0.0", ThreadLocalRandom.current().nextInt(30000, 60000));
         BedrockClient client = new BedrockClient(bindAddress);
+        client.setRakNetVersion(ProxyServer.getInstance().getBedrockPacketCodec().getRaknetProtocolVersion());
 
         this.bedrockClient = client;
         ProxyServer.getInstance().getOnlinePlayers().put(javaLoginPacket.getUsername(), this);
@@ -161,11 +179,9 @@ public class Player extends Vector3 {
             session.setPacketCodec(ProxyServer.getInstance().getBedrockPacketCodec());
             session.addDisconnectHandler((reason) -> javaSession.disconnect("Client disconnected! " + reason.toString()));
             session.setBatchHandler(new BedrockBatchHandler(this));
-            try {
-                session.sendPacketImmediately(this.getOnlineLoginPacket());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            RequestNetworkSettingsPacket requestNetworkSettingsPacket = new RequestNetworkSettingsPacket();
+            requestNetworkSettingsPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
+            session.sendPacketImmediately(requestNetworkSettingsPacket);
         }).join();
     }
 
@@ -180,10 +196,10 @@ public class Player extends Vector3 {
         this.privateKey = (ECPrivateKey) ecdsa256KeyPair.getPrivate();
 
         Xbox xbox = new Xbox(this.accessToken);
-        String userToken = xbox.getUserToken(this.publicKey, this.privateKey);
+        //String userToken = xbox.getUserToken(this.publicKey, this.privateKey);
         String deviceToken = xbox.getDeviceToken(this.publicKey, this.privateKey);
-        String titleToken = xbox.getTitleToken(this.publicKey, this.privateKey, deviceToken);
-        String xsts = xbox.getXstsToken(userToken, deviceToken, titleToken, this.publicKey, this.privateKey);
+        //String titleToken = xbox.getTitleToken(this.publicKey, this.privateKey, deviceToken);
+        String xsts = xbox.getXBLToken(this.accessToken, this.publicKey, this.privateKey, deviceToken);
 
         KeyPair ecdsa384KeyPair = EncryptionUtils.createKeyPair();
         this.publicKey = (ECPublicKey) ecdsa384KeyPair.getPublic();
@@ -235,9 +251,10 @@ public class Player extends Vector3 {
         return loginPacket;
     }
 
-    private void offlineLogin(LoginStartPacket javaLoginPacket) {
+    private void offlineLogin(ServerboundHelloPacket javaLoginPacket) {
         InetSocketAddress bindAddress = new InetSocketAddress("0.0.0.0", ThreadLocalRandom.current().nextInt(30000, 60000));
         BedrockClient client = new BedrockClient(bindAddress);
+        client.setRakNetVersion(ProxyServer.getInstance().getBedrockPacketCodec().getRaknetProtocolVersion());
 
         this.xuid = "";
         this.username = javaLoginPacket.getUsername();
@@ -258,11 +275,13 @@ public class Player extends Vector3 {
             session.setPacketCodec(ProxyServer.getInstance().getBedrockPacketCodec());
             session.addDisconnectHandler((reason) -> javaSession.disconnect("Client disconnected! " + reason.toString()));
             session.setBatchHandler(new BedrockBatchHandler(this));
-            session.sendPacketImmediately(this.getLoginPacket());
+            RequestNetworkSettingsPacket requestNetworkSettingsPacket = new RequestNetworkSettingsPacket();
+            requestNetworkSettingsPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
+            session.sendPacketImmediately(requestNetworkSettingsPacket);
         }).join();
     }
 
-    private LoginPacket getLoginPacket() {
+    public LoginPacket getLoginPacket() {
         LoginPacket loginPacket = new LoginPacket();
 
         KeyPair ecdsa384KeyPair = EncryptionUtils.createKeyPair();
@@ -361,7 +380,7 @@ public class Player extends Vector3 {
             Signature signature = Signature.getInstance("SHA384withECDSA");
             signature.initSign(this.privateKey);
             signature.update(dataToSign);
-            signatureBytes = JoseStuff.DERToJOSE(signature.sign(), JoseStuff.AlgorithmType.ECDSA384);
+            signatureBytes = Utils.DERToJOSE(signature.sign(), Utils.AlgorithmType.ECDSA384);
         } catch (NoSuchAlgorithmException | InvalidKeyException | SignatureException ignored) {
         }
         String signatureString = Base64.getUrlEncoder().withoutPadding().encodeToString(signatureBytes);
@@ -370,11 +389,11 @@ public class Player extends Vector3 {
     }
 
     public void sendMessage(String message) {
-        this.javaSession.send(new ServerChatPacket(Component.text(message)));
+        this.javaSession.send(new ClientboundSystemChatPacket(Component.text(message), false));
     }
 
     public void sendTip(String message) {
-        this.javaSession.send(new ServerChatPacket(Component.text(message), MessageType.NOTIFICATION));
+        this.javaSession.send(new ClientboundSystemChatPacket(Component.text(message), true));
     }
 
     public void disconnect(String reason) {
@@ -382,6 +401,22 @@ public class Player extends Vector3 {
         this.getBedrockClient().getSession().disconnect();
         this.javaSession.disconnect(reason);
         ProxyServer.getInstance().getOnlinePlayers().remove(username);
+    }
+
+    @Override
+    public void setPosition(Vector3f vector3f) {
+        if (this.getFloorX() >> 4 != vector3f.getFloorX() >> 4 || this.getFloorZ() >> 4 != vector3f.getFloorZ() >> 4) {
+            this.javaSession.send(new ClientboundSetChunkCacheCenterPacket(vector3f.getFloorX() >> 4, vector3f.getFloorZ() >> 4));
+        }
+        super.setPosition(vector3f);
+    }
+
+    @Override
+    public void setPosition(double x, double y, double z) {
+        if (this.getFloorX() >> 4 != (int) x >> 4 || this.getFloorZ() >> 4 != (int) z >> 4) {
+            this.javaSession.send(new ClientboundSetChunkCacheCenterPacket((int) x >> 4, (int) z >> 4));
+        }
+        super.setPosition(x, y, z);
     }
 }
 
