@@ -36,10 +36,8 @@ import org.barrelmc.barrel.player.Player;
 import org.barrelmc.barrel.utils.FileManager;
 import org.yaml.snakeyaml.Yaml;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Map;
@@ -74,7 +72,7 @@ public class ProxyServer {
         instance = this;
         this.dataPath = Paths.get(dataPath);
         if (!this.initConfig()) {
-            System.out.println("Config file not found! Terminating...");
+            System.out.println("Failed to read config file! Terminating...");
             System.exit(0);
         }
 
@@ -95,20 +93,38 @@ public class ProxyServer {
     }
 
     private boolean initConfig() {
-        try {
-            InputStream inputStream = new FileInputStream(this.dataPath.toString() + "/config.yml");
-            this.config = (new Yaml()).loadAs(inputStream, Config.class);
-            return true;
-        } catch (FileNotFoundException e) {
+        Path outputFile = this.dataPath.resolve("config.yml");
+
+        if (!Files.exists(outputFile)) {
             try {
-                InputStream inputStream = new FileInputStream("./src/main/resources/config.yml");
-                this.config = (new Yaml()).loadAs(inputStream, Config.class);
-                return true;
-            } catch (FileNotFoundException ignored) {
+                InputStream stream = Barrel.class.getClassLoader().getResourceAsStream("config.yml");
+                if (stream == null) {
+                    throw new IOException("Cannot get config from jar file.");
+                }
+
+                FileOutputStream resStreamOut = new FileOutputStream(outputFile.toFile());
+
+                int readBytes;
+                byte[] buffer = new byte[4096];
+                while ((readBytes = stream.read(buffer)) > 0) {
+                    resStreamOut.write(buffer, 0, readBytes);
+                }
+
+                stream.close();
+                resStreamOut.close();
+            } catch (IOException e) {
+                return false;
             }
         }
 
-        return false;
+        try {
+            InputStream inputStream = new FileInputStream(outputFile.toFile());
+            this.config = (new Yaml()).loadAs(inputStream, Config.class);
+        } catch (IOException e) {
+            return false;
+        }
+
+        return true;
     }
 
     private void startServer() {
