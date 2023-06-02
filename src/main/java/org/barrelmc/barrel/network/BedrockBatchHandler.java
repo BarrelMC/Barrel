@@ -5,15 +5,12 @@
 
 package org.barrelmc.barrel.network;
 
-import com.nukkitx.protocol.bedrock.BedrockPacket;
-import com.nukkitx.protocol.bedrock.BedrockSession;
-import com.nukkitx.protocol.bedrock.handler.BatchHandler;
-import io.netty.buffer.ByteBuf;
 import org.barrelmc.barrel.player.Player;
+import org.cloudburstmc.protocol.bedrock.packet.BedrockPacket;
+import org.cloudburstmc.protocol.bedrock.packet.BedrockPacketHandler;
+import org.cloudburstmc.protocol.common.PacketSignal;
 
-import java.util.Collection;
-
-public class BedrockBatchHandler implements BatchHandler {
+public class BedrockBatchHandler implements BedrockPacketHandler {
 
     private final Player player;
 
@@ -22,10 +19,8 @@ public class BedrockBatchHandler implements BatchHandler {
     }
 
     @Override
-    public void handle(BedrockSession bedrockSession, ByteBuf byteBuf, Collection<BedrockPacket> collection) {
-        for (BedrockPacket packet : collection) {
-            //System.out.println("Received Bedrock " + packet.toString());
-            player.getPacketTranslatorManager().translate(packet);
-        }
+    public PacketSignal handlePacket(BedrockPacket packet) {
+        player.getPacketTranslatorManager().translate(packet);
+        return PacketSignal.HANDLED;
     }
 }

@@ -2,7 +2,7 @@ package org.barrelmc.barrel.network.translator.java;
 
 import com.github.steveice10.mc.protocol.codec.MinecraftPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.serverbound.ServerboundChatPacket;
-import com.nukkitx.protocol.bedrock.packet.TextPacket;
+import org.cloudburstmc.protocol.bedrock.packet.TextPacket;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;
 import org.barrelmc.barrel.player.Player;
 
@@ -19,6 +19,6 @@ public class ChatPacket implements JavaPacketTranslator {
         textPacket.setMessage(chatPacket.getMessage());
         textPacket.setXuid("");
         textPacket.setPlatformChatId("");
-        player.getBedrockClient().getSession().sendPacket(textPacket);
+        player.getBedrockClientSession().sendPacket(textPacket);
     }
 }

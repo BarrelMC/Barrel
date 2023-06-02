@@ -4,19 +4,38 @@ import com.github.steveice10.mc.protocol.data.game.entity.EntityEvent;
 import com.github.steveice10.mc.protocol.packet.ingame.clientbound.ClientboundLoginPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.clientbound.entity.ClientboundEntityEventPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.clientbound.entity.player.ClientboundPlayerPositionPacket;
-import com.nukkitx.math.vector.Vector2f;
-import com.nukkitx.math.vector.Vector3f;
-import com.nukkitx.protocol.bedrock.BedrockPacket;
+import org.cloudburstmc.math.vector.Vector2f;
+import org.cloudburstmc.math.vector.Vector3f;
+import org.cloudburstmc.protocol.bedrock.data.definitions.BlockDefinition;
+import org.cloudburstmc.protocol.bedrock.data.definitions.ItemDefinition;
+import org.cloudburstmc.protocol.bedrock.data.definitions.SimpleItemDefinition;
+import org.cloudburstmc.protocol.bedrock.packet.BedrockPacket;
 import org.barrelmc.barrel.network.translator.TranslatorUtils;
 import org.barrelmc.barrel.network.translator.interfaces.BedrockPacketTranslator;
 import org.barrelmc.barrel.player.Player;
 import org.barrelmc.barrel.server.ProxyServer;
+import org.cloudburstmc.protocol.common.DefinitionRegistry;
+import org.cloudburstmc.protocol.common.SimpleDefinitionRegistry;
 
 public class StartGamePacket implements BedrockPacketTranslator {
 
     @Override
     public void translate(BedrockPacket pk, Player player) {
-        com.nukkitx.protocol.bedrock.packet.StartGamePacket packet = (com.nukkitx.protocol.bedrock.packet.StartGamePacket) pk;
+        org.cloudburstmc.protocol.bedrock.packet.StartGamePacket packet = (org.cloudburstmc.protocol.bedrock.packet.StartGamePacket) pk;
+        player.getBedrockClientSession().getPeer().getCodecHelper().setItemDefinitions(SimpleDefinitionRegistry.<ItemDefinition>builder()
+                .addAll(packet.getItemDefinitions())
+                .add(new SimpleItemDefinition("minecraft:empty", 0, false))
+                .build());
+        player.getBedrockClientSession().getPeer().getCodecHelper().setBlockDefinitions(new DefinitionRegistry<BlockDefinition>() {
+            @Override
+            public BlockDefinition getDefinition(int i) {
+                return () -> i;
+            }
+            @Override
+            public boolean isRegistered(BlockDefinition blockDefinition) {
+                return true;
+            }
+        });
 
         player.setRuntimeEntityId(packet.getRuntimeEntityId());
         player.setOldPosition(packet.getPlayerPosition());
