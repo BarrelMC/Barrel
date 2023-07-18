@@ -33,7 +33,7 @@ import org.barrelmc.barrel.network.JavaPacketHandler;
 import org.barrelmc.barrel.player.Player;
 import org.barrelmc.barrel.utils.FileManager;
 import org.cloudburstmc.protocol.bedrock.codec.BedrockCodec;
-import org.cloudburstmc.protocol.bedrock.codec.v589.Bedrock_v589;
+import org.cloudburstmc.protocol.bedrock.codec.v594.Bedrock_v594;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.FileInputStream;
@@ -54,7 +54,7 @@ public class ProxyServer {
     @Getter
     private final Map<String, Player> onlinePlayers = new ConcurrentHashMap<>();
     @Getter
-    private final BedrockCodec bedrockPacketCodec = Bedrock_v589.CODEC;
+    private final BedrockCodec bedrockPacketCodec = Bedrock_v594.CODEC;
 
     @Getter
     private final Path dataPath;

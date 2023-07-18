@@ -6,7 +6,7 @@
 
 - Java 11
 - Minecraft: Java Edition v1.19.1/1.19.2
-- Bedrock Edition server v1.20
+- Bedrock Edition server v1.20.10
 
 ## Need implemented
 

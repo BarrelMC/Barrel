@@ -12,7 +12,6 @@ import com.github.steveice10.mc.protocol.packet.ingame.clientbound.ClientboundSy
 import com.github.steveice10.mc.protocol.packet.ingame.clientbound.level.ClientboundSetChunkCacheCenterPacket;
 import com.github.steveice10.mc.protocol.packet.login.serverbound.ServerboundHelloPacket;
 import com.github.steveice10.packetlib.Session;
-import com.nimbusds.jwt.SignedJWT;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -240,7 +239,7 @@ public class Player extends Vector3 {
             jsonArray.add(jwt);
             jsonArray.addAll(minecraftNetChain);
             for (int i = 0; i < jsonArray.size(); i++) {
-                loginPacket.getChain().add(SignedJWT.parse((String) jsonArray.get(i)));
+                loginPacket.getChain().add((String) jsonArray.get(i));
             }
         }
         {
@@ -256,7 +255,7 @@ public class Player extends Vector3 {
             this.UUID = extraData.getString("identity");
         }
 
-        loginPacket.setExtra(SignedJWT.parse(this.getSkinData()));
+        loginPacket.setExtra(this.getSkinData());
         loginPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
         return loginPacket;
     }
@@ -293,7 +292,7 @@ public class Player extends Vector3 {
         ProxyServer.getInstance().getOnlinePlayers().put(javaLoginPacket.getUsername(), this);
     }
 
-    public LoginPacket getLoginPacket() throws Exception {
+    public LoginPacket getLoginPacket() {
         LoginPacket loginPacket = new LoginPacket();
 
         KeyPair ecdsa384KeyPair = EncryptionUtils.createKeyPair();
@@ -321,10 +320,10 @@ public class Player extends Vector3 {
         JSONArray chainDataJsonArray = new JSONArray();
         chainDataJsonArray.add(jwt);
         for (int i = 0; i < chainDataJsonArray.size(); i++) {
-            loginPacket.getChain().add(SignedJWT.parse((String) chainDataJsonArray.get(i)));
+            loginPacket.getChain().add((String) chainDataJsonArray.get(i));
         }
 
-        loginPacket.setExtra(SignedJWT.parse(this.getSkinData()));
+        loginPacket.setExtra(this.getSkinData());
         loginPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
         return loginPacket;
     }
