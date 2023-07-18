@@ -1,14 +1,17 @@
 package org.barrelmc.barrel.network.translator.bedrock;
 
-import com.nimbusds.jwt.SignedJWT;
-import com.nukkitx.protocol.bedrock.BedrockPacket;
-import com.nukkitx.protocol.bedrock.packet.ClientToServerHandshakePacket;
-import com.nukkitx.protocol.bedrock.util.EncryptionUtils;
+import org.cloudburstmc.protocol.bedrock.packet.BedrockPacket;
+import org.cloudburstmc.protocol.bedrock.packet.ClientToServerHandshakePacket;
+import org.cloudburstmc.protocol.bedrock.util.EncryptionUtils;
 import org.barrelmc.barrel.network.translator.interfaces.BedrockPacketTranslator;
 import org.barrelmc.barrel.player.Player;
+import org.cloudburstmc.protocol.bedrock.util.JsonUtils;
+import org.jose4j.json.JsonUtil;
+import org.jose4j.json.internal.json_simple.JSONObject;
+import org.jose4j.jws.JsonWebSignature;
+import org.jose4j.jwx.HeaderParameterNames;
 
 import javax.crypto.SecretKey;
-import java.net.URI;
 import java.security.interfaces.ECPublicKey;
 import java.util.Base64;
 
@@ -22,20 +25,22 @@ public class ServerToClientHandshakePacket implements BedrockPacketTranslator {
     @Override
     public void translate(BedrockPacket pk, Player player) {
         try {
-            SignedJWT saltJwt = SignedJWT.parse(((com.nukkitx.protocol.bedrock.packet.ServerToClientHandshakePacket) pk).getJwt());
-            URI x5u = saltJwt.getHeader().getX509CertURL();
-            ECPublicKey serverKey = EncryptionUtils.generateKey(x5u.toASCIIString());
+            JsonWebSignature jws = new JsonWebSignature();
+            jws.setCompactSerialization(((org.cloudburstmc.protocol.bedrock.packet.ServerToClientHandshakePacket) pk).getJwt());
+            JSONObject saltJwt = new JSONObject(JsonUtil.parseJson(jws.getUnverifiedPayload()));
+            String x5u = jws.getHeader(HeaderParameterNames.X509_URL);
+            ECPublicKey serverKey = EncryptionUtils.parseKey(x5u);
             SecretKey key = EncryptionUtils.getSecretKey(
                     player.getPrivateKey(),
                     serverKey,
-                    Base64.getDecoder().decode(saltJwt.getJWTClaimsSet().getStringClaim("salt"))
+                    Base64.getDecoder().decode(JsonUtils.childAsType(saltJwt, "salt", String.class))
             );
-            player.getBedrockClient().getSession().enableEncryption(key);
+            player.getBedrockClientSession().enableEncryption(key);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
 
         ClientToServerHandshakePacket clientToServerHandshake = new ClientToServerHandshakePacket();
-        player.getBedrockClient().getSession().sendPacketImmediately(clientToServerHandshake);
+        player.getBedrockClientSession().sendPacketImmediately(clientToServerHandshake);
     }
 }

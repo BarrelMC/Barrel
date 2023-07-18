@@ -7,8 +7,7 @@ import com.github.steveice10.mc.protocol.packet.ingame.serverbound.ServerboundCl
 import com.github.steveice10.mc.protocol.packet.ingame.serverbound.inventory.ServerboundSeenAdvancementsPacket;
 import com.github.steveice10.mc.protocol.packet.ingame.serverbound.player.*;
 import com.github.steveice10.packetlib.packet.Packet;
-import com.nukkitx.protocol.bedrock.BedrockPacket;
-import com.nukkitx.protocol.bedrock.packet.*;
+import org.cloudburstmc.protocol.bedrock.packet.*;
 import lombok.Getter;
 import org.barrelmc.barrel.network.translator.interfaces.BedrockPacketTranslator;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;

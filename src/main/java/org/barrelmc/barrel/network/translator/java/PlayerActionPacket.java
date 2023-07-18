@@ -3,13 +3,13 @@ package org.barrelmc.barrel.network.translator.java;
 import com.github.steveice10.mc.protocol.codec.MinecraftPacket;
 import com.github.steveice10.mc.protocol.data.game.entity.player.PlayerAction;
 import com.github.steveice10.mc.protocol.packet.ingame.serverbound.player.ServerboundPlayerActionPacket;
-import com.nukkitx.math.vector.Vector3f;
-import com.nukkitx.math.vector.Vector3i;
-import com.nukkitx.protocol.bedrock.data.*;
-import com.nukkitx.protocol.bedrock.data.inventory.ItemData;
-import com.nukkitx.protocol.bedrock.data.inventory.ItemUseTransaction;
+import org.cloudburstmc.math.vector.Vector3f;
+import org.cloudburstmc.math.vector.Vector3i;
+import org.cloudburstmc.protocol.bedrock.data.*;
+import org.cloudburstmc.protocol.bedrock.data.inventory.ItemData;
 import org.barrelmc.barrel.network.translator.interfaces.JavaPacketTranslator;
 import org.barrelmc.barrel.player.Player;
+import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.ItemUseTransaction;
 
 public class PlayerActionPacket implements JavaPacketTranslator {
 
@@ -31,7 +31,7 @@ public class PlayerActionPacket implements JavaPacketTranslator {
         }
         switch (action) {
             case START_DIGGING:
-                if (player.getStartGamePacketCache().getPlayerMovementSettings().getMovementMode() == AuthoritativeMovementMode.CLIENT) {
+                if (player.getStartGamePacketCache().getAuthoritativeMovementMode() == AuthoritativeMovementMode.CLIENT) {
                     // TODO: implement for client authoritative
                 } else {
                     player.getPlayerAuthInputData().add(PlayerAuthInputData.PERFORM_BLOCK_ACTIONS);
@@ -48,7 +48,7 @@ public class PlayerActionPacket implements JavaPacketTranslator {
                 }
                 break;
             case CANCEL_DIGGING:
-                if (player.getStartGamePacketCache().getPlayerMovementSettings().getMovementMode() == AuthoritativeMovementMode.CLIENT) {
+                if (player.getStartGamePacketCache().getAuthoritativeMovementMode() == AuthoritativeMovementMode.CLIENT) {
                     // TODO: implement for client authoritative
                 } else {
                     player.getPlayerAuthInputData().add(PlayerAuthInputData.PERFORM_BLOCK_ACTIONS);
@@ -63,7 +63,7 @@ public class PlayerActionPacket implements JavaPacketTranslator {
                 }
                 break;
             case FINISH_DIGGING:
-                if (player.getStartGamePacketCache().getPlayerMovementSettings().getMovementMode() == AuthoritativeMovementMode.CLIENT) {
+                if (player.getStartGamePacketCache().getAuthoritativeMovementMode() == AuthoritativeMovementMode.CLIENT) {
                     // TODO: implement for client authoritative
                 } else {
                     // perform break block action
@@ -75,7 +75,7 @@ public class PlayerActionPacket implements JavaPacketTranslator {
                     itemUseTransaction.setItemInHand(ItemData.AIR); // TODO: implement inventory
                     itemUseTransaction.setBlockFace(playerActionPacket.getFace().ordinal());
                     itemUseTransaction.setPlayerPosition(player.getVector3f());
-                    itemUseTransaction.setBlockRuntimeId(0);
+                    itemUseTransaction.setBlockDefinition(() -> 0);
                     itemUseTransaction.setClickPosition(Vector3f.ZERO);
                     itemUseTransaction.setHotbarSlot(player.getHotbarSlot());
                     itemUseTransaction.setLegacyRequestId(0);

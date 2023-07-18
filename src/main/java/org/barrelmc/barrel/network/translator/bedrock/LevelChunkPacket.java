@@ -7,12 +7,6 @@ import com.github.steveice10.mc.protocol.data.game.level.block.BlockEntityInfo;
 import com.github.steveice10.mc.protocol.packet.ingame.clientbound.level.ClientboundLevelChunkWithLightPacket;
 import com.github.steveice10.opennbt.tag.builtin.CompoundTag;
 import com.github.steveice10.opennbt.tag.builtin.LongArrayTag;
-import com.nukkitx.nbt.NBTInputStream;
-import com.nukkitx.nbt.NbtMap;
-import com.nukkitx.nbt.NbtMapBuilder;
-import com.nukkitx.nbt.util.stream.NetworkDataInputStream;
-import com.nukkitx.network.VarInts;
-import com.nukkitx.protocol.bedrock.BedrockPacket;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.ByteBufInputStream;
 import io.netty.buffer.Unpooled;
@@ -22,6 +16,12 @@ import org.barrelmc.barrel.player.Player;
 import org.barrelmc.barrel.utils.Utils;
 import org.barrelmc.barrel.utils.nukkit.BitArray;
 import org.barrelmc.barrel.utils.nukkit.BitArrayVersion;
+import org.cloudburstmc.nbt.NBTInputStream;
+import org.cloudburstmc.nbt.NbtMap;
+import org.cloudburstmc.nbt.NbtMapBuilder;
+import org.cloudburstmc.nbt.util.stream.NetworkDataInputStream;
+import org.cloudburstmc.protocol.bedrock.packet.BedrockPacket;
+import org.cloudburstmc.protocol.common.util.VarInts;
 
 import java.io.IOException;
 import java.util.BitSet;
@@ -31,7 +31,7 @@ public class LevelChunkPacket implements BedrockPacketTranslator {
 
     @Override
     public void translate(BedrockPacket pk, Player player) {
-        com.nukkitx.protocol.bedrock.packet.LevelChunkPacket packet = (com.nukkitx.protocol.bedrock.packet.LevelChunkPacket) pk;
+        org.cloudburstmc.protocol.bedrock.packet.LevelChunkPacket packet = (org.cloudburstmc.protocol.bedrock.packet.LevelChunkPacket) pk;
 
         int subChunksLength = packet.getSubChunksLength();
         ChunkSection[] chunkSections = new ChunkSection[subChunksLength];

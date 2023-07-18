@@ -12,18 +12,10 @@ import com.github.steveice10.mc.protocol.packet.ingame.clientbound.ClientboundSy
 import com.github.steveice10.mc.protocol.packet.ingame.clientbound.level.ClientboundSetChunkCacheCenterPacket;
 import com.github.steveice10.mc.protocol.packet.login.serverbound.ServerboundHelloPacket;
 import com.github.steveice10.packetlib.Session;
-import com.nukkitx.math.vector.Vector2f;
-import com.nukkitx.math.vector.Vector3f;
-import com.nukkitx.math.vector.Vector3i;
-import com.nukkitx.protocol.bedrock.BedrockClient;
-import com.nukkitx.protocol.bedrock.data.*;
-import com.nukkitx.protocol.bedrock.data.inventory.ItemUseTransaction;
-import com.nukkitx.protocol.bedrock.packet.LoginPacket;
-import com.nukkitx.protocol.bedrock.packet.PlayerAuthInputPacket;
-import com.nukkitx.protocol.bedrock.packet.RequestNetworkSettingsPacket;
-import com.nukkitx.protocol.bedrock.packet.StartGamePacket;
-import com.nukkitx.protocol.bedrock.util.EncryptionUtils;
-import io.netty.util.AsciiString;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.nio.NioDatagramChannel;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import lombok.Getter;
 import lombok.Setter;
@@ -36,9 +28,22 @@ import org.barrelmc.barrel.network.BedrockBatchHandler;
 import org.barrelmc.barrel.network.translator.PacketTranslatorManager;
 import org.barrelmc.barrel.server.ProxyServer;
 import org.barrelmc.barrel.utils.Utils;
+import org.cloudburstmc.math.vector.Vector2f;
+import org.cloudburstmc.math.vector.Vector3f;
+import org.cloudburstmc.math.vector.Vector3i;
+import org.cloudburstmc.netty.channel.raknet.RakChannelFactory;
+import org.cloudburstmc.netty.channel.raknet.config.RakChannelOption;
+import org.cloudburstmc.protocol.bedrock.BedrockClientSession;
+import org.cloudburstmc.protocol.bedrock.data.*;
+import org.cloudburstmc.protocol.bedrock.data.inventory.transaction.ItemUseTransaction;
+import org.cloudburstmc.protocol.bedrock.netty.initializer.BedrockClientInitializer;
+import org.cloudburstmc.protocol.bedrock.packet.LoginPacket;
+import org.cloudburstmc.protocol.bedrock.packet.PlayerAuthInputPacket;
+import org.cloudburstmc.protocol.bedrock.packet.RequestNetworkSettingsPacket;
+import org.cloudburstmc.protocol.bedrock.packet.StartGamePacket;
+import org.cloudburstmc.protocol.bedrock.util.EncryptionUtils;
 
 import java.net.InetSocketAddress;
-import java.nio.charset.StandardCharsets;
 import java.security.*;
 import java.security.interfaces.ECPrivateKey;
 import java.security.interfaces.ECPublicKey;
@@ -47,7 +52,6 @@ import java.time.Instant;
 import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
 public class Player extends Vector3 {
@@ -55,7 +59,9 @@ public class Player extends Vector3 {
     @Getter
     private final Session javaSession;
     @Getter
-    private BedrockClient bedrockClient;
+    private BedrockClientSession bedrockClientSession;
+    @Getter
+    private Channel channel;
     @Getter
     private final PacketTranslatorManager packetTranslatorManager;
 
@@ -159,30 +165,32 @@ public class Player extends Vector3 {
     }
 
     private void onlineLogin(ServerboundHelloPacket javaLoginPacket) {
-        InetSocketAddress bindAddress = new InetSocketAddress("0.0.0.0", ThreadLocalRandom.current().nextInt(30000, 60000));
-        BedrockClient client = new BedrockClient(bindAddress);
-        client.setRakNetVersion(ProxyServer.getInstance().getBedrockPacketCodec().getRaknetProtocolVersion());
-
-        this.bedrockClient = client;
-        ProxyServer.getInstance().getOnlinePlayers().put(javaLoginPacket.getUsername(), this);
-
-        client.bind().join();
-
         Config config = ProxyServer.getInstance().getConfig();
         InetSocketAddress bedrockAddress = new InetSocketAddress(config.getBedrockAddress(), config.getBedrockPort());
-        client.connect(bedrockAddress).whenComplete((session, throwable) -> {
-            if (throwable != null) {
-                javaSession.disconnect("Server offline " + throwable);
-                return;
-            }
+        try {
+            Player player = this;
+            channel = new Bootstrap()
+                    .channelFactory(RakChannelFactory.client(NioDatagramChannel.class))
+                    .group(new NioEventLoopGroup())
+                    .option(RakChannelOption.RAK_PROTOCOL_VERSION, ProxyServer.getInstance().getBedrockPacketCodec().getRaknetProtocolVersion())
+                    .handler(new BedrockClientInitializer() {
+                        @Override
+                        protected void initSession(BedrockClientSession session) {
+                            bedrockClientSession = session;
+                            session.setCodec(ProxyServer.getInstance().getBedrockPacketCodec());
+                            session.setPacketHandler(new BedrockBatchHandler(player));
 
-            session.setPacketCodec(ProxyServer.getInstance().getBedrockPacketCodec());
-            session.addDisconnectHandler((reason) -> javaSession.disconnect("Client disconnected! " + reason.toString()));
-            session.setBatchHandler(new BedrockBatchHandler(this));
-            RequestNetworkSettingsPacket requestNetworkSettingsPacket = new RequestNetworkSettingsPacket();
-            requestNetworkSettingsPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
-            session.sendPacketImmediately(requestNetworkSettingsPacket);
-        }).join();
+                            RequestNetworkSettingsPacket requestNetworkSettingsPacket = new RequestNetworkSettingsPacket();
+                            requestNetworkSettingsPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
+                            session.sendPacketImmediately(requestNetworkSettingsPacket);
+                        }
+                    })
+                    .connect(bedrockAddress)
+                    .syncUninterruptibly().channel();
+        } catch (Exception exception) {
+            javaSession.disconnect("Server offline " + exception);
+        }
+        ProxyServer.getInstance().getOnlinePlayers().put(javaLoginPacket.getUsername(), this);
     }
 
     public LoginPacket getOnlineLoginPacket() throws Exception {
@@ -230,7 +238,9 @@ public class Player extends Vector3 {
             JSONArray jsonArray = new JSONArray();
             jsonArray.add(jwt);
             jsonArray.addAll(minecraftNetChain);
-            chainDataObject.put("chain", jsonArray);
+            for (int i = 0; i < jsonArray.size(); i++) {
+                loginPacket.getChain().add((String) jsonArray.get(i));
+            }
         }
         {
             String lastChain = minecraftNetChain.getString(minecraftNetChain.size() - 1);
@@ -245,40 +255,41 @@ public class Player extends Vector3 {
             this.UUID = extraData.getString("identity");
         }
 
-        loginPacket.setChainData(new AsciiString(chainDataObject.toJSONString().getBytes(StandardCharsets.UTF_8)));
-        loginPacket.setSkinData(new AsciiString(this.getSkinData()));
+        loginPacket.setExtra(this.getSkinData());
         loginPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
         return loginPacket;
     }
 
     private void offlineLogin(ServerboundHelloPacket javaLoginPacket) {
-        InetSocketAddress bindAddress = new InetSocketAddress("0.0.0.0", ThreadLocalRandom.current().nextInt(30000, 60000));
-        BedrockClient client = new BedrockClient(bindAddress);
-        client.setRakNetVersion(ProxyServer.getInstance().getBedrockPacketCodec().getRaknetProtocolVersion());
-
         this.xuid = "";
         this.username = javaLoginPacket.getUsername();
         this.UUID = java.util.UUID.randomUUID().toString();
-        this.bedrockClient = client;
-        ProxyServer.getInstance().getOnlinePlayers().put(javaLoginPacket.getUsername(), this);
-
-        client.bind().join();
-
         Config config = ProxyServer.getInstance().getConfig();
         InetSocketAddress bedrockAddress = new InetSocketAddress(config.getBedrockAddress(), config.getBedrockPort());
-        client.connect(bedrockAddress).whenComplete((session, throwable) -> {
-            if (throwable != null) {
-                javaSession.disconnect("Server offline " + throwable);
-                return;
-            }
+        try {
+            Player player = this;
+            channel = new Bootstrap()
+                    .channelFactory(RakChannelFactory.client(NioDatagramChannel.class))
+                    .group(new NioEventLoopGroup())
+                    .option(RakChannelOption.RAK_PROTOCOL_VERSION, ProxyServer.getInstance().getBedrockPacketCodec().getRaknetProtocolVersion())
+                    .handler(new BedrockClientInitializer() {
+                        @Override
+                        protected void initSession(BedrockClientSession session) {
+                            bedrockClientSession = session;
+                            session.setCodec(ProxyServer.getInstance().getBedrockPacketCodec());
+                            session.setPacketHandler(new BedrockBatchHandler(player));
 
-            session.setPacketCodec(ProxyServer.getInstance().getBedrockPacketCodec());
-            session.addDisconnectHandler((reason) -> javaSession.disconnect("Client disconnected! " + reason.toString()));
-            session.setBatchHandler(new BedrockBatchHandler(this));
-            RequestNetworkSettingsPacket requestNetworkSettingsPacket = new RequestNetworkSettingsPacket();
-            requestNetworkSettingsPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
-            session.sendPacketImmediately(requestNetworkSettingsPacket);
-        }).join();
+                            RequestNetworkSettingsPacket requestNetworkSettingsPacket = new RequestNetworkSettingsPacket();
+                            requestNetworkSettingsPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
+                            session.sendPacketImmediately(requestNetworkSettingsPacket);
+                        }
+                    })
+                    .connect(bedrockAddress)
+                    .syncUninterruptibly().channel();
+        } catch (Exception exception) {
+            javaSession.disconnect("Server offline " + exception);
+        }
+        ProxyServer.getInstance().getOnlinePlayers().put(javaLoginPacket.getUsername(), this);
     }
 
     public LoginPacket getLoginPacket() {
@@ -308,12 +319,11 @@ public class Player extends Vector3 {
 
         JSONArray chainDataJsonArray = new JSONArray();
         chainDataJsonArray.add(jwt);
+        for (int i = 0; i < chainDataJsonArray.size(); i++) {
+            loginPacket.getChain().add((String) chainDataJsonArray.get(i));
+        }
 
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("chain", chainDataJsonArray);
-
-        loginPacket.setChainData(new AsciiString(jsonObject.toJSONString().getBytes(StandardCharsets.UTF_8)));
-        loginPacket.setSkinData(new AsciiString(this.getSkinData()));
+        loginPacket.setExtra(this.getSkinData());
         loginPacket.setProtocolVersion(ProxyServer.getInstance().getBedrockPacketCodec().getProtocolVersion());
         return loginPacket;
     }
@@ -336,6 +346,7 @@ public class Player extends Vector3 {
         skinData.put("CapeImageWidth", 0);
         skinData.put("CapeOnClassicSkin", false);
         skinData.put("ClientRandomId", new Random().nextLong());
+        skinData.put("CompatibleWithClientSideChunkGen", false);
         skinData.put("CurrentInputMode", 1);
         skinData.put("DefaultInputMode", 1);
         skinData.put("DeviceId", java.util.UUID.randomUUID().toString());
@@ -398,7 +409,11 @@ public class Player extends Vector3 {
 
     public void disconnect(String reason) {
         playerInputExecutor.shutdown();
-        this.getBedrockClient().getSession().disconnect();
+        this.bedrockClientSession.disconnect();
+        if (this.channel.isOpen()) {
+            this.channel.disconnect().syncUninterruptibly();
+            this.channel.parent().disconnect().syncUninterruptibly();
+        }
         this.javaSession.disconnect(reason);
         ProxyServer.getInstance().getOnlinePlayers().remove(username);
     }
@@ -426,7 +441,7 @@ class PlayerAuthInputThread implements Runnable {
 
     public void run() {
         try {
-            if (!player.getBedrockClient().getSession().isClosed()) {
+            if (player.getBedrockClientSession().isConnected()) {
                 ++tick;
 
                 PlayerAuthInputPacket pk = new PlayerAuthInputPacket();
@@ -442,7 +457,7 @@ class PlayerAuthInputThread implements Runnable {
                 pk.setDelta(Vector3f.from(player.getVector3f().getX() - player.getOldPosition().getX(), player.getVector3f().getY() - player.getOldPosition().getY(), player.getVector3f().getZ() - player.getOldPosition().getZ()));
                 pk.setItemStackRequest(null);
                 pk.setItemUseTransaction(player.getPlayerAuthInputItemUseTransaction());
-
+                pk.setAnalogMoveVector(Vector2f.ZERO);
                 pk.getInputData().addAll(player.getPlayerAuthInputData());
                 pk.getPlayerActions().addAll(player.getPlayerAuthInputActions());
 
@@ -462,7 +477,7 @@ class PlayerAuthInputThread implements Runnable {
                     pk.getPlayerActions().add(blockActionData);
                 }
 
-                player.getBedrockClient().getSession().sendPacketImmediately(pk);
+                player.getBedrockClientSession().sendPacketImmediately(pk);
 
                 player.getPlayerAuthInputData().removeAll(player.getPlayerAuthInputData());
                 player.getPlayerAuthInputActions().removeAll(player.getPlayerAuthInputActions());
